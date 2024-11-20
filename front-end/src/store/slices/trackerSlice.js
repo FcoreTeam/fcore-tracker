@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
 const trackerState = {
   trackNumber: "", //str
   studioInfo: {
     studioName: "Fcore", // str
-    studioRating: '5.0', // str? or float
+    studioRating: "5.0", // str? or float
     studioAvatar: "/logotype.jpg", // avatar link,
-    studioDescription: "Студия", // str
+    studioDescription: "Веб-Студия", // str
   },
   orderInfo: {
     orderID: 0, // int
     orderDate: "", // str
-    orderStatus: "", // str
+    orderStatus: "",
+    orderStatuses: [
+      { statusName: "work", isCompleted: true, statusIco: "" },
+      { statusName: "check", isCompleted: false, statusIco: "" },
+      { statusName: "completed", isCompleted: false, statusIco: "" },
+    ], // str
     orderPrice: "", // int
     orderStart: "", // int "unix time"
     orderFinish: "", // int "unix time"
@@ -24,7 +27,7 @@ const trackerState = {
   paymentInfo: {
     isPayment: false, // оплата через сайт?
     paymentStages: [], // этапы оплаты
-  }
+  },
 };
 
 const trackerSlice = createSlice({
