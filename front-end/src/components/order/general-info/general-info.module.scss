@@ -1,0 +1,19 @@
+.general__info {
+  height: 100%;
+  width: 50%;
+  background: #1f2332;
+  border-radius: 15px;
+  margin-right: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+
+  .order__name {
+    color: #fff;
+    font-size: 25px;
+  }
+  .order__description{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #ffffff69;
+  }
+}

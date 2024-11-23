@@ -1,0 +1,15 @@
+.button {
+  cursor: pointer;
+  transition: 0.5s;
+  &.menu__btn,&.check__btn {
+    height: 40px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+    background: #008ff5;
+  }
+  &:hover{
+    scale: 1.03;
+  }
+}
