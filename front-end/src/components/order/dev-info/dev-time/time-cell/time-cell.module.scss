@@ -1,0 +1,16 @@
+.cell {
+  height: 40px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-left: 2px;
+  background: #161924;
+
+  .time{
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  }
+}

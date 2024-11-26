@@ -1,0 +1,34 @@
+.payment__popup__wrap {
+  width: 100vw;
+  height: 100vh;
+  background: #00000054;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .payment__popup {
+    height: 480px;
+    width: 330px;
+    background: #1F2332;
+    border-radius: 15px;
+    padding: 20px;
+    .payment__popup__title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .payment__popup__description {
+      color: #ffffff4a;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .payment__type{
+      margin-top: 10px;
+    }
+    .email__title{
+      color: #fff;
+      margin-top: 20px;
+    }
+  }
+}

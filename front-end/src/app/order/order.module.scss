@@ -7,6 +7,10 @@
   display: flex;
   position: relative;
   justify-content: flex-end;
+  background: url('../../../public/authpattern.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   .order__status {
     height: 100%;
     width: 20%;

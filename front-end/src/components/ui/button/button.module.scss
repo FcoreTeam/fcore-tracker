@@ -1,7 +1,7 @@
 .button {
   cursor: pointer;
   transition: 0.5s;
-  &.menu__btn,&.check__btn {
+  &.menu__btn,&.check__btn, &.payment__btn,&.auth__btn {
     height: 40px;
     border-radius: 15px;
     color: #fff;
@@ -9,7 +9,38 @@
     letter-spacing: 1px;
     background: #008ff5;
   }
+  &.payment__btn{
+    width: 100%;
+    margin-top: 10px;
+    font-size: 15px;
+    background: #37d177;
+    pointer-events: all;
+    cursor: pointer;
+    transition: .3s;
+  }
+  &.auth__btn{
+    width: 40%;
+    font-size: 16px;
+    transition: .5s;
+    &:first-child{
+      width: 70%;
+    }
+    &:last-child{
+      width: 25%;
+      background: transparent;
+      border: 2px solid #008ff5;
+    }
+  }
   &:hover{
     scale: 1.03;
+  }
+  &.resend__code{
+    height: 40px;
+    width: 250px;
+    border-radius: 15px;
+    background: #008ff5;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 15px;
   }
 }

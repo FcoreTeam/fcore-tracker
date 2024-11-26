@@ -18,9 +18,11 @@ const WarningPopup = () => {
     <>
       {isOpen && popupType === "warning" && (
         <Popup>
-          <div className={styles.warning__popup}>
-            <p className={styles.warning__title}>{popupName}</p>
-            <p className={styles.warning__description}>{popupDescription}</p>
+          <div className={styles.warning__wrapper}>
+            <div className={styles.warning__popup}>
+              <p className={styles.warning__title}>{popupName}</p>
+              <p className={styles.warning__description}>{popupDescription}</p>
+            </div>
           </div>
         </Popup>
       )}

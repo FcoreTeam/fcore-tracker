@@ -1,0 +1,35 @@
+.second__stage {
+  width: 100%;
+  height: fit-content;
+  .second__stage__email{
+    color: #ffffff36;
+    width: 100%;
+    text-align: center;
+  }
+  .code__place{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .next__code{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 23px;
+    font-weight: 700;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    span{
+        font-size: 12px;
+        color: #ffffff36;
+        margin-right: 10px;
+        font-weight: 500;
+    }
+  }
+  .btn__wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
