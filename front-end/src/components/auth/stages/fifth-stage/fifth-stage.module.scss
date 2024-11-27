@@ -1,0 +1,32 @@
+.fifth__stage {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: fit-content;
+  .checkbox__section {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    .ofert__text {
+      color: #ffffff36;
+      font-size: 13px;
+      margin-left: 10px;
+      line-height: 1.5;
+      margin-top: 10px;
+      a {
+        font-size: 13px;
+        margin-left: 10px;
+        line-height: 1.5;
+        margin-top: 10px;
+        color: #ffffff67;
+        font-size: 12px;
+        text-decoration: underline;
+        transition: 0.5s;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

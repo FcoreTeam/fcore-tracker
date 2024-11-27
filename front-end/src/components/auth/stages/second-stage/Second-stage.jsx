@@ -5,7 +5,7 @@ import styles from "./second-stage.module.scss";
 import Button from "@/components/ui/button/Button";
 
 const SecondStage = () => {
-  const { email } = useSelector((state) => state.auth);
+  const { email } = useSelector((state) => state.auth.firstStage);
   const [code, setCode] = useState(["", "", "", "", ""]);
   const [time, setTime] = useState(60);
   const [isTimerActive, setIsTimerActive] = useState(true);
@@ -64,6 +64,13 @@ const SecondStage = () => {
     return () => clearInterval(timer);
   };
 
+  const handleInputChange = (index, event) => {
+    const inputValue = event.target.value;
+    if (/^\d*$/.test(inputValue) && inputValue.length <= 1) {
+      handleChange(index, inputValue);
+    }
+  };
+
   return (
     <div className={styles.second__stage}>
       <p className={styles.second__stage__email}>
@@ -77,7 +84,7 @@ const SecondStage = () => {
             inputClass="code__input"
             length={1}
             value={digit}
-            onChange={(e) => handleChange(index, e.target.value)}
+            onChange={(e) => handleInputChange(index, e)} 
             onKeyDown={(e) => handleKeyDown(e, index)}
             inputType="number"
           />

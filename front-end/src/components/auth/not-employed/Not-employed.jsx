@@ -1,12 +1,19 @@
+"use client";
+
+import { useState } from "react";
+
 import clsx from "clsx";
 
 import FirstStage from "../stages/first-stage/First-stage";
 import SecondStage from "../stages/second-stage/Second-stage";
+import ThirdStage from "../stages/third stage/Third-stage";
+import FourthStage from "../stages/fourth-stage/Fourth-stage";
 
 import styles from "./not-employed.module.scss";
-import ThirdStage from "../stages/third stage/Third-stage";
+import FifthStage from "../stages/fifth-stage/Fifth-stage";
 
 const NotEmployed = ({ isLogin, isNext }) => {
+  const [authControll, setAuthControll] = useState(false);
   return (
     <div className={styles.type}>
       <p
@@ -23,7 +30,7 @@ const NotEmployed = ({ isLogin, isNext }) => {
             : isNext === 3
             ? "3. Заполните информацию о себе"
             : isNext === 4
-            ? "4. Заполните Банковскую информацию"
+            ? "4. Заполните платежную информацию"
             : "5. Готово")}
       </p>
       {isNext === 4 ? (
@@ -40,6 +47,10 @@ const NotEmployed = ({ isLogin, isNext }) => {
       {!isLogin && isNext === 3 ? ( // Условие для отображения SecondStage
         <ThirdStage />
       ) : null}
+      {!isLogin && isNext === 4 ? ( // Условие для отображения SecondStage
+        <FourthStage />
+      ) : null}
+      {!isLogin && isNext === 5 ? <FifthStage /> : null}
     </div>
   );
 };

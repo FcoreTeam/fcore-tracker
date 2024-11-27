@@ -12,5 +12,18 @@
     color: #fff;
     font-weight: 700;
     font-size: 18px;
+    &.less__faster{
+      color: rgb(251, 255, 0);
+      font-weight: 800;
+    }
+    &.faster{
+      color: rgb(255, 162, 0);
+      font-weight: 800;
+    }
+    &.more__faster{
+      color: rgb(255, 8, 0);
+      font-weight: 800;
+    }
   }
+
 }

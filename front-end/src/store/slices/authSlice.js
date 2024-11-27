@@ -1,7 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const authState = {
-  email: "example@gmail.com",
+  firstStage: {
+    email: "",
+    username: "",
+    password: "",
+  },
+  secondStage: {
+    code: Number,
+  },
+  thirdStage: {
+    about: "",
+    category: "",
+  },
+  fourthStage: {
+    cardNumber: "",
+    cardInitials: "",
+    readyFirst: false, 
+    readySecond: false,
+  }
 };
 
 const authSlice = createSlice({
@@ -9,7 +26,8 @@ const authSlice = createSlice({
   initialState: authState,
   reducers: {
     setAuthData: (state, action) => {
-      state.email = action.payload;
+      state.firstStage.email = action.payload.email;
+      state.fourthStage.cardNumber = action.payload.cardNumber;
     },
   },
 });

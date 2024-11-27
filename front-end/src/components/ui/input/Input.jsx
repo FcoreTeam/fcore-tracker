@@ -12,19 +12,15 @@ const Input = ({
   length,
   onKeyDown,
   id,
+  inputRef,
   isTextArea,
 }) => {
-  console.log(value);
-  const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-    if (inputValue.length <= length) {
-      onChange(event);
-    }
-  };
+
 
   return (
     <>
       {!isTextArea ? (
+        <>
         <input
           type={inputType}
           placeholder={inputPlaceholder}
@@ -34,11 +30,17 @@ const Input = ({
             styles[validateClass]
           )}
           maxLength={length}
-          onChange={handleInputChange}
+          onChange={onChange}
           onKeyDown={onKeyDown}
           value={value}
           id={id}
+          ref={inputRef}
         />
+        {inputType === "checkbox" ? (
+          
+          <label htmlFor={id} className={styles.checkbox__label}></label>
+        ) : null}
+        </>
       ) : (
         <textarea
           type={inputType}
@@ -49,10 +51,11 @@ const Input = ({
             styles[validateClass]
           )}
           maxLength={length}
-          onChange={handleInputChange}
+          onChange={onChange}
           onKeyDown={onKeyDown}
           value={value}
           id={id}
+          ref={inputRef}
         ></textarea>
       )}
     </>

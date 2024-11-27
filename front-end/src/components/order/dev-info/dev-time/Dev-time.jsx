@@ -6,16 +6,38 @@ import TimeCell from "./time-cell/Time-cell";
 import styles from "./dev-time.module.scss";
 
 const DevTime = () => {
-  const { orderFinish } = useSelector((state) => state.tracker.orderInfo);
-  const [deadline, setDeadline] = useState(orderFinish - Math.floor(Date.now() / 1000));
+  const { orderStart, orderFinish } = useSelector(
+    (state) => state.tracker.orderInfo
+  );
+  const [deadline, setDeadline] = useState(
+    orderFinish - Math.floor(Date.now() / 1000)
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDeadline(orderFinish - Math.floor(Date.now() / 1000));
+      const currentTime = Math.floor(Date.now() / 1000);
+      const remainingTime = orderFinish - currentTime;
+
+      // Если время закончилось, устанавливаем значение в 0
+      setDeadline(remainingTime > 0 ? remainingTime : 0);
     }, 1000);
 
     return () => clearInterval(interval);
   }, [orderFinish]);
+
+  const calculateRemainingPercentage = (orderStart, orderFinish) => {
+    const currentTime = Math.floor(Date.now() / 1000);
+    const totalDuration = orderFinish - orderStart;
+    const remainingTime = orderFinish - currentTime;
+
+    if (totalDuration <= 0) return 0;
+    const remainingPercentage = (remainingTime / totalDuration) * 100;
+    return Math.max(0, Math.min(remainingPercentage, 100));
+  };
+  const remainingPercentage = calculateRemainingPercentage(
+    orderStart,
+    orderFinish
+  );
 
   const timeRemaining = useMemo(() => {
     const secondsInMinute = 60;
@@ -25,27 +47,80 @@ const DevTime = () => {
     const days = Math.floor(deadline / secondsInDay);
     const hours = Math.floor((deadline % secondsInDay) / secondsInHour);
     const minutes = Math.floor((deadline % secondsInHour) / secondsInMinute);
+    const seconds = deadline % secondsInMinute;
 
     return {
-      days,
+      days: String(days).padStart(2, "0"), 
       hours: String(hours).padStart(2, "0"),
       minutes: String(minutes).padStart(2, "0"),
+      seconds: String(seconds).padStart(2, "0"),
     };
   }, [deadline]);
-
   return (
     <div className={styles.dev__time}>
       <p className={styles.time__title}>Времени осталось</p>
       <section className={styles.time}>
-        <TimeCell timeNumber={0} />
-        <TimeCell timeNumber={timeRemaining.days} />
-        <p className={styles.del}>:</p>
-        <TimeCell timeNumber={parseInt(timeRemaining.hours[0])} />
-        <TimeCell timeNumber={parseInt(timeRemaining.hours[1])} />
-        <p className={styles.del}>:</p>
-        <TimeCell timeNumber={parseInt(timeRemaining.minutes[0])} />
-        <TimeCell timeNumber={parseInt(timeRemaining.minutes[1])} />
-        <p className={styles.time__left}>дней</p>
+        {deadline < 86400 ? (
+          <>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.hours[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.hours[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.del}>:</p>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.minutes[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.minutes[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.del}>:</p>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.seconds[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.seconds[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.time__left}>часов</p>
+          </>
+        ) : (
+          <>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.days[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.days[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.del}>:</p>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.hours[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.hours[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.del}>:</p>
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.minutes[0])}
+              deadline={remainingPercentage}
+            />
+            <TimeCell
+              timeNumber={parseInt(timeRemaining.minutes[1])}
+              deadline={remainingPercentage}
+            />
+            <p className={styles.time__left}>дней</p>
+          </>
+        )}
       </section>
     </div>
   );
