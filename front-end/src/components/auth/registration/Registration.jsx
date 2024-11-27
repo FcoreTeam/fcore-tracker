@@ -13,7 +13,7 @@ const Registration = ({ registartionType, isLogin, isNext }) => {
         <NotEmployed isLogin={false} isNext={isNext} />
       ) : null}
       {registartionType === "self-employed" ? (
-        <SelfEmploymed isLogin={false} />
+        <SelfEmploymed isLogin={false} isNext={isNext} />
       ) : null}
       {registartionType === "entrepreneur" ? (
         <Entrepreneur isLogin={false} />

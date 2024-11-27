@@ -13,7 +13,6 @@ import AuthType from "./auth-type/Auth-type";
 const Auth = () => {
   const [choosenType, setChoosenType] = useState("not-employed");
   const [authPage, setAuthPage] = useState("registration");
-  const [authEvent, setAuthEventHandler] = useState("auth");
   let [nextStage, setNextStage] = useState(1);
 
   const { cardNumber } = useSelector((state) => state.auth.fourthStage);
@@ -25,8 +24,12 @@ const Auth = () => {
     }
   };
 
-  const goNextStage = () => {
-    setNextStage(++nextStage);
+  const goNextStage = (type) => {
+    if (type === "change-type") {
+      setNextStage(1);
+    } else {
+      setNextStage(++nextStage);
+    }
   };
 
   const chooseEmploymentType = (type) => {
@@ -55,12 +58,18 @@ const Auth = () => {
           <AuthType
             authName="Не оформлен"
             isChoosen={choosenType === "not-employed" ? true : false}
-            onClick={() => chooseEmploymentType("not-employed")}
+            onClick={() => {
+              chooseEmploymentType("not-employed");
+              goNextStage("change-type");
+            }}
           />
           <AuthType
             authName="Самозанятый"
             isChoosen={choosenType === "self-employed" ? true : false}
-            onClick={() => chooseEmploymentType("self-employed")}
+            onClick={() => {
+              chooseEmploymentType("self-employed");
+              goNextStage("change-type");
+            }}
           />
           <AuthType
             authName="ИП"

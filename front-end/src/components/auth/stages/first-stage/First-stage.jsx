@@ -1,16 +1,9 @@
 import Input from "@/components/ui/input/Input";
 
-import { useRef } from "react";
-
-
 const FirstStage = ({ isLogin }) => {
-
-  let emailValue = useRef(null)
-
-  
   return (
     <>
-      <Input inputClass="auth__input" inputPlaceholder="Введите почту" inputRef={emailValue} />
+      <Input inputClass="auth__input" inputPlaceholder="Введите почту" />
       <Input
         inputClass="auth__input"
         inputPlaceholder="Введите имя пользователя"

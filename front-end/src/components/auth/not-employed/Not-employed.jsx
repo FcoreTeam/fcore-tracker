@@ -28,7 +28,7 @@ const NotEmployed = ({ isLogin, isNext }) => {
             : isNext === 2
             ? "Мы отправили вам письмо"
             : isNext === 3
-            ? "3. Заполните информацию о себе"
+            ? "3. Расскажите о себе"
             : isNext === 4
             ? "4. Заполните платежную информацию"
             : "5. Готово")}
@@ -41,15 +41,9 @@ const NotEmployed = ({ isLogin, isNext }) => {
       {isLogin || (isNext === 1 && !isLogin) ? (
         <FirstStage isLogin={isLogin} />
       ) : null}
-      {!isLogin && isNext === 2 ? ( // Условие для отображения SecondStage
-        <SecondStage />
-      ) : null}
-      {!isLogin && isNext === 3 ? ( // Условие для отображения SecondStage
-        <ThirdStage />
-      ) : null}
-      {!isLogin && isNext === 4 ? ( // Условие для отображения SecondStage
-        <FourthStage />
-      ) : null}
+      {!isLogin && isNext === 2 ? <SecondStage /> : null}
+      {!isLogin && isNext === 3 ? <ThirdStage /> : null}
+      {!isLogin && isNext === 4 ? <FourthStage /> : null}
       {!isLogin && isNext === 5 ? <FifthStage /> : null}
     </div>
   );
