@@ -33,14 +33,15 @@ const SixStage = () => {
         <Input
           inputClass="auth__input"
           inputPlaceholder="Номер телефона"
-          length={50}
+          length={12}
           value={phoneNumber}
           onChange={handlePhoneChange}
+          
         />
         <Input
           inputClass="auth__input"
           inputPlaceholder="Введите ИНН"
-          length={50}
+          length={12}
         />
       </div>
       <div className={styles.six__stage__right}>

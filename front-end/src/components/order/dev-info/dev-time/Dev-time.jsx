@@ -17,8 +17,6 @@ const DevTime = () => {
     const interval = setInterval(() => {
       const currentTime = Math.floor(Date.now() / 1000);
       const remainingTime = orderFinish - currentTime;
-
-      // Если время закончилось, устанавливаем значение в 0
       setDeadline(remainingTime > 0 ? remainingTime : 0);
     }, 1000);
 
@@ -28,9 +26,9 @@ const DevTime = () => {
   const calculateRemainingPercentage = (orderStart, orderFinish) => {
     const currentTime = Math.floor(Date.now() / 1000);
     const totalDuration = orderFinish - orderStart;
+    if (totalDuration <= 0) return 0;
     const remainingTime = orderFinish - currentTime;
 
-    if (totalDuration <= 0) return 0;
     const remainingPercentage = (remainingTime / totalDuration) * 100;
     return Math.max(0, Math.min(remainingPercentage, 100));
   };

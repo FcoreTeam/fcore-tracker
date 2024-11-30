@@ -37,7 +37,7 @@ const SelfEmploymed = ({ isLogin, isNext }) => {
         </section>
       )}
 
-      {isNext === 4 ? (
+      {isNext === 5 ? (
         <p className={styles.optional__description}>
           требуется для вывода средств
         </p>
@@ -47,7 +47,7 @@ const SelfEmploymed = ({ isLogin, isNext }) => {
       ) : null}
       {!isLogin && isNext === 2 ? <SecondStage /> : null}
       {!isLogin && isNext === 3 ? <SixStage /> : null}
-      {!isLogin && isNext === 4 ? <FourthStage /> : null}
+      {!isLogin && isNext === 4 ? <ThirdStage isSelfEmployed={true} /> : null}
       {!isLogin && isNext === 5 ? <FifthStage /> : null}
     </div>
   );
