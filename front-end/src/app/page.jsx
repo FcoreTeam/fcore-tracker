@@ -74,6 +74,7 @@ const Main = () => {
               value={inputValue}
               onChange={handleInputChange}
               validateClass={validate ? null : "incorrect"}
+              length={14}
             />
             <Button
               onClick={null}

@@ -12,13 +12,12 @@ const trackerState = {
     orderID: 0, // int
     orderName: "Название заказа", // str
     orderDescription: "Описание заказа", // str
-    orderDate: "", // str
     orderStatus: "",
     orderStatuses: [
       {
         statusName: "work",
         isCompleted: true,
-        statusIco: "/icons/indevcompleted.svg",
+        statusIco: "/icons/indevprocess.svg",
       },
       {
         statusName: "check",
@@ -32,16 +31,17 @@ const trackerState = {
         statusIco: "/icons/notcompleted.svg",
       },
     ], // str
-    orderPrice: "", // int
-    orderStart: "", // int "unix time"
-    orderFinish: "", // int "unix time"
+    orderPrice: Number, // int
+    orderDeadline: Number,
+    orderStart: 1731316867, // int "unix time"
+    orderFinish: 1732785667, // int "unix time"
     orderPictures: [], // id array
     orderVideos: [], // image ID from database,
     orderGitLink: "", // github api
   },
   paymentInfo: {
     isPayment: false, // оплата через сайт?
-    paymentStages: [], // этапы оплаты
+    paymentStages: [{ stagePrice: 0, stagePercent: 0 }], // этапы оплаты
   },
 };
 

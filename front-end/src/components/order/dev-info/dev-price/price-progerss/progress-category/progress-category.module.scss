@@ -1,0 +1,51 @@
+.payment__category {
+    width: 33%;
+    height: 100%;
+    border-right: 1px solid #ffffff21;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &.payment__complete {
+      background: #49b3655c;
+      cursor: default;
+    }
+
+    &:first-child {
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    &:last-child {
+      border: 0;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    &:hover {
+      background: #49b3655c;
+    }
+
+    .payment__rubles {
+      border-right: 0;
+      font-size: 9px;
+      color: #49b365;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.payment__need {
+      animation: blink 1s infinite;
+    }
+  }
+
+@keyframes blink {
+    0%, 100% {
+      background: transparent;
+    }
+    50% {
+      background: #49b3655c; 
+    }
+  }

@@ -1,0 +1,29 @@
+.dev__time {
+  width: 50%;
+  height: 100%;
+  padding-top: 20px;
+  padding-left: 20px;
+
+  .time__title {
+    color: #fff;
+    font-size: 18px;
+  }
+  .time {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    align-items: center;
+    color: #fff;
+    margin-top: 10px;
+    .del {
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+    .time__left {
+      color: #ffffff94;
+      align-self: flex-end;
+      margin-left: 10px;
+      font-size: 12px;
+    }
+  }
+}
