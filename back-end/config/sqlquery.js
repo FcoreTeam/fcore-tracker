@@ -3,17 +3,17 @@ export const createUser = `CREATE TABLE IF NOT EXISTS users (
     type VARCHAR(255) NOT NULL,
     username VARCHAR(255) UNIQUE,
     email VARCHAR(255) UNIQUE NOT NULL CHECK(email ilike '%@%'),
+    role VARCHAR(255) NOT NULL DEFAULT 'studio',
     password_hash VARCHAR(255) NOT NULL,
-    isActivatedEmail BOOLEAN NOT NULL DEFAULT false,
-    isActivated BOOLEAN NOT NULL DEFAULT false,
-    code INTEGER NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT false,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    CHECK (type = 'notregister' OR type = 'self')
+    CHECK (type = 'notregister' OR type = 'self'),
+    CHECK (role = 'admin' OR role = 'studio')
     );`
 
 export const createStudio = `CREATE TABLE IF NOT EXISTS studios (
     studio_id SERIAL PRIMARY KEY,
-    inn INTEGER,
+    inn BIGINT,
     fname VARCHAR(255), 
     lname VARCHAR(255),
     mname VARCHAR(255),
@@ -24,8 +24,9 @@ export const createStudio = `CREATE TABLE IF NOT EXISTS studios (
 );`
 
 export const createCardDetails = `CREATE TABLE IF NOT EXISTS card_details (
-    id SERIAL PRIMARY KEY,
-    card_number INTEGER NOT NULL,
+    card_number BIGINT NOT NULL,
+    card_fname VARCHAR(255) NOT NULL,
+    card_lname VARCHAR(255) NOT NULL,
     user_id BIGINT NOT NULL,
     CONSTRAINT fk_user_card FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );`

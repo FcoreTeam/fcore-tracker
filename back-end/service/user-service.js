@@ -3,9 +3,10 @@ import bcrypt from 'bcrypt';
 import { TokenService } from '../service/token-service.js';
 import MailService from './mail-service.js';
 import dotenv from 'dotenv';
-import { insertStudio } from '../config/sqlquery.js';
+import NodeCache from 'node-cache';
 
 dotenv.config();
+const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 
 export class UserService {
     static async register(email, password, username, type) {
@@ -20,22 +21,57 @@ export class UserService {
                 return {success: false, message: 'Пользователь с таким username уже существует'};
             }
             const password_hash = await bcrypt.hash(password, 10);
-            const code = Number(await UserService.generateRandomNumber());
-            await client.query('insert into users (email, password_hash, username, type, code) values ($1, $2, $3, $4, $5)', [email, password_hash, username, type, code]);
-            const user_info = await client.query('select id from users where email = $1', [email]);
-            await client.query(insertStudio, [null,null,null,null,null,null,null, user_info.rows[0].id]);
-            await MailService.sendActivationMail(email, code);
-            return {success: true, message: 'Письмо для подтверждения отправлено на почту'};
+            await client.query('insert into users (email, password_hash, username, type) values ($1, $2, $3, $4)', [email, password_hash, username, type]);
+            return {success: true, message: 'Регистрация прошла успешно'};
         } catch (err) {
             console.log(err);
             return {success: false, error: 'Регистрация не удалась. Проверьте введенные данные'};
         }
     }
 
-    static async login(req, res) {
+    static async activate(code, email) {
+        try {
+            const fet_code = myCache.get(email);
+            const user = await client.query('select * from users where email = $1', [email]);
+            if (user.rows.length == 0) {
+                return {success: false, message: 'Пользователь не найден'};
+            }
+            if (fet_code != code) {
+                await myCache.del(email);
+                return {success: false, message: 'Неверный код активации'};
+            }
+            if (user.rows[0].is_active == true) {
+                return {success: false, message: 'Пользователь уже активирован'};
+            }
+            await client.query('update users set is_active = true where email = $1', [email]);
+            const tokens = TokenService.generateTokens({email: email, id: user.rows[0].id});
+            await TokenService.saveToken(user.rows[0].id, tokens.refreshToken);
+            return {success: true, message: 'Пользователь активирован', tokens: tokens};
+        } catch (err) {
+            console.log(err);
+            return {success: false, message: 'Error while activating user'};
+        }
+    }
+
+    static async send_email(email) {
+        try {
+            console.log(email);
+            const code = Number(await UserService.generateRandomNumber());
+            if(myCache.has(email)) {
+                await myCache.del(email);
+            }
+            myCache.set(email, code);
+            await MailService.sendActivationMail(email, code);
+            return {success: true, message: 'Письмо для подтверждения отправлено на почту'};
+        } catch (err) {
+            console.log(err);
+            return {success: false, error: 'Error while activating user'};
+        }
+    }
+
+    static async login() {
         // POST
         try {
-            
             const tokens = TokenService.generateTokens({email: email, id: user.rows[0].id, role: user.rows[0].role});
             await TokenService.saveToken(user.rows[0].id, tokens.refreshToken);
             res.cookie('refreshToken', tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
@@ -47,10 +83,27 @@ export class UserService {
     }
 
     static async generateRandomNumber() {
-        let randomNumber = '';
-        for (let i = 0; i < 5; i++) {
-            randomNumber += Math.floor(Math.random() * 10); // Генерация случайной цифры от 0 до 9
+        return Math.floor(10000 + Math.random() * 90000);
+    }
+
+    static async setinfo(id, info) {
+        try {
+            const studio = await client.query('select * from studios where studio_id = $1', [id]);
+            if (studio.rows.length != 0) {
+                return {success: false, message: 'У пользователя уже есть студия'};
+            }
+            const user = await client.query('select * from users where id = $1', [id]);
+            if(user.rows[0].type == 'notregister') {
+                await client.query('insert into studios (studio_id, fname, lname, mname, about, sphere_of_activity, phone, inn) values ($1, $2, $3, $4, $5, $6, $7, $8)', [id, info.fname, info.lname, info.mname, info.about, info.sphere_of_activity, info.phone, info.inn]);
+                await client.query('insert into card_details (card_number, card_fname, card_lname, user_id) values ($1, $2, $3, $4)', [info.card_number, info.card_fname, info.card_lname, id]);
+                return {success: true, message: 'Студия для пользователя создана (Незарегистрированный пользователь)'};
+            } else {
+                await client.query('insert into studios (studio_id, fname, lname, mname, inn, about, sphere_of_activity, phone) values ($1, $2, $3, $4, $5, $6, $7, $8)', [id, info.fname, info.lname, info.mname, info.inn, info.about, info.sphere_of_activity, info.phone]);
+                return {success: true, message: 'Студия для пользователя создана (Самозанятый пользователь)'};
+            }
+        } catch (err) {
+            console.log(err);
+            return {success: false, error: 'Error while setting user info'};
         }
-        return randomNumber;
     }
 }

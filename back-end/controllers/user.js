@@ -30,6 +30,7 @@ export class UserController {
             if (!errors.isEmpty()) {
                 return res.status(400).json({errors: errors.array()});
             }
+            await UserService.login().then(response => res.json(response));
         } catch (err) {
             console.log(err);
             res.json({success: false, error: 'Error while logging in user'});
@@ -83,21 +84,35 @@ export class UserController {
         // GET
         try {
             const { code, email } = req.body;
-            const info = await client.query('select * from users where email = $1', [email]);
-            if (info.rows.length == 0) {
-                return res.json({success: false, message: 'Пользователь не найден'});
-            }
-            if (info.rows[0].isactivatedemail) {
-                return res.json({success: false, message: 'Пользователь уже активирован'});
-            }
-            if (info.rows[0].code != code) {
-                return res.json({success: false, message: 'Неверный код активации'});
-            }
-            client.query('update users set isActivatedEmail = true where code = $1', [code]);
-            res.json({success: true, message: 'Пользователь активирован'});
+            await UserService.activate(code, email)
+                .then(response => {
+                    if(response.success) {
+                        res.cookie('refreshToken', response.tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+                        res.status(200).json({success: response.success, message: response.message, accessToken:response.tokens.accessToken});
+                    } else {
+                        res.status(400).json({success: response.success, message: response.message});
+                    }                                 
+                });
         } catch (err) {
             console.log(err);
             res.json({success: false, error: 'Error while activating user'});        
         }
+    }
+
+    static async send_email(req, res) {
+        try {
+            const { email } = req.body;
+            await UserService.send_email(email)
+                .then(response => res.json(response));
+        } catch (err) {
+            console.log(err);
+            res.json({success: false, error: 'Error while activating user'});        
+        }
+    }
+
+    static async setStudioInfo(req, res) {
+        const info = await UserService.setinfo(req.id, req.body).then(response => {
+            res.json(response);
+        });
     }
 }
