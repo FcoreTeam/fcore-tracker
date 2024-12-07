@@ -1,0 +1,38 @@
+"use client";
+
+import Image from "next/image";
+import { useSelector } from "react-redux";
+
+import styles from "./user-info.module.scss";
+
+const UserInfo = () => {
+  const { username } = useSelector((state) => state.auth.firstStage);
+  const { accountType } = useSelector((state) => state.auth);
+
+  return (
+    <div className={styles.user__info}>
+      <Image
+        src={null}
+        alt="your avatar"
+        width={80}
+        height={80}
+        className={styles.user__avatar}
+      />
+      <section className={styles.user__text__info}>
+        <p className={styles.user__name}>{username}</p>
+        <p className={styles.user__type}>
+          {accountType === "not-employment"
+            ? "Частное лицо"
+            : accountType === "self-employment"
+            ? "Самозанятый"
+            : accountType === "entrepreneur"
+            ? "Индивидуальный предприниматель"
+            : accountType === "company"
+            ? `ООО "${username}"`
+            : null}
+        </p>
+      </section>
+    </div>
+  );
+};
+export default UserInfo;

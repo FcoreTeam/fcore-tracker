@@ -31,10 +31,10 @@ const trackerState = {
         statusIco: "/icons/notcompleted.svg",
       },
     ], // str
-    orderPrice: Number, // int
-    orderDeadline: Number,
+    orderPrice: '', // int
+    orderDeadline: '',
     orderStart: 1731316867, // int "unix time"
-    orderFinish: 1732785667, // int "unix time"
+    orderFinish: 1733785667, // int "unix time"
     orderPictures: [], // id array
     orderVideos: [], // image ID from database,
     orderGitLink: "", // github api

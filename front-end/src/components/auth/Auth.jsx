@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import Button from "../ui/button/Button"; // ui
 import Registration from "./registration/Registration";
 import Login from "./login/Login";
+import AuthType from "./auth-type/Auth-type";
 
 import styles from "./auth.module.scss";
-import AuthType from "./auth-type/Auth-type";
 
 const Auth = () => {
   const [choosenType, setChoosenType] = useState("not-employed");
@@ -95,7 +95,7 @@ const Auth = () => {
           isButtonImage={false}
           buttonText={
             authPage === "registration"
-              ? nextStage === 5
+              ? nextStage === 5 && choosenType === "not-employed"
                 ? "Зарегистрироваться"
                 : choosenType === "not-employed" &&
                   nextStage === 4 &&
@@ -107,7 +107,7 @@ const Auth = () => {
           buttonClass="auth__btn"
           onClick={
             authPage === "registration"
-              ? nextStage === 5
+              ? nextStage === 5 && choosenType === "not-employed"
                 ? null
                 : goNextStage
               : null

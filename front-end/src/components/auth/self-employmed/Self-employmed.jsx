@@ -2,6 +2,7 @@ import FirstStage from "../stages/first-stage/First-stage";
 import SecondStage from "../stages/second-stage/Second-stage";
 import ThirdStage from "../stages/third stage/Third-stage";
 import FourthStage from "../stages/fourth-stage/Fourth-stage";
+import FifthStage from "../stages/fifth-stage/Fifth-stage";
 import SixStage from "../stages/six-stage/Six-stage";
 
 import clsx from "clsx";
@@ -48,7 +49,8 @@ const SelfEmploymed = ({ isLogin, isNext }) => {
       {!isLogin && isNext === 2 ? <SecondStage /> : null}
       {!isLogin && isNext === 3 ? <SixStage /> : null}
       {!isLogin && isNext === 4 ? <ThirdStage isSelfEmployed={true} /> : null}
-      {!isLogin && isNext === 5 ? <FifthStage /> : null}
+      {!isLogin && isNext === 5 ? <FourthStage /> : null}
+      {!isLogin && isNext === 6 ? <FifthStage /> : null}
     </div>
   );
 };

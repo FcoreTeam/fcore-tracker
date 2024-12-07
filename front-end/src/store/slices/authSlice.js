@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authState = {
   isValidate: false,
-  accountType: "",
+  accountType: "self-employment",
   firstStage: {
     email: "",
-    username: "",
+    username: "username",
     password: "",
   },
   secondStage: {
@@ -17,7 +17,8 @@ const authState = {
   },
   fourthStage: {
     cardNumber: "",
-    cardInitials: "",
+    cardInitials: "Николаев Андрей Кириллович",
+    bankType: "sber",
     readyOfert: false,
   },
   fifthStage: {
@@ -29,6 +30,10 @@ const authState = {
     phoneNumber: "",
     INN: "",
   },
+  otherInfo: {
+    userAvatar: null,
+    secondFA: false,
+  }
 };
 
 const authSlice = createSlice({

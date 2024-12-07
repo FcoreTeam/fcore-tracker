@@ -4,9 +4,11 @@ import { useSelector } from "react-redux";
 import styles from "./second-stage.module.scss";
 import Button from "@/components/ui/button/Button";
 
-const SecondStage = () => {
+const SecondStage = ({ codeType }) => {
   const { email } = useSelector((state) => state.auth.firstStage);
-  const [code, setCode] = useState(["", "", "", "", ""]);
+  let [code, setCode] = useState(
+    codeType === "PIN" ? ["", "", "", ""] : ["", "", "", "", ""]
+  );
   const [time, setTime] = useState(60);
   const [isTimerActive, setIsTimerActive] = useState(true);
 
@@ -74,7 +76,7 @@ const SecondStage = () => {
   return (
     <div className={styles.second__stage}>
       <p className={styles.second__stage__email}>
-        Введите код с почты: {email}
+        {codeType === "PIN" ? "" : `Введите код с почты: ${email}`}
       </p>
       <div className={styles.code__place}>
         {code.map((digit, index) => (
@@ -84,13 +86,13 @@ const SecondStage = () => {
             inputClass="code__input"
             length={1}
             value={digit}
-            onChange={(e) => handleInputChange(index, e)} 
+            onChange={(e) => handleInputChange(index, e)}
             onKeyDown={(e) => handleKeyDown(e, index)}
             inputType="number"
           />
         ))}
       </div>
-      {isTimerActive ? (
+      {codeType === "PIN" ? null : isTimerActive ? (
         <p className={styles.next__code}>
           <span>в течении</span>
           {formatTime(time)}

@@ -15,7 +15,7 @@ const Button = ({
       onClick={onClick}
     >
       {buttonText}
-      {isButtonImage ? <img src={buttonImage} alt="alt" /> : null}
+      {isButtonImage ? <img src={buttonImage} className={styles.image} /> : null}
     </button>
   );
 };
