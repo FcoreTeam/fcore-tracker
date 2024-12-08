@@ -5,10 +5,13 @@ import clsx from "clsx";
 import Image from "next/image";
 import Input from "@/components/ui/input/Input";
 import styles from "./fourth-stage.module.scss";
+import Select from "@/components/ui/select/Select";
 
 const bankData = [
   {
     name: "Сбер",
+    color: "green",
+    iconUrl: "/icons/sber.png",
     prefixes: [
       "427600",
       "427601",
@@ -44,6 +47,8 @@ const bankData = [
   },
   {
     name: "ВТБ",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "453200",
       "453201",
@@ -65,6 +70,8 @@ const bankData = [
   },
   {
     name: "Альфа-Банк",
+    color: "#c04141",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "401700",
       "401701",
@@ -86,6 +93,8 @@ const bankData = [
   },
   {
     name: "Тинькофф Банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "220000",
       "220001",
@@ -101,6 +110,8 @@ const bankData = [
   },
   {
     name: "МКБ",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "423300",
       "423301",
@@ -116,6 +127,8 @@ const bankData = [
   },
   {
     name: "Россельхозбанк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "423500",
       "423501",
@@ -131,6 +144,8 @@ const bankData = [
   },
   {
     name: "Совкомбанк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "423700",
       "423701",
@@ -146,10 +161,14 @@ const bankData = [
   },
   {
     name: "Российский Банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["423900", "423901", "423902", "423903", "423904", "423905"],
   },
   {
     name: "Райффайзенбанк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: [
       "426000",
       "426001",
@@ -165,29 +184,39 @@ const bankData = [
   },
   {
     name: "ВУЗ-банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["426200", "426201", "426202"],
   },
   {
     name: "Газпромбанк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["426300", "426301", "426302"],
   },
   {
     name: "МТС Банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["426400", "426401", "426402"],
   },
   {
     name: "Почта Банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["426500", "426501", "426502"],
   },
   {
     name: "Озон Банк",
+    color: "#000",
+    iconUrl: "/icons/alfabank.png",
     prefixes: ["426600", "426601", "426602"],
   },
 ];
 
 const FourthStage = ({ paymentType }) => {
   const [inputValue, setInputValue] = useState("");
-  const [bankName, setBankName] = useState("");
+  const [bankName, setBankName] = useState("aaaaaa");
   const dispatch = useDispatch();
 
   const formatInput = (value) => {
@@ -232,17 +261,17 @@ const FourthStage = ({ paymentType }) => {
             length={19}
           />
           {inputValue.startsWith("2") ||
-          inputValue.startsWith("4") ||
-          inputValue.startsWith("5") ? (
+            inputValue.startsWith("4") ||
+            inputValue.startsWith("5") ? (
             <Image
               src={
                 inputValue.startsWith("2")
                   ? "/icons/mir.png"
                   : inputValue.startsWith("4")
-                  ? "/icons/visa.svg"
-                  : inputValue.startsWith("5")
-                  ? "/icons/mastercard.png"
-                  : null
+                    ? "/icons/visa.svg"
+                    : inputValue.startsWith("5")
+                      ? "/icons/mastercard.png"
+                      : null
               }
               width={
                 inputValue.startsWith("4") || inputValue.startsWith("5")
@@ -260,8 +289,8 @@ const FourthStage = ({ paymentType }) => {
                 inputValue.startsWith("4")
                   ? styles.visa
                   : inputValue.startsWith("5")
-                  ? styles.mastercard
-                  : null
+                    ? styles.mastercard
+                    : null
               )}
             />
           ) : null}
@@ -274,7 +303,7 @@ const FourthStage = ({ paymentType }) => {
             }
             isTextArea={false}
           />
-          <select name="" id="" className={styles.select__bank}>
+          {/* <select name="" id="" className={styles.select__bank}>
             <option value="">Сбер</option>
             <option value="">Т-Банк</option>
             <option value="">ВТБ</option>
@@ -286,7 +315,8 @@ const FourthStage = ({ paymentType }) => {
             <option value="">Точка</option>
             <option value="">МТС банк</option>
             <option value="">Почта Банк</option>
-          </select>
+          </select> */}
+          <Select value={bankName} setValue={(name) => setBankName(name)} options={bankData} />
         </div>
       </div>
       {paymentType === "profile" ? null : (

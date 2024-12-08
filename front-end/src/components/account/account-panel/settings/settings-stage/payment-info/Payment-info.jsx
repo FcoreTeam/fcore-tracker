@@ -22,8 +22,8 @@ const PaymentInfo = () => {
               bankType === "alfabank"
                 ? "/icons/alfabank.png"
                 : bankType === "sber"
-                ? "/icons/sber.png"
-                : null
+                  ? "/icons/sber.png"
+                  : null
             }
             alt="bank"
             width={70}
@@ -39,8 +39,8 @@ const PaymentInfo = () => {
               {bankType === "sber"
                 ? 'ПАО "СберБанк"'
                 : bankType === "alfabank"
-                ? 'АО "Альфа-банк"'
-                : null}
+                  ? 'АО "Альфа-банк"'
+                  : null}
             </p>
             <p className={styles.payment__accept}>
               Получатель: {cardInitials}
