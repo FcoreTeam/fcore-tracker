@@ -17,8 +17,8 @@ const authState = {
   },
   fourthStage: {
     cardNumber: "",
-    cardInitials: "Николаев Андрей Кириллович",
-    bankType: "sber",
+    cardInitials: "",
+    bankType: "Сбер",
     readyOfert: false,
   },
   fifthStage: {
@@ -33,7 +33,7 @@ const authState = {
   otherInfo: {
     userAvatar: null,
     secondFA: false,
-  }
+  },
 };
 
 const authSlice = createSlice({
@@ -42,11 +42,15 @@ const authSlice = createSlice({
   reducers: {
     setAuthData: (state, action) => {
       state.firstStage.email = action.payload.email;
+    },
+    setBankData: (state, action) => {
+      state.fourthStage.bankType = action.payload.bankType;
+      state.fourthStage.cardInitials = action.payload.cardInitials;
       state.fourthStage.cardNumber = action.payload.cardNumber;
     },
   },
 });
 
-export const { setAuthData } = authSlice.actions;
+export const { setAuthData, setBankData } = authSlice.actions;
 
 export default authSlice.reducer;
