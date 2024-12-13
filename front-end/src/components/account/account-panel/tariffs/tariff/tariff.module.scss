@@ -1,0 +1,60 @@
+.tariff {
+  height: 310px;
+  width: 100%;
+  background: #008ff529;
+  border-radius: 15px;
+  border: 1px solid #008ff5;
+  margin-top: 10px;
+  padding: 20px;
+  &:first-child {
+    margin-top: 0 !important;
+    background: #008ff51e !important;
+  }
+  &:last-child{
+    height: 360px;
+  }
+  &.premium {
+    background: linear-gradient(45deg, #008ff537, #0039f538);
+  }
+  .tariff__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: fit-content;
+    .tariff__text__info {
+      display: flex;
+      flex-flow: column;
+      .tariff__name {
+        color: #fff;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 1px;
+      }
+      .tariff__description {
+        color: #ffffff50;
+        margin-top: 5px;
+      }
+    }
+
+    .tariff__price {
+      font-size: 16px;
+      width: 90px;
+      height: 40px;
+      border-radius: 20px;
+      color: #3ee449da;
+      background: #4ce43e56;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 1px;
+    }
+    span {
+      margin-left: 5px;
+      color: #ffffff50;
+      font-size: 12px;
+    }
+  }
+  .advantages{
+    margin-top: 20px;
+  }
+}

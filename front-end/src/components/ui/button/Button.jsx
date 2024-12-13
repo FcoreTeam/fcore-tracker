@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 
 import styles from "./button.module.scss";
 
@@ -15,7 +16,15 @@ const Button = ({
       onClick={onClick}
     >
       {buttonText}
-      {isButtonImage ? <img src={buttonImage} className={styles.image} /> : null}
+      {isButtonImage ? (
+        <Image
+          src={buttonImage}
+          width={30}
+          height={30}
+          alt="img"
+          className={styles.image}
+        />
+      ) : null}
     </button>
   );
 };

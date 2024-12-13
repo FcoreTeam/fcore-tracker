@@ -10,6 +10,11 @@ const orderState = {
       orderDateFinish: 1734531565,
       orderPrice: 20000, // float
       orderTrackCode: "1241-5251-7322", // str
+      orderReport: [{
+        mediaID: 0, // unique
+        orderMedia: null,
+        isVideo: false
+      }]
     },
     {
         orderID: 2, // int
@@ -19,6 +24,11 @@ const orderState = {
         orderDateFinish: "",
         orderPrice: 100500, // float
         orderTrackCode: "3541-5144-6638", // str
+        orderReport: [{
+          mediaID: 1, // unique
+          orderMedia: null,
+          isVideo: false
+        }]
       },
   ],
 };

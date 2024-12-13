@@ -1,12 +1,14 @@
 import { setAuthData, setBankData } from "@/store/slices/authSlice";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useRef } from "react";
+
 import clsx from "clsx";
 import Image from "next/image";
 import Input from "@/components/ui/input/Input";
-import styles from "./fourth-stage.module.scss";
 import Select from "@/components/ui/select/Select";
+
+import styles from "./fourth-stage.module.scss";
+
 
 const bankData = [
   {
@@ -22,7 +24,7 @@ const bankData = [
   {
     name: "Альфа-Банк",
     color: "#c04141",
-    iconUrl: "/icons/alfabank.png",
+    iconUrl: "/icons/alfabank.svg",
   },
   {
     name: "Т-Банк",

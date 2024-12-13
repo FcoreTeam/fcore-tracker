@@ -1,0 +1,33 @@
+.reviews {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  margin-top: 20px;
+  .reviews__wrap{
+    width: 70%;
+
+    .not__reviews{
+      height: 100px;
+      width: 98%;
+      display: flex;
+      flex-flow: column;
+      background: #1F2332;
+      border-radius: 20px;
+      margin-top: 20px;
+      .not__title{
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .not__description{
+        color: #ffffff62;
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

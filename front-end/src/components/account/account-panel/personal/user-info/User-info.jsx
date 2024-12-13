@@ -7,7 +7,7 @@ import styles from "./user-info.module.scss";
 
 const UserInfo = () => {
   const { username } = useSelector((state) => state.auth.firstStage);
-  const { accountType } = useSelector((state) => state.auth);
+  const { about } = useSelector((state) => state.auth.thirdStage);
 
   return (
     <div className={styles.user__info}>
@@ -21,15 +21,7 @@ const UserInfo = () => {
       <section className={styles.user__text__info}>
         <p className={styles.user__name}>{username}</p>
         <p className={styles.user__type}>
-          {accountType === "not-employment"
-            ? "Частное лицо"
-            : accountType === "self-employment"
-            ? "Самозанятый"
-            : accountType === "entrepreneur"
-            ? "Индивидуальный предприниматель"
-            : accountType === "company"
-            ? `ООО "${username}"`
-            : null}
+          {about}
         </p>
       </section>
     </div>

@@ -10,16 +10,19 @@ const AuthNotification = ({
   notifTitle,
   notifDescription,
   notifOnClick,
+  notifImage,
+  notifSecondFAcheck,
 }) => {
   return (
     <div
       className={clsx(
         styles.auth__notification,
-        notifType === "2FA" ? styles.warning : ""
+        notifType === "2FA" ? styles.warning : "",
+        notifSecondFAcheck ? styles.connected : ""
       )}
     >
       <section className={styles.text__info}>
-        <Image src={null} alt="shield" width={50} height={50} />
+        <Image src={notifImage} alt="shield" width={50} height={50} />
         <div className={styles.notification__type}>
           <p className={styles.notification__title}>{notifTitle}</p>
           <p className={styles.notification__description}>{notifDescription}</p>
@@ -28,7 +31,7 @@ const AuthNotification = ({
 
       {notifType === "2FA" ? (
         <Button
-          buttonText="Подключить 2FA"
+          buttonText={notifSecondFAcheck ? `Изменить PIN` :`Подключить 2FA`}
           buttonClass="connect__btn"
           onClick={notifOnClick}
         />

@@ -13,8 +13,8 @@ const Navigation = ({ onClick, navImage, navName, isActive }) => {
       <Image
         src={navImage}
         alt="navigation"
-        height={40}
-        width={40}
+        height={23}
+        width={23}
         className={styles.navigation__image}
       />
       <p className={styles.nav__title}>{navName}</p>

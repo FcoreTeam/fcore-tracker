@@ -8,18 +8,18 @@ const CompanyPopup = () => {
     (state) => state.popups.generalInfo
   );
   const { popupName, popupDescription } = useSelector(
-    (state) => state.popup.popupInfo
+    (state) => state.popups.popupInfo
   );
   return (
     <>
       {isOpen && popupType === "company" && (
         <Popup>
           <div className={styles.company__popup}>
-            <p className={styles.popup__name}>{popupName}</p>
-            <p className={styles.popup__description}>{popupDescription}</p>
-            <section className={styles.company__info}>
-
-            </section>
+            <div className={styles.popup__wrap}>
+              <p className={styles.popup__name}>{popupName}</p>
+              <p className={styles.popup__description}>{popupDescription}</p>
+              <section className={styles.company__info}></section>
+            </div>
           </div>
         </Popup>
       )}

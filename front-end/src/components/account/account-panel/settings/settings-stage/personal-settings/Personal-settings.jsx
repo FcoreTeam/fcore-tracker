@@ -19,14 +19,17 @@ const PersonalSettings = () => {
             isTextArea={true}
             inputPlaceholder="Расскажите о себе"
           />
-          <Button buttonText="Изменить" buttonClass="accept__btn" />
+          <Button
+            buttonText="Изменить"
+            buttonClass="accept__btn"
+          />
         </div>
         <div className={styles.input__controll}>
           <Input
             inputClass="change__input"
             inputPlaceholder="Ваша деятельность"
           />
-           <Button buttonText="Изменить" buttonClass="accept__btn" />
+          <Button buttonText="Изменить" buttonClass="accept__btn" />
         </div>
       </section>
     </div>

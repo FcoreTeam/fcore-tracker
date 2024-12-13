@@ -11,9 +11,8 @@
   .left__info {
     display: flex;
     align-items: center;
-    .setting__ico{
-        min-width: 40px;
-        border: 1px solid red;
+    .setting__ico {
+      min-width: 40px;
     }
     .text__info {
       min-width: 70%;
@@ -22,13 +21,13 @@
       display: flex;
       flex-flow: column;
       justify-content: space-between;
-      .setting__name{
+      .setting__name {
         color: #fff;
         font-size: 16px;
         font-weight: 700;
         letter-spacing: 1px;
       }
-      .setting__param{
+      .setting__param {
         font-size: 13px;
         color: #ffffff64;
         letter-spacing: 1px;

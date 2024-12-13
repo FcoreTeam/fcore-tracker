@@ -3,6 +3,7 @@ import Settings from "./settings/Settings";
 import Orders from "./orders/Orders";
 
 import styles from "./account-panel.module.scss";
+import Tariffs from "./tariffs/Tariffs";
 
 const AccountPanel = ({ currentNavigation, accountType }) => {
   return (
@@ -13,6 +14,8 @@ const AccountPanel = ({ currentNavigation, accountType }) => {
         <Settings />
       ) : currentNavigation === "orders" && accountType !== "admin" ? (
         <Orders />
+      ) : currentNavigation === "tariffs" && accountType !== "admin" ? (
+        <Tariffs />
       ) : null}
     </div>
   );

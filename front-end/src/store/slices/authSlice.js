@@ -9,10 +9,10 @@ const authState = {
     password: "",
   },
   secondStage: {
-    code: Number,
+    code: "", // int
   },
   thirdStage: {
-    about: "",
+    about: "Front-end разработчик",
     category: "",
   },
   fourthStage: {
@@ -32,7 +32,7 @@ const authState = {
   },
   otherInfo: {
     userAvatar: null,
-    secondFA: false,
+    secondFA: true,
   },
 };
 

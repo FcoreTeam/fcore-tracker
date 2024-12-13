@@ -23,16 +23,27 @@ const Settings = () => {
 
   return (
     <div className={styles.settings}>
-      {!secondFA ? (
-        <AuthNotification
-          notifType="2FA"
-          notifTitle="Защитите свой аккаунт"
-          notifDescription="Просто подключив двухфакторную аутентификацию"
-          notifOnClick={openSettingPopup}
-        />
-      ) : (
-        ""
-      )}
+      <AuthNotification
+        notifType="2FA"
+        notifTitle={
+          secondFA
+            ? "Аккаунт под защитой"
+            : `Защитите свой аккаунт`
+        }
+        notifDescription={
+          secondFA
+            ? "Спасибо что подключили двухфакторную аутентификацию"
+            : `Просто подключив двухфакторную аутентификацию`
+        }
+        notifOnClick={openSettingPopup}
+        notifImage={
+          secondFA
+            ? "/icons/2faon.svg"
+            : "/icons/2faoff.svg"
+        }
+        notifSecondFAcheck={secondFA}
+      />
+
       <SettingsStage settingStage="auth" />
       <SettingsStage settingStage="personal" />
       <SettingsStage settingStage="payment-info" />

@@ -4,7 +4,7 @@ import styles from "./select.module.scss";
 import clsx from "clsx";
 import Image from "next/image";
 
-const Select = ({ value, setValue, options, setBank }) => {
+const Select = ({ value, setValue, options, setBank, isFilter }) => {
   const optionWrapperRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +26,7 @@ const Select = ({ value, setValue, options, setBank }) => {
     <div
       className={clsx(styles.select__wrapper, isOpen && styles.open)}
       onClick={() => setIsOpen((prev) => !prev)}
+      style={isFilter ? {width: `98%`, margin: 0} : null}
     >
       <div className={styles.select__value}>{value}</div>
       <div className={styles.select__options}>
@@ -40,8 +41,9 @@ const Select = ({ value, setValue, options, setBank }) => {
               key={i}
               onClick={() => {
                 setValue(el.name);
-                setBank(el.name);
-                debugger
+                {
+                  !isFilter ? setBank(el.name) : null;
+                }
               }}
               onMouseEnter={(e) => onMouseEnter(e, el)}
             >

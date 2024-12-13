@@ -1,0 +1,18 @@
+.company__popup {
+  width: 100vw;
+  height: 100vh;
+  background: #00000054;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  .popup__wrap {
+    height: 230px;
+    width: 530px;
+    background: #1f2332;
+    border-radius: 15px;
+    padding: 20px;
+  }
+}

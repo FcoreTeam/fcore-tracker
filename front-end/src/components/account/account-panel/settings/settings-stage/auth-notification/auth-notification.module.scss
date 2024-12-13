@@ -7,10 +7,14 @@
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
+  &.connected {
+    border: 2px solid #3ee449da !important;
+    background: #4ce43e56 !important;
+  }
   .text__info {
     width: 100%;
     height: fit-content;
-    display: flex;  
+    display: flex;
     align-items: center;
     .notification__type {
       display: flex;

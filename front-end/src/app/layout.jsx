@@ -2,6 +2,7 @@ import "./css/globals.scss";
 import { Montserrat } from "next/font/google";
 
 import StoreProvider from "../store/StoreProvider";
+import Footer from "@/components/footer/Footer";
 
 const font = Montserrat({ subsets: ["latin"], weight: "300" });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={font.className}>
         <StoreProvider>{children}</StoreProvider>
+        <Footer />
       </body>
     </html>
   );

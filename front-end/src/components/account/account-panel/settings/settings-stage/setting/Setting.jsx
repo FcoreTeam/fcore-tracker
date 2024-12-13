@@ -16,8 +16,8 @@ const Setting = ({
         <Image
           src={settingIcon}
           alt="ico"
-          width={40}
-          height={40}
+          width={33}
+          height={33}
           className={styles.setting__ico}
         />
         <div className={styles.text__info}>
