@@ -20,16 +20,24 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.other__data}>
-        <Link href="" className={styles.footer__link}>
+        <Link
+          href="termsofusefcoretracker.odt"
+          className={styles.footer__link}
+          download
+        >
           Пользовательское соглашение
         </Link>
-        <Link href="" className={styles.footer__link}>
+        <Link href="" className={styles.footer__link} download>
           Политика конфиденциальности
         </Link>
-        <Link href="fcoretrackeroferta.odt" className={styles.footer__link} download>
+        <Link
+          href="fcoretrackeroferta.odt"
+          className={styles.footer__link}
+          download
+        >
           Договор оферты
         </Link>
-        <Link href="" className={styles.footer__link}>
+        <Link href="contactsfcoretracker.odt" className={styles.footer__link}>
           Контакты
         </Link>
       </div>

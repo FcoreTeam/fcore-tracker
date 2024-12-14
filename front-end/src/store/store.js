@@ -5,6 +5,7 @@ import authSlice from "./slices/authSlice";
 import ordersSlice from "./slices/ordersSlice";
 import reviewsSlice from "./slices/reviewsSlice";
 import withdrawSlice from "./slices/withdrawSlice";
+import portfolioSlice from "./slices/portfolioSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     orders: ordersSlice,
     reviews: reviewsSlice,
     withdraw: withdrawSlice,
+    portfolio: portfolioSlice,
   },
 });
 export default store;

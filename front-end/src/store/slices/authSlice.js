@@ -5,7 +5,7 @@ const authState = {
   accountType: "self-employment",
   firstStage: {
     email: "",
-    username: "username",
+    username: "Lonfich",
     password: "",
   },
   secondStage: {
@@ -13,6 +13,7 @@ const authState = {
   },
   thirdStage: {
     about: "Front-end разработчик",
+    description: "Fcore - многопрофильная команда разработчиков из России, сформированная в 2022 году. В спектор наших услуг входит очень многое: от веб-разработки до геймдева. Заказывая у нас, вы гарантируете успех себе и своему проекту.",
     category: "",
   },
   fourthStage: {
@@ -32,6 +33,7 @@ const authState = {
   },
   otherInfo: {
     userAvatar: null,
+    skills: [],
     secondFA: true,
   },
 };

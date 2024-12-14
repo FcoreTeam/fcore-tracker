@@ -5,12 +5,12 @@ import PersonalNav from "./personal-nav/Personal-nav";
 import UserInfo from "./user-info/User-info";
 import Withdraw from "./withdraw/Withdraw";
 import Reviews from "./reviews/Reviews";
-
+import UserDescription from "./user-description/User-description";
+import Portfolio from "./portfolio/Portfolio";
 
 import styles from "./personal.module.scss";
-import UserDescription from "./user-description/User-description";
 
-const Personal = () => {
+const Personal = ({setMenuNav}) => {
   const [personalNav, setNav] = useState("reviews");
 
   return (
@@ -25,9 +25,9 @@ const Personal = () => {
           {personalNav === "reviews" ? (
             <Reviews />
           ) : personalNav === "withdraws" ? (
-            <Withdraw />
+            <Withdraw setMenuNav={setMenuNav} />
           ) : personalNav === "portfolio" ? (
-            <></>
+             <Portfolio />
           ) : null}
         </section>
       </div>

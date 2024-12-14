@@ -7,22 +7,22 @@ const filterData = [
   {
     name: "Сначала положительные",
     color: "rgba(64, 59, 120, 0.66)",
-    iconUrl: "",
+    iconUrl: "/icons/goodreview.svg",
   },
   {
     name: "Сначала отрицательные",
     color: "rgba(64, 59, 120, 0.66)",
-    iconUrl: "",
+    iconUrl: "/icons/badreview.svg",
   },
   {
     name: "Сначала новые",
     color: "rgba(64, 59, 120, 0.66)",
-    iconUrl: "",
+    iconUrl: "/icons/timeforward.svg",
   },
   {
     name: "Сначала старые",
     color: "rgba(64, 59, 120, 0.66)",
-    iconUrl: "",
+    iconUrl: "/icons/timeback.svg",
   },
 ];
 

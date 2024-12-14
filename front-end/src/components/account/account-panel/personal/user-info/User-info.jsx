@@ -12,7 +12,7 @@ const UserInfo = () => {
   return (
     <div className={styles.user__info}>
       <Image
-        src={null}
+        src="/maskots/maskotFirst.png"
         alt="your avatar"
         width={80}
         height={80}

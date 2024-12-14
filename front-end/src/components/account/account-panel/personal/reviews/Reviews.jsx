@@ -41,6 +41,7 @@ const Reviews = () => {
       reviewTitle={item.reviewTitle}
       reviewDescription={item.reviewDescription}
       userName={item.clientName}
+      userImage={item.clientAvatar}
       reviewDate={item.reviewDate}
     />
   ));

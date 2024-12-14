@@ -13,7 +13,7 @@ const PaymentInfo = () => {
   );
 
   return (
-    <div className={styles.payment__stage}>
+    <div className={styles.payment__stage} id="paymentSettings">
       <p className={styles.stage__title}>3. Настройки платежной информации</p>
       <div className={styles.payment__wrap}>
         <section className={styles.settings}>

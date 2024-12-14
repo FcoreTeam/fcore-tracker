@@ -1,0 +1,32 @@
+.portfolio {
+  .empty__wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+
+    .empty__works {
+      background: #1f2332;
+      height: 110px;
+      width: 400px;
+      border-radius: 15px;
+      padding: 20px;
+      .empty__title {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 21px;
+        letter-spacing: 1px;
+      }
+      .empty__description {
+        color: #ffffff51;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+}

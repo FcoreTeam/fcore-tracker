@@ -15,6 +15,7 @@ const PersonalNav = ({ setNav, currentNav }) => {
           changeNav("reviews");
         }}
         activeClass={currentNav === "reviews" ? true : false}
+        controllerImg="/icons/reviewnav.svg"
       />
       <PersonalController
         controllerName="Портфолио"
@@ -22,6 +23,7 @@ const PersonalNav = ({ setNav, currentNav }) => {
           changeNav("portfolio");
         }}
         activeClass={currentNav === "portfolio" ? true : false}
+        controllerImg="/icons/portfolio.svg"
       />
       <PersonalController
         controllerName="Вывод средств"
@@ -29,6 +31,7 @@ const PersonalNav = ({ setNav, currentNav }) => {
           changeNav("withdraws");
         }}
         activeClass={currentNav === "withdraws" ? true : false}
+        controllerImg="/icons/withdrawnav.svg"
       />
     </nav>
   );

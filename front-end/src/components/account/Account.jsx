@@ -23,7 +23,11 @@ const Account = () => {
         setNav={setNavigation}
         currentNavigation={currentNavigation}
       />
-      <AccountPanel currentNavigation={currentNavigation} accountType={accountType} />
+      <AccountPanel
+        currentNavigation={currentNavigation}
+        accountType={accountType}
+        setNav={setCurrentNavigation}
+      />
     </section>
   );
 };
