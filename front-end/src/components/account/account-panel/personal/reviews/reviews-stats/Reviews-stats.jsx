@@ -1,8 +1,17 @@
+import { useSelector } from "react-redux";
+
 import Stats from "./stats/Stats";
 
 import styles from "./reviews-stats.module.scss";
 
 const ReviewsStats = () => {
+  const {
+    ordersCompleted,
+    ordersCompletedSucessful,
+    ordersCompletedWithRate,
+    ordersCompletedInTime,
+  } = useSelector((state) => state.stats);
+
   return (
     <div className={styles.review__stats}>
       <Stats
@@ -13,26 +22,26 @@ const ReviewsStats = () => {
       <Stats
         statsName="Заказов выполненно"
         statsImage="/icons/ordercompleted.svg"
-        stat={11}
+        stat={ordersCompleted}
       />
       <Stats
         statsName="Заказов с отзывами"
         statsImage="/icons/orderreview.svg"
-        stat={8}
+        stat={ordersCompletedWithRate}
       />
       <Stats
         statsName="Заказов сдано вовремя"
         isPercent={true}
         statsImage="/icons/ordertime.svg"
-        statPercent={90}
+        statPercent={ordersCompletedInTime}
       />
       <Stats
         statsName="Заказов сдано успешно"
         isPercent={true}
         statsImage="/icons/ordergood.svg"
-        statPercent={100}
+        statPercent={ordersCompletedSucessful}
       />
-      <Stats isRank={true} statsImage="/icons/rubin.png" />
+      <Stats isRank={true} statsImage="/icons/withoutrank.svg" />
     </div>
   );
 };

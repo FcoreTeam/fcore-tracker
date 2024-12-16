@@ -6,6 +6,7 @@ import ordersSlice from "./slices/ordersSlice";
 import reviewsSlice from "./slices/reviewsSlice";
 import withdrawSlice from "./slices/withdrawSlice";
 import portfolioSlice from "./slices/portfolioSlice";
+import statsSlice from "./slices/statsSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     reviews: reviewsSlice,
     withdraw: withdrawSlice,
     portfolio: portfolioSlice,
+    stats: statsSlice,
   },
 });
 export default store;

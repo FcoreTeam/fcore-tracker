@@ -36,6 +36,7 @@ const authState = {
     skills: [],
     secondFA: true,
   },
+  
 };
 
 const authSlice = createSlice({

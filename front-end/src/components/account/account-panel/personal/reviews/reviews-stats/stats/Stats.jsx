@@ -49,7 +49,7 @@ const Stats = ({
             : null}
         </span>{" "}
         {statsName}
-        {isRank ? "Рубиновый рейтинг" : null}
+        {isRank ? "Без рейтинга" : null}
       </p>
       {isRank ? (
         <div className={styles.question}>
