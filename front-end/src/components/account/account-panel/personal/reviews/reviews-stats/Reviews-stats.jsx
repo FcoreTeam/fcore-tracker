@@ -7,9 +7,10 @@ import styles from "./reviews-stats.module.scss";
 const ReviewsStats = () => {
   const {
     ordersCompleted,
-    ordersCompletedSucessful,
     ordersCompletedWithRate,
-    ordersCompletedInTime,
+    ordersSucess,
+    ordersCancelled,
+    ordersLate,
   } = useSelector((state) => state.stats);
 
   return (
@@ -33,13 +34,13 @@ const ReviewsStats = () => {
         statsName="Заказов сдано вовремя"
         isPercent={true}
         statsImage="/icons/ordertime.svg"
-        statPercent={ordersCompletedInTime}
+        statPercent={Math.floor(100 - (ordersLate / ordersCompleted) * 100) }
       />
       <Stats
         statsName="Заказов сдано успешно"
         isPercent={true}
         statsImage="/icons/ordergood.svg"
-        statPercent={ordersCompletedSucessful}
+        statPercent={Math.floor(100 -(ordersCancelled / ordersSucess) * 100)}
       />
       <Stats isRank={true} statsImage="/icons/withoutrank.svg" />
     </div>
