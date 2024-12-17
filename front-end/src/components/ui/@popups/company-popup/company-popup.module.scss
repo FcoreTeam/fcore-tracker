@@ -9,7 +9,7 @@
   justify-content: center;
   pointer-events: all;
   .popup__wrap {
-    height: 270px;
+    height: fit-content;
     width: 530px;
     background: #1f2332;
     border-radius: 15px;
@@ -26,13 +26,25 @@
         color: #ffffffc5;
         font-size: 14px;
       }
-      .company__section{
+      .company__section {
         margin-top: 10px;
+        font-size: 16px;
       }
       .section__description {
         color: #ffffffc5;
         font-size: 12px;
         margin-top: 10px;
+        line-height: 1.4;
+      }
+      .skills{
+        width: 100%;
+        height: fit-content;
+        max-height: 150px;
+        display: grid;
+        grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+        grid-template-rows: 40px 40px 40px 40px 40px;
+        grid-gap: 10px;
+        margin-top: 30px;
       }
     }
   }

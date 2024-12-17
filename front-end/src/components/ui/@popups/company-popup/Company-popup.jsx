@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPopupData } from "@/store/slices/popupsSlice";
 import styles from "./company-popup.module.scss";
 import Button from "../../button/Button";
+import UserSkill from "./user-skill/User-skill";
 
 const CompanyPopup = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,11 @@ const CompanyPopup = () => {
   const { popupName, popupDescription } = useSelector(
     (state) => state.popups.popupInfo
   );
+  const { skills } = useSelector((state) => state.auth.otherInfo);
   const { description } = useSelector((state) => state.auth.thirdStage);
+  const mappedSkills = skills.map((item) => (
+    <UserSkill skillName={item.skillName} skillImage={item.skillImage} />
+  ));
   const closePopup = () => {
     dispatch(
       setPopupData({
@@ -33,6 +38,8 @@ const CompanyPopup = () => {
                 <p className={styles.section__description}>{description}</p>
                 <p className={styles.company__section}>2. Дата регистрации</p>
                 <p className={styles.section__description}>01.01.2023</p>
+                <p className={styles.company__section}>3. Хард скиллы</p>
+                <div className={styles.skills}>{mappedSkills}</div>
                 <Button
                   buttonText="Закрыть"
                   onClick={closePopup}
