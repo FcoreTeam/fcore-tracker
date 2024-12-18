@@ -1,0 +1,17 @@
+.portfolio__stage {
+  display: flex;
+  .work__params {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    width: 100%;
+    .input__params {
+      display: flex;
+      flex-flow: column;
+      width: 50%;
+    }
+    .stage__banner{
+      border: 1px solid red;
+    }
+  }
+}

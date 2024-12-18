@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const withdrawState = {
-  balance: 3425,
+  balance: 50000,
   withdrawHistory: [
     {
       id: 1,
