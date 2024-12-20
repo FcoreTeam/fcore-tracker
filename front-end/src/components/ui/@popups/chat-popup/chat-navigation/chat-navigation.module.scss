@@ -1,0 +1,24 @@
+.chat__navigation {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .left__nav {
+    display: flex;
+    align-items: center;
+    .settings__btn {
+      opacity: 0.4;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .chat__name {
+      color: #fff;
+      margin-left: 10px;
+      font-size: 16px;
+    }
+  }
+}

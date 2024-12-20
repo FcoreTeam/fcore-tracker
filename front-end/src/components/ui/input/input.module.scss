@@ -31,7 +31,7 @@
     font-size: 15px;
   }
   &.auth__input__h,
-  &.auth__input__hc {
+  &.auth__input__hc, &.chat__input{
     height: 100px;
     text-align: left;
     display: flex;
@@ -96,6 +96,16 @@
     min-height: 100px;
     height: auto;
   }
+  &.chat__input{
+    border: 2px solid #3b5978;
+    border-radius: 15px;
+    background: transparent;
+    height: 55px;
+    padding-right: 50px;
+    padding-left: 10px;
+    color: #fff;
+  }
+  
 }
 
 .checkbox__label {

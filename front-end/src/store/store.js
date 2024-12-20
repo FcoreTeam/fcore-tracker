@@ -7,6 +7,7 @@ import reviewsSlice from "./slices/reviewsSlice";
 import withdrawSlice from "./slices/withdrawSlice";
 import portfolioSlice from "./slices/portfolioSlice";
 import statsSlice from "./slices/statsSlice";
+import chatSlice from "./slices/chatSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     withdraw: withdrawSlice,
     portfolio: portfolioSlice,
     stats: statsSlice,
+    chat: chatSlice,
   },
 });
 export default store;
