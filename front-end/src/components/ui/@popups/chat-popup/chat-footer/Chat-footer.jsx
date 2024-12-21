@@ -14,6 +14,7 @@ const ChatFooter = () => {
         buttonClass="send__btn"
         isButtonImage={true}
         onClick={null}
+        buttonImage="/icons/send.svg"
       />
     </div>
   );

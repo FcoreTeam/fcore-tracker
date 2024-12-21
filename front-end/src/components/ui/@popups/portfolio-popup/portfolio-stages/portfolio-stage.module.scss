@@ -9,6 +9,10 @@
       display: flex;
       flex-flow: column;
       width: 50%;
+      .portfolio__subtitle{
+        color: #fff;
+        margin-bottom: 20px;
+      }
     }
     .stage__banner{
       border: 1px solid red;

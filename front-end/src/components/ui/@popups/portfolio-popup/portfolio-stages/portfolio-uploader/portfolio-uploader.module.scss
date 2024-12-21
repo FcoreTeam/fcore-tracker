@@ -1,0 +1,31 @@
+.uploader {
+  width: 290px;
+  height: 160px;
+  border-radius: 15px;
+  border: 2px solid #008ff5;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  &::after,
+  &::before {
+    content: "";
+    height: 30px;
+    width: 2px;
+    background: #fff;
+    position: absolute;
+  }
+  &::after {
+    rotate: 90deg;
+  }
+  &:hover {
+    background: #008ff52a;
+  }
+}
+.uploaded__media {
+  width: 280px;
+  height: 50px;
+}

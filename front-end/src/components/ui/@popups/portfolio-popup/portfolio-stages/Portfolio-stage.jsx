@@ -3,6 +3,7 @@ import Image from "next/image";
 import Input from "@/components/ui/input/Input";
 
 import styles from "./portfolio-stage.module.scss";
+import PortfolioUploader from "./portfolio-uploader/Portfolio-uploader";
 
 const PortfolioStage = ({ currentStage }) => {
   return (
@@ -36,7 +37,11 @@ const PortfolioStage = ({ currentStage }) => {
         ) : currentStage === 2 ? (
           <>
             <div className={styles.input__params}>
-              <Input inputType="upload" />
+              <p className={styles.portfolio__subtitle}>1. Загрузка фото 📸</p>
+              <PortfolioUploader />
+              <section className={styles.portfolio__req}>
+                
+              </section>
             </div>
           </>
         ) : currentStage === 3 ? (

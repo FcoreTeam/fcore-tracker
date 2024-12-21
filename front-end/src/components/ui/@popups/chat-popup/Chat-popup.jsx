@@ -57,8 +57,17 @@ const ChatPopup = () => {
                     <></>
                   ) : (
                     <div className={styles.support__disable}>
-                      <p className={styles.disable__title}>
-                        Поддержка сейчас недоступна
+                      <section className={styles.disable__block}>
+                        <p className={styles.disable__title}>
+                          Поддержка спит🌛
+                        </p>
+                        <p className={styles.disable__description}>
+                          Агентам поддержки нужен отдых, мы скоро вернемся
+                        </p>
+                      </section>
+                      <p className={styles.disable__time}>
+                        Мы работаем с 08:00 до 01:00 по будням, а в выходные с
+                        09:00 до 03:00 (Moscow Local Time)
                       </p>
                     </div>
                   )

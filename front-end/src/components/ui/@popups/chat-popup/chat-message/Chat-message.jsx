@@ -10,7 +10,6 @@ const ChatMessage = ({
   chatAvatar,
   isMessageUser,
 }) => {
-  console.log(isMessageUser)
   return (
     <div
       className={clsx(

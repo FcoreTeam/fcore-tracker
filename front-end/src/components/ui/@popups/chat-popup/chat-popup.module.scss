@@ -32,6 +32,41 @@
       padding-bottom: 20px;
       display: flex;
       flex-flow: column;
+      .support__disable {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        position: relative;
+        .disable__block {
+          border-radius: 20px;
+          background: #1f2332;
+          width: 300px;
+          height: fit-content;
+          padding: 20px;
+          .disable__title {
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+          }
+          .disable__description {
+            margin-top: 5px;
+            color: #ffffff51;
+            font-size: 12px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+        .disable__time {
+          color: #ffffff51;
+          font-size: 11px;
+          position: absolute;
+          top: 280px;
+        }
+      }
     }
   }
 }

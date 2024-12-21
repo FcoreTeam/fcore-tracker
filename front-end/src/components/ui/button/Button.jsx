@@ -19,8 +19,8 @@ const Button = ({
       {isButtonImage ? (
         <Image
           src={buttonImage}
-          width={30}
-          height={30}
+          width={20}
+          height={20}
           alt="img"
           className={styles.image}
         />
