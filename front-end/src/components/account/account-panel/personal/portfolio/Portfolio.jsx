@@ -1,12 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupData } from "@/store/slices/popupsSlice";
+import Button from "@/components/ui/button/Button";
+import Work from "./work/Work";
 
 import styles from "./portfolio.module.scss";
-import Button from "@/components/ui/button/Button";
 
 const Portfolio = () => {
   const dispatch = useDispatch();
   const { works } = useSelector((state) => state.portfolio);
+  console.log(works);
+  const mappedWorks = works.map((item, index) => (
+    <Work
+      key={index}
+      workName={item.workName}
+      workDescription={item.workDescription}
+      workImage={item.workPhotos[0]}
+      workActivity={item.workActivity}
+    />
+  ));
 
   const setOpenPopup = () => {
     dispatch(
@@ -23,7 +34,16 @@ const Portfolio = () => {
   return (
     <div className={styles.portfolio}>
       {works.length !== 0 ? (
-        <></>
+        <div>
+          <section className={styles.controll__work}>
+            <Button
+              buttonText="Загрузить"
+              buttonClass="upload__btn__w"
+              onClick={setOpenPopup}
+            />
+          </section>
+          <section className={styles.works}>{mappedWorks}</section>
+        </div>
       ) : (
         <section className={styles.empty__wrap}>
           <div className={styles.empty__works}>

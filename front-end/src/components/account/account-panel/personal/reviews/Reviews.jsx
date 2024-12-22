@@ -13,14 +13,11 @@ const Reviews = () => {
 
   let sortedReviews = [...reviews];
 
-  // Сортировка по рейтингу
   if (filterName === "Сначала положительные") {
     sortedReviews.sort((a, b) => b.reviewRate - a.reviewRate);
   } else if (filterName === "Сначала отрицательные") {
     sortedReviews.sort((a, b) => a.reviewRate - b.reviewRate);
-  }
-  // Сортировка по дате
-  else if (filterName === "Сначала новые") {
+  } else if (filterName === "Сначала новые") {
     sortedReviews.sort(
       (a, b) =>
         new Date(b.reviewDate.split(".").reverse().join("-")) -
@@ -55,7 +52,9 @@ const Reviews = () => {
         ) : (
           <div className={styles.not__reviews}>
             <p className={styles.not__title}>Тут пока пусто...</p>
-            <p className={styles.not__description}>Но это временно, заказы обязательно будут!</p>
+            <p className={styles.not__description}>
+              Но это временно, заказы обязательно будут!
+            </p>
           </div>
         )}
       </div>

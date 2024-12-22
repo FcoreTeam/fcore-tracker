@@ -1,19 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const portfolioState = {
-  works: [
-    // {
-    //   workId: 1,
-    //   workName: "",
-    //   workDescription: "",
-    //   workPreview: "",
-    //   workPhotos: [],
-    //   workVideos: [],
-    //   workLink: "",
-    //   workPrice: 0,
-    //   workTime: 0,
-    // },
-  ],
+  works: [],
 };
 
 const portfolioSlice = createSlice({
@@ -24,7 +12,7 @@ const portfolioSlice = createSlice({
       const {
         workName,
         workDescription,
-        workPreview,
+        workActivity,
         workPhotos,
         workVideos,
         workLink,
@@ -36,7 +24,7 @@ const portfolioSlice = createSlice({
         workId: state.works.length + 1,
         workName,
         workDescription,
-        workPreview,
+        workActivity,
         workPhotos,
         workVideos,
         workLink,

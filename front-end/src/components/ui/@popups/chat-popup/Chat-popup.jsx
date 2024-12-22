@@ -12,10 +12,11 @@ import styles from "./chat-popup.module.scss";
 const ChatPopup = () => {
   const dispatch = useDispatch();
   const [chatType, setChatType] = useState("client");
+  const localTime = new Date().getHours();
+  const isSupportActive = localTime < 1 || localTime > 8;
   const { isOpen, popupType } = useSelector(
     (state) => state.popups.generalInfo
   );
-  const [isSupportActive, setSupportActive] = useState(false);
 
   const { chatName, globalType } = useSelector((state) => state.chat.chatInfo);
   const { chatMessages } = useSelector((state) => state.chat);
@@ -85,4 +86,5 @@ const ChatPopup = () => {
     </>
   );
 };
+
 export default ChatPopup;

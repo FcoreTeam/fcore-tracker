@@ -14,32 +14,33 @@ const Input = ({
   id,
   inputRef,
   isTextArea,
+  accept,
+  onLoad,
 }) => {
-
-
   return (
     <>
       {!isTextArea ? (
         <>
-        <input
-          type={inputType}
-          placeholder={inputPlaceholder}
-          className={clsx(
-            styles.input,
-            styles[inputClass],
-            styles[validateClass]
-          )}
-          maxLength={length}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={value}
-          id={id}
-          ref={inputRef}
-        />
-        {inputType === "checkbox" ? (
-          
-          <label htmlFor={id} className={styles.checkbox__label}></label>
-        ) : null}
+          <input
+            type={inputType}
+            placeholder={inputPlaceholder}
+            className={clsx(
+              styles.input,
+              styles[inputClass],
+              styles[validateClass]
+            )}
+            maxLength={length}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={value}
+            id={id}
+            ref={inputRef}
+            accept={accept}
+            onLoad={onLoad}
+          />
+          {inputType === "checkbox" ? (
+            <label htmlFor={id} className={styles.checkbox__label}></label>
+          ) : null}
         </>
       ) : (
         <textarea

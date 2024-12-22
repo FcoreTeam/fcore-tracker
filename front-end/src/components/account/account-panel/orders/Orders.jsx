@@ -1,11 +1,14 @@
 "use client";
 
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import Order from "./order/Order";
+import OrderFilter from "./order-filter/Order-filter";
 
 import styles from "./orders.module.scss";
 
 const Orders = () => {
+  const [filterName, setFilterName] = useState("Сначала положительные");
   const { orders } = useSelector((state) => state.orders);
   const renderOrders = orders.map((item) => (
     <Order
@@ -19,6 +22,11 @@ const Orders = () => {
     />
   ));
 
-  return <div className={styles.orders}>{renderOrders}</div>;
+  return (
+    <div className={styles.orders}>
+      <OrderFilter setFilterName={setFilterName} filterValue={filterName} />
+      {renderOrders}
+    </div>
+  );
 };
 export default Orders;

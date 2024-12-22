@@ -1,0 +1,48 @@
+.work {
+  border-radius: 20px;
+  height: 250px;
+  background: #1f2332;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  &:hover {
+    scale: 1.02;
+  }
+  .work__activity {
+    height: 30px;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #008ff5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .work__image {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+  }
+  .work__name {
+    color: #fff;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 100%;
+  }
+  .work__description {
+    color: #ffffff51;
+    font-size: 12px;
+    margin-top: 5px;
+    padding-left: 10px;
+    width: 100%;
+  }
+}

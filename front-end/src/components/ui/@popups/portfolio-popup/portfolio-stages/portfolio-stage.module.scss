@@ -9,13 +9,40 @@
       display: flex;
       flex-flow: column;
       width: 50%;
-      .portfolio__subtitle{
+      position: relative;
+      .portfolio__subtitle {
         color: #fff;
         margin-bottom: 20px;
       }
+      .stage {
+        display: flex;
+        height: fit-content;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        .portfolio__req {
+          display: flex;
+          flex-flow: column;
+          align-items: flex-end;
+          .req__title {
+            color: #fff;
+          }
+          .req__subtitle {
+            color: #ffffff51;
+            margin-top: 5px;
+            font-size: 12px;
+            span{
+              color: #fff;
+            }
+            &:first-child {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+      &:nth-child(1) {
+        width: 100%;
+      }
     }
-    .stage__banner{
-      border: 1px solid red;
-    }
+
   }
 }

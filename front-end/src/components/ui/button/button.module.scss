@@ -155,7 +155,7 @@
     background: #f50000;
     margin-left: 10px;
   }
-  &.upload__btn {
+  &.upload__btn,&.upload__btn__w {
     width: 45%;
     height: 40px;
     border-radius: 15px;
@@ -165,7 +165,10 @@
     background: #008ff5;
     margin-top: 20px;
   }
-  &.close__btn {
+  &.upload__btn__w{
+    width: 100%;
+  }
+  &.close__btn,&.preview__btn,&.create__btn {
     width: 100%;
     height: 40px;
     border-radius: 15px;
@@ -175,7 +178,18 @@
     background: #008ff5;
     margin-top: 20px;
   }
-  &.close__btn__popup {
+  &.create__btn{
+    width: 30%;
+    margin-top: 0;
+  }
+  &.preview__btn {
+    position: absolute;
+    width: 200px;
+    top: 222px;
+    left: 490px;
+  }
+  &.close__btn__popup,
+  &.close__preview {
     width: 40px;
     height: 40px;
     border-radius: 15px;
@@ -200,6 +214,13 @@
       width: 2px;
       rotate: -45deg;
     }
+  }
+  &.close__preview{
+    position: absolute !important;
+    top: 10px;
+    left: 10px;
+    width: 48px;
+    height: 48px;
   }
   &.send__btn {
     position: absolute;

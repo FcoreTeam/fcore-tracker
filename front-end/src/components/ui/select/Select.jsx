@@ -4,7 +4,15 @@ import styles from "./select.module.scss";
 import clsx from "clsx";
 import Image from "next/image";
 
-const Select = ({ value, setValue, options, setBank, isFilter }) => {
+const Select = ({
+  value,
+  setValue,
+  options,
+  setBank,
+  isFilter,
+  secondClass,
+  topOptions,
+}) => {
   const optionWrapperRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -24,12 +32,16 @@ const Select = ({ value, setValue, options, setBank, isFilter }) => {
 
   return (
     <div
-      className={clsx(styles.select__wrapper, isOpen && styles.open)}
+      className={clsx(
+        styles.select__wrapper,
+        isOpen && styles.open,
+        styles[secondClass]
+      )}
       onClick={() => setIsOpen((prev) => !prev)}
-      style={isFilter ? {width: `98%`, margin: 0} : null}
+      style={isFilter ? { width: `98%`, margin: 0 } : null}
     >
       <div className={styles.select__value}>{value}</div>
-      <div className={styles.select__options}>
+      <div className={styles.select__options} style={{transform: `translateY(${topOptions}px)`}}>
         <div ref={optionWrapperRef} className={styles.options__wrapper}>
           <span
             style={{ backgroundColor: bg.color, top: bg.top }}

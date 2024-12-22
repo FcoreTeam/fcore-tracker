@@ -9,11 +9,13 @@ const Button = ({
   isButtonImage,
   buttonImage,
   onClick,
+  top
 }) => {
   return (
     <button
       className={clsx(styles.button, styles[buttonClass])}
       onClick={onClick}
+      style={{top: `${top}px`}}
     >
       {buttonText}
       {isButtonImage ? (

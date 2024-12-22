@@ -31,7 +31,8 @@
     font-size: 15px;
   }
   &.auth__input__h,
-  &.auth__input__hc, &.chat__input{
+  &.auth__input__hc,
+  &.chat__input {
     height: 100px;
     text-align: left;
     display: flex;
@@ -87,7 +88,7 @@
     height: 55px;
     border: 2px solid #3b5978;
   }
-  &.card__input__p{
+  &.card__input__p {
     border: 2px solid #3b5978;
   }
   &.auth__input__hc {
@@ -96,7 +97,7 @@
     min-height: 100px;
     height: auto;
   }
-  &.chat__input{
+  &.chat__input {
     border: 2px solid #3b5978;
     border-radius: 15px;
     background: transparent;
@@ -105,11 +106,20 @@
     padding-left: 10px;
     color: #fff;
   }
-  &.upload__hide{
+  &.upload__hide {
     width: 100%;
     height: 100%;
     opacity: 0;
     cursor: pointer;
+  }
+  &.video__input {
+    border: 2px solid #0088f5;
+    background: transparent;
+    width: 100%;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 15px;
+    color: #fff;
   }
 }
 
