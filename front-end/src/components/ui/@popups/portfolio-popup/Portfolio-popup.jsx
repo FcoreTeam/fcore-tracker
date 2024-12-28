@@ -19,6 +19,7 @@ const PortfolioPopup = () => {
     workDescription: "",
     workActivity: "",
   });
+  let [stageHandle, setStageHandle] = useState(false);
   const { popupType, isOpen } = useSelector(
     (state) => state.popups.generalInfo
   );
@@ -27,13 +28,20 @@ const PortfolioPopup = () => {
   );
 
   const changeStep = () => {
-    if (currentStage < 3) {
-      setCurrentStage(currentStage + 1);
+    if (
+      (currentStage === 1 &&
+        generalOrderInfo.workName.length !== 0 &&
+        generalOrderInfo.workDescription.length !== 0 &&
+        generalOrderInfo.workActivity.length !== 0) ||
+      (currentStage === 2 && uploadedMedia.length !== 0)
+    ) {
+      setStageHandle(false);
+      setCurrentStage((prevStage) => ++prevStage);
+    } else {
+      setStageHandle(true);
     }
-
+    console.log(currentStage)
     switch (currentStage) {
-      case 1:
-        break;
       case 2:
         dispatch(
           setPopupData({
@@ -85,14 +93,16 @@ const PortfolioPopup = () => {
                 {currentStage === 1 ? (
                   <PortfolioStage
                     currentStage={1}
-                    generalOrderInfo={generalOrderInfo}
                     setGeneralOrderInfo={setGeneralOrderInfo}
+                    generalOrderInfo={generalOrderInfo}
+                    stageHandle={stageHandle}
                   />
                 ) : currentStage === 2 ? (
                   <PortfolioStage
                     currentStage={2}
                     setUploadedMedia={setUploadedMedia}
                     uploadedMedia={uploadedMedia}
+                    stageHandle={stageHandle}
                   />
                 ) : currentStage === 3 ? (
                   <PortfolioStage currentStage={3} />

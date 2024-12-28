@@ -129,7 +129,7 @@ const VideoUploader = ({uploadedMedia}) => {
     <>
       <Input
         inputClass="video__input"
-        inputPlaceholder="Ссылка на видео"
+        inputPlaceholder="Ссылка на видео *необязательно"
         onChange={handleInputChange}
       />
       {currentVideo !== "" ? (

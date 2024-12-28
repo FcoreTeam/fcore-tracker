@@ -8,7 +8,7 @@ import OrderFilter from "./order-filter/Order-filter";
 import styles from "./orders.module.scss";
 
 const Orders = () => {
-  const [filterName, setFilterName] = useState("Сначала положительные");
+  const [filterName, setFilterName] = useState("В работе");
   const { orders } = useSelector((state) => state.orders);
   const renderOrders = orders.map((item) => (
     <Order

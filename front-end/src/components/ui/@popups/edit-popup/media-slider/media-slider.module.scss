@@ -1,0 +1,11 @@
+.swiper {
+  width: 590px;
+  height: 334px;
+  margin-top: 10px;
+  .slide {
+    height: 80%;
+    .slide__image {
+      border-radius: 20px;
+    }
+  }
+}

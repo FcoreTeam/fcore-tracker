@@ -3,6 +3,7 @@ import ChatNavigation from "./chat-navigation/Chat-navigation";
 import ChatType from "./chat-type/Chat-type";
 import ChatFooter from "./chat-footer/Chat-footer";
 import ChatMessage from "./chat-message/Chat-message";
+import { addMessage } from "@/store/slices/chatSlice";
 
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,6 +24,10 @@ const ChatPopup = () => {
 
   const setChat = (type) => {
     setChatType(type);
+  };
+
+  const sendMessage = async () => {
+    dispatch(addMessage({}));
   };
 
   const messages = chatMessages.map((item) => (

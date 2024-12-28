@@ -24,6 +24,9 @@
   &:hover {
     background: #008ff52a;
   }
+  &.incorrect{
+    border: 2px solid red;
+  }
 }
 
 .uploaded__media {

@@ -155,7 +155,8 @@
     background: #f50000;
     margin-left: 10px;
   }
-  &.upload__btn,&.upload__btn__w {
+  &.upload__btn,
+  &.upload__btn__w {
     width: 45%;
     height: 40px;
     border-radius: 15px;
@@ -165,20 +166,28 @@
     background: #008ff5;
     margin-top: 20px;
   }
-  &.upload__btn__w{
+  &.upload__btn__w {
     width: 100%;
   }
-  &.close__btn,&.preview__btn,&.create__btn {
+  &.close__btn,
+  &.preview__btn,
+  &.create__btn,
+  &.edit__btn {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     border-radius: 15px;
     color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
     background: #008ff5;
     margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+      scale: 1.03;
+    }
   }
-  &.create__btn{
+  &.create__btn {
     width: 30%;
     margin-top: 0;
   }
@@ -215,17 +224,17 @@
       rotate: -45deg;
     }
   }
-  &.close__preview{
+  &.close__preview {
     position: absolute !important;
     top: 10px;
     left: 10px;
     width: 48px;
     height: 48px;
   }
-  &.send__btn {
+  &.send__btn,&.delete__btn {
     position: absolute;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     margin-right: 10px;
     background: #008ff5;
@@ -233,5 +242,13 @@
     align-items: center;
     justify-content: center;
     padding-right: 2px;
+  }
+  &.delete__btn{
+    left: 10px;
+    top: 10px;
+    border-radius: 10px;
+    padding-left: 1px;
+    z-index: 8;
+    pointer-events: all !important;
   }
 }

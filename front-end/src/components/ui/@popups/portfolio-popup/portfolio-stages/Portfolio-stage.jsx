@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Input from "@/components/ui/input/Input";
 import Image from "next/image";
 import VideoUploader from "./video-uploader/Video-uploader";
@@ -9,17 +11,16 @@ const PortfolioStage = ({
   currentStage,
   uploadedMedia,
   setUploadedMedia,
-  generalOrderInfo,
   setGeneralOrderInfo,
+  generalOrderInfo,
+  stageHandle,
 }) => {
   const handleInputChange = (e, field) => {
-
     setGeneralOrderInfo((prevState) => ({
       ...prevState,
       [field]: e.target.value,
     }));
   };
-
   return (
     <div className={styles.portfolio__stage}>
       <section className={styles.work__params}>
@@ -29,18 +30,45 @@ const PortfolioStage = ({
               <Input
                 inputPlaceholder="Назавание проекта"
                 inputClass="auth__input"
-                onChange={(e) => handleInputChange(e, "workName")}
+                validateClass={
+                  stageHandle
+                    ? generalOrderInfo.workName.length === 0
+                      ? "incorrect"
+                      : ""
+                    : null
+                }
+                onChange={(e) => {
+                  handleInputChange(e, "workName");
+                }}
               />
               <Input
                 isTextArea={true}
                 inputPlaceholder="Описание проекта"
                 inputClass="auth__input__h"
-                onChange={(e) => handleInputChange(e, "workDescription")}
+                validateClass={
+                  stageHandle
+                    ? generalOrderInfo.workDescription.length === 0
+                      ? "incorrect"
+                      : ""
+                    : null
+                }
+                onChange={(e) => {
+                  handleInputChange(e, "workDescription");
+                }}
               />
               <Input
                 inputPlaceholder="Тематика проекта"
                 inputClass="auth__input"
-                onChange={(e) => handleInputChange(e, "workActivity")}
+                validateClass={
+                  stageHandle
+                    ? generalOrderInfo.workActivity.length === 0
+                      ? "incorrect"
+                      : ""
+                    : null
+                }
+                onChange={(e) => {
+                  handleInputChange(e, "workActivity");
+                }}
               />
             </div>
             <Image
@@ -59,6 +87,7 @@ const PortfolioStage = ({
                 <PortfolioUploader
                   uploadedMedia={uploadedMedia}
                   setUploadedMedia={setUploadedMedia}
+                  stageHandle={stageHandle}
                 />
                 <section className={styles.portfolio__req}>
                   <p className={styles.req__title}>Требования к фотографиям</p>
@@ -75,7 +104,7 @@ const PortfolioStage = ({
                     Не содержит запрещенных тематик <span>🚫</span>
                   </p>
                   <p className={styles.req__subtitle}>
-                    Максимум 10 штук<span>✈️</span>
+                    Максимум 10 штук, а минимум одна <span>✈️</span>
                   </p>
                 </section>
               </div>

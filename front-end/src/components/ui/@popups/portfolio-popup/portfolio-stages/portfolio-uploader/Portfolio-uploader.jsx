@@ -1,27 +1,30 @@
-
+import clsx from "clsx";
 
 import Input from "@/components/ui/input/Input";
 
 import styles from "./portfolio-uploader.module.scss";
 import Image from "next/image";
 
-const PortfolioUploader = ({uploadedMedia,setUploadedMedia}) => {
-
+const PortfolioUploader = ({
+  uploadedMedia,
+  setUploadedMedia,
+  stageHandle,
+}) => {
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
     const fileUrls = files.map((file) => URL.createObjectURL(file));
     setUploadedMedia((prevMedia) => [...prevMedia, ...fileUrls]);
-    if(uploadedMedia.length >= 10){
-      uploadedMedia.pop()
+    if (uploadedMedia.length >= 10) {
+      uploadedMedia.pop();
     }
   };
 
   const deleteMedia = (indexToDelete) => {
+    URL.revokeObjectURL(uploadedMedia[indexToDelete]);
     setUploadedMedia((prevMedia) =>
       prevMedia.filter((_, index) => index !== indexToDelete)
     );
   };
-
   let mediaArray = uploadedMedia.map((media, index) => (
     <div className={styles.delete__img} onClick={() => deleteMedia(index)}>
       <Image
@@ -44,7 +47,16 @@ const PortfolioUploader = ({uploadedMedia,setUploadedMedia}) => {
 
   return (
     <section className={styles.uploader__wrapper}>
-      <div className={styles.uploader}>
+      <div
+        className={clsx(
+          styles.uploader,
+          stageHandle
+            ? uploadedMedia.length === 0
+              ? styles.incorrect
+              : ""
+            : null
+        )}
+      >
         <Input
           onChange={handleFileChange}
           inputType="file"

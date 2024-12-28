@@ -32,8 +32,28 @@ const portfolioSlice = createSlice({
         workTime,
       });
     },
+    editWork: (state, action) => {
+      const {
+        workId,
+        workName,
+        workDescription,
+        workActivity,
+        workPhotos,
+        workVideo,
+      } = action.payload;
+      state.works[workId].workName = workName;
+      state.works[workId].workDescription = workDescription;
+      state.works[workId].workActivity = workActivity;
+      // state.works[workId].workPhotos = workPhotos;
+      // state.works[workId].workVideo = workVideo;
+      // Поменять под ID а не индексы
+    },
+    deleteWork: (state, action) => {
+      const { workId } = action.payload;
+      state.works = state.works.filter((work) => work.workId !== workId);
+    },
   },
 });
-export const { addWork } = portfolioSlice.actions;
+export const { addWork, editWork, deleteWork } = portfolioSlice.actions;
 
 export default portfolioSlice.reducer;

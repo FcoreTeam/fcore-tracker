@@ -30,8 +30,7 @@ const chatState = {
       chatId: "#O",
       chatAvatar: "/maskots/maskotFirst.png",
       chatSender: "",
-      chatMessage:
-        "Давайте в 20:00",
+      chatMessage: "Давайте в 20:00",
       isEdited: false,
       chatDate: "",
       isMessageUser: false,
@@ -52,5 +51,7 @@ const chatSlice = createSlice({
     },
   },
 });
+
+export const { addMessage } = chatSlice.actions;
 
 export default chatSlice.reducer;

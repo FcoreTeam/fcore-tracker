@@ -1,0 +1,51 @@
+.work__block {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+
+  .type__title {
+    color: #fff;
+    margin-top: 15px;
+  }
+
+  .work__description {
+    color: #ffffff51;
+    margin-top: 5px;
+    padding-right: 20px;
+    font-size: 15px;
+  }
+  .work__activity {
+    margin-top: 10px;
+    border-radius: 15px;
+    height: 30px;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #008ff5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+  }
+  .edit__panel {
+    width: 100%;
+    padding-right: 20px;
+    .input__wrap {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: fit-content;
+      min-width: 100%;
+      .input__name {
+        color: #ffffff51;
+        position: absolute;
+        font-size: 13px;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

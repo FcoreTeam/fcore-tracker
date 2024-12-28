@@ -9,6 +9,7 @@ const popupState = {
   popupInfo: {
     popupName: "",
     popupDescription: "",
+    workId: 0,
   },
 };
 
@@ -21,6 +22,7 @@ const popupsSlice = createSlice({
       state.generalInfo.popupType = action.payload.popupType;
       state.popupInfo.popupName = action.payload.popupName;
       state.popupInfo.popupDescription = action.payload.popupDescription;
+      state.popupInfo.workId = action.payload.workId;
     },
   },
 });
