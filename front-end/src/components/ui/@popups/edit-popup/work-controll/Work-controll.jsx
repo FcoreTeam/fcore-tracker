@@ -19,8 +19,6 @@ const WorkControll = ({
     workActivity: workActivity || "",
   });
 
-  console.log(editState.workName);
-
   const handleChange = (field, value) => {
     setEditState((prevState) => ({
       ...prevState,

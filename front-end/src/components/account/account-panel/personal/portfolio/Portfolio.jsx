@@ -8,6 +8,7 @@ import styles from "./portfolio.module.scss";
 const Portfolio = () => {
   const dispatch = useDispatch();
   const { works } = useSelector((state) => state.portfolio);
+  console.log(works)
   const mappedWorks = works.map((item, index) => (
     <Work
       key={item.workId}
