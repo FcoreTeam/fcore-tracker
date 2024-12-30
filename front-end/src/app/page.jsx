@@ -9,12 +9,13 @@ import Button from "@/components/ui/button/Button";
 import Input from "@/components/ui/input/Input";
 
 import styles from "./css/page.module.scss";
+import Header from "@/components/header/Header";
 
 const Main = () => {
   const dispatch = useDispatch();
   const [menuState, setMenuState] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [validate, setValidate] = useState(false); 
+  const [validate, setValidate] = useState(false);
   const setMenuUi = () => {
     setMenuState(!menuState);
   };
@@ -51,48 +52,51 @@ const Main = () => {
   }, [menuState, validate]);
 
   return (
-    <main className={styles.main}>
-      <div className={styles.main__information}>
-        <div className={styles.main__text}>
-          <div className={styles.live__wrap}>
-            <p className={styles.main__title}>
-              Fcore<span>Tracker</span>
+    <>
+      <Header mainPage={true} />
+      <main className={styles.main}>
+        <div className={styles.main__information}>
+          <div className={styles.main__text}>
+            <div className={styles.live__wrap}>
+              <p className={styles.main__title}>
+                Fcore<span>Tracker</span>
+              </p>
+              <div className={styles.live}></div>
+            </div>
+            <p className={styles.main__description}>
+              Отслеживайте свои проекты в реальном времени
             </p>
-            <div className={styles.live}></div>
           </div>
-          <p className={styles.main__description}>
-            Отслеживайте свои проекты в реальном времени
-          </p>
-        </div>
 
-        {menuState ? (
-          <div className={styles.menu__check}>
-            <Input
-              inputClass="menu__input"
-              inputType="text"
-              inputPlaceholder="XXXX-YYYY-ZZZZ"
-              value={inputValue}
-              onChange={handleInputChange}
-              validateClass={validate ? null : "incorrect"}
-              length={14}
-            />
+          {menuState ? (
+            <div className={styles.menu__check}>
+              <Input
+                inputClass="menu__input"
+                inputType="text"
+                inputPlaceholder="XXXX-YYYY-ZZZZ"
+                value={inputValue}
+                onChange={handleInputChange}
+                validateClass={validate ? null : "incorrect"}
+                length={14}
+              />
+              <Button
+                onClick={null}
+                buttonText="Проверить"
+                isButtonImage={false}
+                buttonClass="check__btn"
+              />
+            </div>
+          ) : (
             <Button
-              onClick={null}
-              buttonText="Проверить"
+              onClick={setMenuUi}
+              buttonText="Введите трек-код"
               isButtonImage={false}
-              buttonClass="check__btn"
+              buttonClass="menu__btn"
             />
-          </div>
-        ) : (
-          <Button
-            onClick={setMenuUi}
-            buttonText="Введите трек-код"
-            isButtonImage={false}
-            buttonClass="menu__btn"
-          />
-        )}
-      </div>
-    </main>
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 

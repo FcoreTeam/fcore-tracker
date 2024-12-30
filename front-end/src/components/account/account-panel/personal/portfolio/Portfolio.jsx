@@ -8,14 +8,13 @@ import styles from "./portfolio.module.scss";
 const Portfolio = () => {
   const dispatch = useDispatch();
   const { works } = useSelector((state) => state.portfolio);
-  console.log(works)
-  const mappedWorks = works.map((item, index) => (
+  const mappedWorks = works.map((item) => (
     <Work
       key={item.workId}
       workName={item.workName}
       workId={item.workId}
       workDescription={item.workDescription}
-      workImage={item.workPhotos[0]}
+      workImage={item.workPhotos[0] || ""}
       workActivity={item.workActivity}
       onClick={() =>
         dispatch(

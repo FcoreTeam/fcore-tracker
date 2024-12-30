@@ -1,0 +1,28 @@
+.admin__navigation {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-right: 2px solid #1F2332;;
+  &.choosen {
+    background: #63a5de69;
+    transition: 0.5s;
+  }
+  &:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  &:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-right: 0;
+  }
+  .navigation__image {
+    margin-right: 10px;
+  }
+  .navigation__name {
+    color: #fff;
+  }
+}

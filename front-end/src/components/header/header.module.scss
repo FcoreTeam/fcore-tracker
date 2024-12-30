@@ -1,0 +1,34 @@
+.header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  position: absolute;
+  .header__bg {
+    background: #1f2332;
+  }
+  .header__logo {
+    height: 100px;
+    width: 100px;
+  }
+  .header__list {
+    display: flex;
+    padding-right: 20px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    .header__link {
+      color: #ffffff51;
+      font-size: 20px;
+      margin-right: 20px;
+      transition: 0.5s;
+      &:hover{
+        color: #fff;
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}

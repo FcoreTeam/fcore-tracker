@@ -13,20 +13,25 @@ const EditPopup = () => {
   const { accountType } = useSelector((state) => state.auth); // Статус аккаунта
   const { workId } = useSelector((state) => state.popups.popupInfo); // Получаю workId
   const { works } = useSelector((state) => state.portfolio); // Получаю все работы
-
-  const work = works.find((item) => item.workId == workId);
-  const [isEdit, setIsEdit] = useState(false); // Редактировано?
-  const [editData, setEditData] = useState({
-    // Возвращает undefiend поменять под find
-    workName: works.find((item) => item.workId == workId) || "",
-    workDescription: works.find((item) => item.workId == workId) || "",
-    workActivity: works.find((item) => item.workId == workId) || "",
-
-  });
   const { popupType, isOpen } = useSelector(
     (state) => state.popups.generalInfo
   );
-  console.log(workId);
+
+  const [isEdit, setIsEdit] = useState(false); // Редактировано?
+  const [editData, setEditData] = useState({
+    workName: works.find((item) => item.workId == workId).workName || "",
+    workDescription:
+      works.find((item) => item.workId == workId).workDescription || "",
+    workActivity:
+      works.find((item) => item.workId == workId).workActivity || "",
+    workPhotos: works.find((item) => item.workId == workId).workPhotos || "",
+  }); // Пиздец
+  const [editPhoto, setPhoto] = useState({});
+  const work = works.find((item) => item.workId == workId); // Упрощение кода
+
+  console.log(editPhoto)
+  console.log(editData)
+
   const closePopup = () => {
     dispatch(
       setPopupData({
@@ -44,7 +49,8 @@ const EditPopup = () => {
       editData.workName.workName === originalWork.workName &&
       editData.workDescription.workDescription ===
         originalWork.workDescription &&
-      editData.workActivity.workActivity === originalWork.workActivity
+      editData.workActivity.workActivity === originalWork.workActivity &&
+      editData.workPhotos.workPhotos === originalWork.workPhotos
     ) {
       return;
     } else {
@@ -54,12 +60,15 @@ const EditPopup = () => {
           workName: editData.workName,
           workDescription: editData.workDescription,
           workActivity: editData.workActivity,
+          workPhotos: editPhoto.isDelete
+            ? editData.workPhotos.splice(editPhoto.controllIndex, 1) // need fix
+            : editData.workPhotos,
         })
       );
     }
     console.log("Сохраняем измененные данные:", editData);
   };
-
+  debugger;
   return (
     <>
       {popupType === "edit" && isOpen && works.length !== 0 && (
@@ -77,12 +86,21 @@ const EditPopup = () => {
                   workName={work.workName}
                   workDescription={work.workDescription}
                   workActivity={work.workActivity}
+                  workPhotos={work.workPhotos}
                   isEdit={isEdit}
                   setEditData={setEditData}
                   workId={workId}
                   editData={editData}
                 />
-                <WorkControll controllType={2} />
+                <WorkControll
+                  controllType={2}
+                  workPhotos={work.workPhotos}
+                  isEdit={isEdit}
+                  setEditData={setEditData}
+                  workId={workId}
+                  editData={editData}
+                  setPhoto={setPhoto}
+                />
               </section>
               {accountType !== "client" ? (
                 <Button
@@ -101,6 +119,3 @@ const EditPopup = () => {
   );
 };
 export default EditPopup;
-
-// - Нужно сбрасывать EditData после нажатия на кнопку save (фиксит баг с редактированием чужой работы)
-// - Нужно

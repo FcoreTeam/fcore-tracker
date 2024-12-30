@@ -41,9 +41,12 @@ const portfolioSlice = createSlice({
         workPhotos,
         workVideo,
       } = action.payload;
-      state.works.find(item => item.workId == workId).workName = workName;
-      state.works.find(item => item.workId == workId).workDescription = workDescription;
-      state.works.find(item => item.workId == workId).workActivity = workActivity;
+      state.works.find((item) => item.workId == workId).workName = workName;
+      state.works.find((item) => item.workId == workId).workDescription =
+        workDescription;
+      state.works.find((item) => item.workId == workId).workActivity =
+        workActivity;
+      state.works.find((item) => item.workId == workId).workPhotos = workPhotos;
     },
     deleteWork: (state, action) => {
       const { workId } = action.payload;

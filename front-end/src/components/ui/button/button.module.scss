@@ -172,7 +172,9 @@
   &.close__btn,
   &.preview__btn,
   &.create__btn,
-  &.edit__btn {
+  &.edit__btn,
+  &.controll__btn,
+  &.create__btn__c {
     width: 100%;
     min-height: 40px;
     border-radius: 15px;
@@ -183,9 +185,16 @@
     margin-top: 20px;
     cursor: pointer;
     transition: 0.3s;
-    &:hover{
+    &:hover {
       scale: 1.03;
     }
+  }
+  &.create__btn__c{
+    background: transparent;
+    border: 2px solid #008ff5;
+    margin-top: 0;
+    width: 69%;
+    margin-right: 10px;
   }
   &.create__btn {
     width: 30%;
@@ -231,7 +240,8 @@
     width: 48px;
     height: 48px;
   }
-  &.send__btn,&.delete__btn {
+  &.send__btn,
+  &.delete__btn {
     position: absolute;
     height: 30px;
     width: 30px;
@@ -243,12 +253,21 @@
     justify-content: center;
     padding-right: 2px;
   }
-  &.delete__btn{
+  &.delete__btn {
     left: 10px;
     top: 10px;
     border-radius: 10px;
     padding-left: 1px;
     z-index: 8;
     pointer-events: all !important;
+  }
+  &.controll__btn {
+    position: absolute;
+    width: 40%;
+    left: 10px;
+    &:last-child {
+      margin-top: 70px;
+      background: red;
+    }
   }
 }

@@ -1,32 +1,18 @@
 import clsx from "clsx";
 
+import { deleteMedia, handleFileChange } from "@/utils/PortfolioUtils";
 import Input from "@/components/ui/input/Input";
+import Image from "next/image";
 
 import styles from "./portfolio-uploader.module.scss";
-import Image from "next/image";
 
 const PortfolioUploader = ({
   uploadedMedia,
   setUploadedMedia,
   stageHandle,
 }) => {
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    const fileUrls = files.map((file) => URL.createObjectURL(file));
-    setUploadedMedia((prevMedia) => [...prevMedia, ...fileUrls]);
-    if (uploadedMedia.length >= 10) {
-      uploadedMedia.pop();
-    }
-  };
-
-  const deleteMedia = (indexToDelete) => {
-    URL.revokeObjectURL(uploadedMedia[indexToDelete]);
-    setUploadedMedia((prevMedia) =>
-      prevMedia.filter((_, index) => index !== indexToDelete)
-    );
-  };
   let mediaArray = uploadedMedia.map((media, index) => (
-    <div className={styles.delete__img} onClick={() => deleteMedia(index)}>
+    <div className={styles.delete__img} onClick={() => deleteMedia(index, uploadedMedia, setUploadedMedia)}>
       <Image
         key={index}
         src={media}
@@ -58,7 +44,7 @@ const PortfolioUploader = ({
         )}
       >
         <Input
-          onChange={handleFileChange}
+          onChange={(event) => handleFileChange(event, uploadedMedia, setUploadedMedia)}
           inputType="file"
           inputClass="upload__hide"
           accept="image/png, image/jpeg"

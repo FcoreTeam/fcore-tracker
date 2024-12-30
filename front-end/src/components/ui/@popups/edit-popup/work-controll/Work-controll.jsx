@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Input from "@/components/ui/input/Input";
 import Slider from "../media-slider/Media-slider";
-
+import Image from "next/image"; // Импортируем Image, если он используется
 import styles from "./work-controll.module.scss";
 
 const WorkControll = ({
@@ -10,13 +10,16 @@ const WorkControll = ({
   workName,
   workDescription,
   workActivity,
+  workPhotos,
   isEdit,
   setEditData,
+  setPhoto,
 }) => {
   const [editState, setEditState] = useState({
     workName: workName || "",
     workDescription: workDescription || "",
     workActivity: workActivity || "",
+    workPhotos: workPhotos || "",
   });
 
   const handleChange = (field, value) => {
@@ -36,9 +39,26 @@ const WorkControll = ({
             <div className={styles.work__activity}>{workActivity}</div>
           </div>
         </>
-      ) : controllType === 2 ? (
+      ) : (
+        <></>
+      )}
+      {controllType === 2 ? (
         <div className={styles.slider}>
-          <Slider />
+          {() => handleChange("workPhotos", workPhotos)}
+          {true ? (
+            <Slider
+              workPhotos={workPhotos}
+              isEdit={isEdit}
+              setPhoto={setPhoto}
+            />
+          ) : (
+            <></>
+          )}
+          {isEdit && (
+            <div className={styles.media__controll}>
+        
+            </div>
+          )}
         </div>
       ) : null}
 
@@ -51,9 +71,7 @@ const WorkControll = ({
               onChange={(e) => handleChange("workName", e.target.value)}
               value={editState.workName}
             />
-            {editState.workName.length == 0 ? (
-              ""
-            ) : (
+            {editState.workName.length === 0 ? null : (
               <p className={styles.input__name}>Название работы</p>
             )}
           </div>
@@ -65,9 +83,7 @@ const WorkControll = ({
               onChange={(e) => handleChange("workDescription", e.target.value)}
               value={editState.workDescription}
             />
-            {editState.workDescription.length == 0 ? (
-              ""
-            ) : (
+            {editState.workDescription.length === 0 ? null : (
               <p className={styles.input__name}>Описание работы</p>
             )}
           </div>
@@ -78,18 +94,16 @@ const WorkControll = ({
               onChange={(e) => handleChange("workActivity", e.target.value)}
               value={editState.workActivity}
             />
-            {editState.workActivity.length == 0 ? (
-              ""
-            ) : (
+            {editState.workActivity.length === 0 ? null : (
               <p className={styles.input__name}>Тематика проекта</p>
             )}
           </div>
         </section>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </section>
   );
 };
 
 export default WorkControll;
+
+// Если я сохраняю работу и не передаю value, то массив пустой

@@ -28,6 +28,16 @@ const AccountNavigation = ({ accountType, setNav, currentNavigation }) => {
         isActive={currentNavigation === "settings"}
         navImage="/icons/settings.svg"
       />
+      {accountType === "admin" ? (
+        <Navigation
+          navName="Админ-панель"
+          onClick={() => setNav("admin")}
+          isActive={currentNavigation === "admin"}
+          navImage="/icons/password.svg"
+        />
+      ) : (
+        <></>
+      )}
     </nav>
   );
 };

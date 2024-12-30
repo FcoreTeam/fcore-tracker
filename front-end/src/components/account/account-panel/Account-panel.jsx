@@ -4,19 +4,24 @@ import Orders from "./orders/Orders";
 
 import styles from "./account-panel.module.scss";
 import Tariffs from "./tariffs/Tariffs";
+import Admin from "./admin/Admin";
 
 const AccountPanel = ({ currentNavigation, accountType, setNav }) => {
   return (
     <div className={styles.account__panel}>
-      {currentNavigation === "personal" && accountType !== "admin" ? (
+      {currentNavigation === "personal"  ? (
         <Personal setMenuNav={setNav} />
-      ) : currentNavigation === "settings" && accountType !== "admin" ? (
+      ) : currentNavigation === "settings"  ? (
         <Settings />
-      ) : currentNavigation === "orders" && accountType !== "admin" ? (
+      ) : currentNavigation === "orders" ? (
         <Orders />
-      ) : currentNavigation === "tariffs" && accountType !== "admin" ? (
+      ) : currentNavigation === "tariffs" ? (
         <Tariffs />
-      ) : null}
+      ) : currentNavigation === "admin" ? (
+        <Admin />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

@@ -35,8 +35,9 @@ const PortfolioPopup = () => {
         generalOrderInfo.workActivity.length !== 0) ||
       (currentStage === 2 && uploadedMedia.length !== 0)
     ) {
+      setCurrentStage(++currentStage);
       setStageHandle(false);
-      setCurrentStage((prevStage) => ++prevStage);
+      
     } else {
       setStageHandle(true);
     }
