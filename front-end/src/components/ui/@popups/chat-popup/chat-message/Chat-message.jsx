@@ -9,11 +9,13 @@ const ChatMessage = ({
   chatMessage,
   chatAvatar,
   isMessageUser,
+  isSupportPage,
 }) => {
   return (
     <div
       className={clsx(
         styles.chat__message,
+        isSupportPage ? styles.support__message : "",
         isMessageUser ? styles.user__message : ""
       )}
     >

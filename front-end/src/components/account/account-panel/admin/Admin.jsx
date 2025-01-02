@@ -1,7 +1,9 @@
 import { useState } from "react";
 import AdminNavigation from "./admin-navigation/Admin-navigation";
+import ChatPanel from "./admin-panel/chat-panel/Chat-panel";
 
 import styles from "./admin.module.scss";
+
 
 const Admin = () => {
   const [adminNavigation, setAdminNavigation] = useState("search");
@@ -34,7 +36,7 @@ const Admin = () => {
         {adminNavigation === "search" ? (
           <></>
         ) : adminNavigation === "chat" ? (
-          <></>
+          <ChatPanel />
         ) : adminNavigation === "verify" ? (
           <></>
         ) : adminNavigation === "controll" ? (

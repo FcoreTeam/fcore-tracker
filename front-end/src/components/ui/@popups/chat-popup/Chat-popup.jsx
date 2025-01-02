@@ -36,7 +36,7 @@ const ChatPopup = () => {
       chatMessage={item.chatMessage}
       chatDate={item.chatDate}
       chatAvatar={item.chatAvatar}
-      isMessageUser={item.chatId.startsWith("#W")}
+      isMessageUser={item.chatID.startsWith("#W")}
     />
   ));
 

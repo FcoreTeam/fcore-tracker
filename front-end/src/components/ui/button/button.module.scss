@@ -174,7 +174,12 @@
   &.create__btn,
   &.edit__btn,
   &.controll__btn,
-  &.create__btn__c {
+  &.create__btn__c,
+  &.create__btn__f,
+  &.connect__btn,
+  &.connect__btn__p,
+  &.disconnect__btn,
+  &.close__connect {
     width: 100%;
     min-height: 40px;
     border-radius: 15px;
@@ -189,7 +194,24 @@
       scale: 1.03;
     }
   }
-  &.create__btn__c{
+  &.connect__btn {
+    width: 30%;
+  }
+  &.disconnect__btn {
+    background: red;
+    width: 40%;
+    margin-top: 0;
+  }
+  &.connect__btn__p {
+    margin-top: 0;
+    position: absolute;
+    width: 40%;
+    font-size: 14px;
+    &:hover {
+      width: 100%;
+    }
+  }
+  &.create__btn__c {
     background: transparent;
     border: 2px solid #008ff5;
     margin-top: 0;
@@ -252,6 +274,10 @@
     align-items: center;
     justify-content: center;
     padding-right: 2px;
+  }
+  &.send__btn {
+    width: 40px;
+    height: 40px;
   }
   &.delete__btn {
     left: 10px;

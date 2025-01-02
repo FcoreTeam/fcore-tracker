@@ -8,6 +8,7 @@ const authState = {
     email: "",
     username: "BestDev",
     password: "",
+    userID: "425267",
   },
   secondStage: {
     code: "", // int
@@ -34,7 +35,7 @@ const authState = {
     INN: "",
   },
   otherInfo: {
-    userAvatar: null,
+    userAvatar: '',
     skills: [
       { skillName: "HTML", skillImage: "/icons/html.png" },
       { skillName: "CSS", skillImage: "/icons/css.png" },

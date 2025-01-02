@@ -37,6 +37,7 @@ const Input = ({
             ref={inputRef}
             accept={accept}
             onLoad={onLoad}
+
           />
           {inputType === "checkbox" ? (
             <label htmlFor={id} className={styles.checkbox__label}></label>

@@ -15,7 +15,7 @@
   &:first-child {
     margin-top: 0;
   }
- 
+
   &.user__message {
     display: flex;
     align-self: flex-end;
@@ -36,6 +36,12 @@
     .message {
       color: #fff;
       font-size: 13px;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      height: fit-content;
     }
+  }
+  &.support__message {
+    background: #161924;
   }
 }

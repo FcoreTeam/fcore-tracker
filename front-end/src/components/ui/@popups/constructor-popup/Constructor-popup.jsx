@@ -1,16 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Popup from "../Popup";
-import Input from "../../input/Input";
 
-import styles from "./constructor-popup.module.scss";
 import Button from "../../button/Button";
 import { setPopupData } from "@/store/slices/popupsSlice";
 import ConstructorStage from "./constructor-stage/Constructor-stage";
 
+import styles from "./constructor-popup.module.scss";
+
 const ConstructorPopup = () => {
   const dispatch = useDispatch();
   let [currentStage, setCurrentStage] = useState(1);
+  let [validation, setValidation] = useState({
+    orderName: "",
+    orderDescription: "",
+    orderPrice: "",
+    orderDate: "",
+    orderDocs: [],
+  });
+  let [stageHandle, setStageHandle] = useState(false);
   const { isOpen, popupType } = useSelector(
     (state) => state.popups.generalInfo
   );
@@ -25,10 +33,19 @@ const ConstructorPopup = () => {
     );
   };
   const changeStage = (eventType) => {
+    setStageHandle(true);
     if (eventType === "reset") {
       setCurrentStage(1);
     } else {
-      setCurrentStage(++currentStage);
+      if (
+        (currentStage === 1 &&
+          validation.orderName.length !== 0 &&
+          validation.orderDescription.length !== 0) ||
+        (currentStage === 2 && validation.orderPrice.length !== 0)
+      ) {
+        setCurrentStage(++currentStage);
+      }
+
       switch (currentStage) {
         case 2:
           dispatch(
@@ -63,7 +80,12 @@ const ConstructorPopup = () => {
               <p className={styles.popup__description}>{popupDescription}</p>
               <section className={styles.create__section}>
                 {currentStage >= 1 && currentStage <= 3 ? (
-                  <ConstructorStage currentStage={currentStage} /> // and this needs in portfolio popup
+                  <ConstructorStage
+                    stageHandle={stageHandle}
+                    currentStage={currentStage}
+                    validation={validation}
+                    setValidation={setValidation}
+                  />
                 ) : null}
               </section>
               <div className={styles.popup__btns}>
@@ -73,6 +95,13 @@ const ConstructorPopup = () => {
                   onClick={() => {
                     closePopup();
                     changeStage("reset");
+                    setValidation({
+                      orderName: "",
+                      orderDescription: "",
+                      orderPrice: "",
+                      orderDate: "",
+                      orderDocs: [],
+                    });
                   }}
                 />
                 <Button
