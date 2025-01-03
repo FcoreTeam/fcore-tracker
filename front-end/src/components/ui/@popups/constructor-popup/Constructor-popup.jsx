@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Popup from "../Popup";
-
+import { createOrder } from "@/store/slices/ordersSlice";
 import Button from "../../button/Button";
 import { setPopupData } from "@/store/slices/popupsSlice";
 import ConstructorStage from "./constructor-stage/Constructor-stage";
@@ -56,6 +56,7 @@ const ConstructorPopup = () => {
               popupDescription: "Теперь укажите цену и срок выполнения",
             })
           );
+          setStageHandle(false);
           break;
         case 3:
           dispatch(
@@ -68,6 +69,25 @@ const ConstructorPopup = () => {
           );
       }
     }
+  };
+  const handleCreateOrder = () => {
+    setCurrentStage(1);
+    // const generateTrackCode = () => {
+    //   let trackcode = Math.random().toString(36).substr(2, 9);
+    //   return trackcode;
+    // };
+    dispatch(
+      setPopupData({
+        isOpen: false,
+      })
+    );
+    dispatch(
+      createOrder({
+        orderName: validation.orderName,
+        orderPrice: validation.orderPrice,
+        // orderTrackcode: generateTrackCode,
+      })
+    );
   };
 
   return (
@@ -106,8 +126,8 @@ const ConstructorPopup = () => {
                 />
                 <Button
                   buttonClass="create__btn"
-                  buttonText="Далее"
-                  onClick={changeStage}
+                  buttonText={currentStage === 3 ? "Создать" : "Далее"}
+                  onClick={currentStage === 3 ? handleCreateOrder : changeStage}
                 />
               </div>
             </div>

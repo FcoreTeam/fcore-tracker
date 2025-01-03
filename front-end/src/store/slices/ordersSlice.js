@@ -48,6 +48,7 @@ const ordersSlice = createSlice({
         orderPrice,
         orderDateFinish,
         orderAgreements,
+        orderTrackCode,
       } = action.payload;
       state.orders.push({
         orderID: ++state.orders.length,
@@ -56,6 +57,7 @@ const ordersSlice = createSlice({
         orderPrice: orderPrice,
         orderDateFinish: orderDateFinish,
         orderAgreements: orderAgreements,
+        orderTrackCode: orderTrackCode,
       });
     },
     editOrder: (state, action) => {},

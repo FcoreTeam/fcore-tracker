@@ -20,7 +20,7 @@ const Status = () => {
       </div>
       <div className={styles.technical__info}>
          <p className={styles.trackcode}>Track-code: {trackNumber}</p>
-         <p className={styles.web__version}>Ver: 0a1 Dev</p>
+         <p className={styles.web__version}>Ver: 0a2 Dev</p>
       </div>
     </div>
  )

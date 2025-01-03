@@ -1,6 +1,7 @@
 import Input from "@/components/ui/input/Input";
 
 import styles from "./constructor-stage.module.scss";
+import ConstructorUploader from "./constructor-uploader/Constructor-uploader";
 
 const ConstructorStage = ({
   currentStage,
@@ -35,17 +36,37 @@ const ConstructorStage = ({
             inputPlaceholder="Введите краткое описание заказа"
             inputClass="create__input__h"
             isTextArea={true}
+            validateClass={
+              stageHandle
+                ? validation.orderDescription.length > 0
+                  ? ""
+                  : "incorrect"
+                : null
+            }
             onChange={(e) => handleInputChange(e, "orderDescription")}
           />
         </div>
       ) : currentStage === 2 ? (
-        <Input
-          inputPlaceholder="Введите стоимость выполнения"
-          inputClass="create__input"
-          onChange={(e) => handleInputChange(e, "orderPrice")}
-        />
+        <>
+          <Input
+            inputPlaceholder="Введите стоимость выполнения"
+            inputClass="create__input"
+            validateClass={
+              stageHandle
+                ? validation.orderPrice.length > 0
+                  ? ""
+                  : "incorrect"
+                : null
+            }
+            onChange={(e) => handleInputChange(e, "orderPrice")}
+          />
+        </>
       ) : currentStage === 3 ? (
-        <></>
+        <>
+          <ConstructorUploader fileText="Загрузите условия заказа" />
+          <ConstructorUploader fileText="Загрузите NDA (необязательно)" />
+          <ConstructorUploader fileText="Загрузите договор (необязательно)" />
+        </>
       ) : null}
     </div>
   );

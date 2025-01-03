@@ -31,12 +31,29 @@ const trackerState = {
         statusIco: "/icons/notcompleted.svg",
       },
     ], // str
-    orderPrice: '', // int
-    orderDeadline: '',
+    orderPrice: "", // int
+    orderDeadline: "",
     orderStart: 1731316867, // int "unix time"
     orderFinish: 1733785667, // int "unix time"
-    orderPictures: [], // id array
-    orderVideos: [], // image ID from database,
+    orderReports: [
+      {
+        reportID: 0,
+        reportName: "Отчёт по работе #1",
+        reportDate: "03.01.2025",
+        reportDescription:
+          "ОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчётОтчёт",
+        reportVideoLinks: [],
+        reportPhotos: [],
+      },
+      {
+        reportID: 1,
+        reportName: "Отчёт по работе #2",
+        reportDate: "03.01.2025",
+        reportDescription: "",
+        reportVideoLinks: [],
+        reportPhotos: [],
+      },
+    ], // id array
     orderGitLink: "", // github api
   },
   paymentInfo: {

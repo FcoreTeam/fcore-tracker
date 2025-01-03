@@ -18,6 +18,7 @@ const ChatPopup = () => {
   const { isOpen, popupType } = useSelector(
     (state) => state.popups.generalInfo
   );
+  const { userID } = useSelector((state) => state.auth.firstStage);
 
   const { chatName, globalType } = useSelector((state) => state.chat.chatInfo);
   const { chatMessages } = useSelector((state) => state.chat);
@@ -36,7 +37,7 @@ const ChatPopup = () => {
       chatMessage={item.chatMessage}
       chatDate={item.chatDate}
       chatAvatar={item.chatAvatar}
-      isMessageUser={item.chatID.startsWith("#W")}
+      isMessageUser={item.chatID.startsWith(userID)}
     />
   ));
 
