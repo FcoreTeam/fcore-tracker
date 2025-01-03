@@ -30,7 +30,7 @@ export class UserController {
             if (!errors.isEmpty()) {
                 return res.status(400).json({errors: errors.array()});
             }
-            await UserService.login().then(response => res.json(response));
+            await UserService.login(req.body).then(response => res.json(response));
         } catch (err) {
             console.log(err);
             res.json({success: false, error: 'Error while logging in user'});
@@ -114,5 +114,16 @@ export class UserController {
         const info = await UserService.setinfo(req.id, req.body).then(response => {
             res.json(response);
         });
+    }
+
+    static async createOrder(req, res) {
+        try {
+            await UserService.createOrder(req.body).then(
+                response => res.json(response)
+            );
+        } catch (err) {
+            console.log(err);
+            res.json({success: false, error: 'Error while creating order'});
+        }
     }
 }

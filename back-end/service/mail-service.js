@@ -30,6 +30,21 @@ class MailService {
             `
         })
     }
+
+    async sendConfirmMail(to, code) {
+        await this.transporter.sendMail({
+            from: process.env.SMTP_USER,
+            to: to,
+            subject: 'Вход на сайте Fcore-tracker',
+            text: '',
+            html: `
+                <div>
+                    <h1>Для входа в аккаунт введите следующий код</h1>
+                    <p>Ваш код активации: ${code}</p>
+                </div>
+            `
+        })
+    }
 }
 
 export default new MailService();

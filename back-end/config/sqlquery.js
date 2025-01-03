@@ -7,6 +7,7 @@ export const createUser = `CREATE TABLE IF NOT EXISTS users (
     password_hash VARCHAR(255) NOT NULL,
     is_active BOOLEAN NOT NULL DEFAULT false,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    TwoFA BOOLEAN NOT NULL DEFAULT false,
     CHECK (type = 'notregister' OR type = 'self'),
     CHECK (role = 'admin' OR role = 'studio')
     );`
@@ -28,8 +29,15 @@ export const createCardDetails = `CREATE TABLE IF NOT EXISTS card_details (
     card_fname VARCHAR(255) NOT NULL,
     card_lname VARCHAR(255) NOT NULL,
     user_id BIGINT NOT NULL,
-    CONSTRAINT fk_user_card FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    bank_id INTEGER NOT NULL,
+    CONSTRAINT fk_user_card FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT fk_bank_card FOREIGN KEY (bank_id) REFERENCES bank(id)
 );`
+
+export const createBank = `CREATE TABLE IF NOT EXISTS bank (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+)`
 
 export const createToken = `CREATE TABLE IF NOT EXISTS token (
     user_id BIGINT NOT NULL,
@@ -40,3 +48,4 @@ export const createToken = `CREATE TABLE IF NOT EXISTS token (
 
 // Insert info
 export const insertStudio = `INSERT INTO studios (inn, fname, lname, mname, about, sphere_of_activity, phone, studio_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
+export const insertBank = `INSERT INTO bank (name) VALUES ('Сбер'), ('ВТБ'), ('Альфа-Банк'), ('Т-Банк'), ('Совкомбанк'), ('Райффайзен Банк'), ('Газпромбанк');`

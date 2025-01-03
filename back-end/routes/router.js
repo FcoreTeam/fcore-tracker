@@ -12,6 +12,7 @@ router.post('/logout', UserController.logout);
 router.post('/activate', UserController.activate);
 router.post('/send_email', UserController.send_email);
 router.post('/set_studio_info', checkAuth, UserController.setStudioInfo);
+router.post('/create_order', checkAuth, UserController.createOrder);
 
 router.get('/refresh', UserController.refresh);
 
