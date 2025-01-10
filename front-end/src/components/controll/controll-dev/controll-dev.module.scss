@@ -1,0 +1,33 @@
+.controll__dev {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .controll__time {
+    width: 50%;
+  }
+  .controll__statuses {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    padding-right: 15px;
+    padding-top: 20px;
+    .dev__info {
+      .order__price__stage {
+        color: #ffffff51;
+        width: 100%;
+        text-align: right;
+        margin-top: 10px; 
+      }
+      .order__price{
+        margin-top: 10px;
+        width: 100%;
+        text-align: right;
+        color: #39C845;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}

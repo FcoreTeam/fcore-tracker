@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo } from "react";
 import TimeCell from "./time-cell/Time-cell";
 import styles from "./dev-time.module.scss";
 
-const DevTime = () => {
+const DevTime = ({ isOrderActivated }) => {
   const { orderStart, orderFinish } = useSelector(
     (state) => state.tracker.orderInfo
   );
@@ -13,15 +13,17 @@ const DevTime = () => {
     orderFinish - Math.floor(Date.now() / 1000)
   );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = Math.floor(Date.now() / 1000);
-      const remainingTime = orderFinish - currentTime;
-      setDeadline(remainingTime > 0 ? remainingTime : 0);
-    }, 1000);
+  if (isOrderActivated) {
+    useEffect(() => {
+      const interval = setInterval(() => {
+        const currentTime = Math.floor(Date.now() / 1000);
+        const remainingTime = orderFinish - currentTime;
+        setDeadline(remainingTime > 0 ? remainingTime : 0);
+      }, 1000);
 
-    return () => clearInterval(interval);
-  }, [orderFinish]);
+      return () => clearInterval(interval);
+    }, [orderFinish]);
+  }
 
   const calculateRemainingPercentage = (orderStart, orderFinish) => {
     const currentTime = Math.floor(Date.now() / 1000);
@@ -48,7 +50,7 @@ const DevTime = () => {
     const seconds = deadline % secondsInMinute;
 
     return {
-      days: String(days).padStart(2, "0"), 
+      days: String(days).padStart(2, "0"),
       hours: String(hours).padStart(2, "0"),
       minutes: String(minutes).padStart(2, "0"),
       seconds: String(seconds).padStart(2, "0"),

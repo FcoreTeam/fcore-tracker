@@ -15,16 +15,19 @@ const ConstructorPopup = () => {
     orderName: "",
     orderDescription: "",
     orderPrice: "",
+    orderSteps: [],
     orderDate: "",
     orderDocs: [],
   });
   let [stageHandle, setStageHandle] = useState(false);
+  const [paymentType, setPaymentType] = useState("full");
   const { isOpen, popupType } = useSelector(
     (state) => state.popups.generalInfo
   );
   const { popupName, popupDescription } = useSelector(
     (state) => state.popups.popupInfo
   );
+  const { orders } = useSelector((state) => state.orders);
   const closePopup = () => {
     dispatch(
       setPopupData({
@@ -41,7 +44,9 @@ const ConstructorPopup = () => {
         (currentStage === 1 &&
           validation.orderName.length !== 0 &&
           validation.orderDescription.length !== 0) ||
-        (currentStage === 2 && validation.orderPrice.length !== 0)
+        (currentStage === 2 &&
+          (paymentType !== "full" ||
+            (+validation.orderPrice > 400 && +validation.orderPrice < 2400000)))
       ) {
         setCurrentStage(++currentStage);
       }
@@ -72,20 +77,28 @@ const ConstructorPopup = () => {
   };
   const handleCreateOrder = () => {
     setCurrentStage(1);
-    // const generateTrackCode = () => {
-    //   let trackcode = Math.random().toString(36).substr(2, 9);
-    //   return trackcode;
-    // };
     dispatch(
       setPopupData({
         isOpen: false,
       })
     );
+    let totalPrice = 0;
+    if (validation.orderSteps.length !== 0) {
+      totalPrice = validation.orderSteps.reduce((accumulator, currentStep) => {
+        return accumulator + currentStep.stepPrice;
+      }, 0);
+    } else {
+      totalPrice = validation.orderPrice;
+    }
     dispatch(
       createOrder({
+        orderID: orders.length + 1,
         orderName: validation.orderName,
-        orderPrice: validation.orderPrice,
-        // orderTrackcode: generateTrackCode,
+        orderDescription: validation.orderDescription,
+        orderPrice: totalPrice,
+        orderReports: [],
+        orderSteps: validation.orderSteps,
+        isOrderActivated: false,
       })
     );
   };
@@ -105,6 +118,8 @@ const ConstructorPopup = () => {
                     currentStage={currentStage}
                     validation={validation}
                     setValidation={setValidation}
+                    setPaymentType={setPaymentType}
+                    paymentType={paymentType}
                   />
                 ) : null}
               </section>
@@ -121,13 +136,27 @@ const ConstructorPopup = () => {
                       orderPrice: "",
                       orderDate: "",
                       orderDocs: [],
+                      orderSteps: [],
                     });
+                    setPaymentType("full");
                   }}
                 />
                 <Button
                   buttonClass="create__btn"
                   buttonText={currentStage === 3 ? "Создать" : "Далее"}
-                  onClick={currentStage === 3 ? handleCreateOrder : changeStage}
+                  onClick={
+                    currentStage === 3
+                      ? () => {
+                          handleCreateOrder();
+                          setPaymentType("full");
+                          setValidation({
+                            orderName: "",
+                            orderDescription: "",
+                            orderSteps: [],
+                          });
+                        }
+                      : changeStage
+                  }
                 />
               </div>
             </div>
