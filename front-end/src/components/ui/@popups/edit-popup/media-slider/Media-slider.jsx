@@ -23,8 +23,7 @@ const Slider = ({ editPhoto, workPhotos, isEdit, setEditPhoto, setEditData }) =>
   }
 
   const setPhotoState = (controllIndex, isDelete, imageFile) => {
-    if (isDelete) {
-      console.log(controllIndex)
+    if (isDelete && editPhoto.workPhotos.length > 1) {
       setEditPhoto(prev => ({
         ...prev,
         workPhotos: prev.workPhotos.filter((el, i) => i !== controllIndex)
@@ -39,7 +38,7 @@ const Slider = ({ editPhoto, workPhotos, isEdit, setEditPhoto, setEditData }) =>
       //   isDelete: isDelete,
       //   changeLink: changeLink,
       // });
-    }
+    } else return
   };
 
   const fileHandleChange = (e, index) => {
@@ -56,13 +55,13 @@ const Slider = ({ editPhoto, workPhotos, isEdit, setEditPhoto, setEditData }) =>
             buttonClass="controll__btn"
             onClick={() => inputFileRef.current.click()}
           />
-          <Button
+          {editPhoto.workPhotos.length > 1 && <Button
             buttonText="Удалить"
             buttonClass="controll__btn"
             onClick={() => {
               setPhotoState(index, true);
             }}
-          />
+          />}
         </div>
       ) : (
         <></>
