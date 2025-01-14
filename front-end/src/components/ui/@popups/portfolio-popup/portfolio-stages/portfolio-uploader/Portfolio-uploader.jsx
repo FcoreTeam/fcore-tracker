@@ -14,8 +14,7 @@ const PortfolioUploader = ({
   let mediaArray = uploadedMedia.map((media, index) => (
     <div className={styles.delete__img} onClick={() => deleteMedia(index, uploadedMedia, setUploadedMedia)}>
       <Image
-        key={index}
-        src={media}
+        src={URL.createObjectURL(media)}
         alt={`Uploaded media ${index}`}
         width={58}
         height={42}

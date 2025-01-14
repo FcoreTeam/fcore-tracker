@@ -26,7 +26,7 @@ const EditPopup = () => {
       works.find((item) => item.workId == workId).workActivity || "",
     workPhotos: works.find((item) => item.workId == workId).workPhotos || "",
   }); // Пиздец
-  const [editPhoto, setPhoto] = useState({});
+  const [editPhoto, setEditPhoto] = useState(editData);
   const work = works.find((item) => item.workId == workId); // Упрощение кода
 
   console.log(editPhoto)
@@ -48,27 +48,28 @@ const EditPopup = () => {
     if (
       editData.workName.workName === originalWork.workName &&
       editData.workDescription.workDescription ===
-        originalWork.workDescription &&
+      originalWork.workDescription &&
       editData.workActivity.workActivity === originalWork.workActivity &&
       editData.workPhotos.workPhotos === originalWork.workPhotos
     ) {
       return;
     } else {
+      // const workPhotosToUse = editPhoto.isDelete
+      //   ? editData.workPhotos.splice(editPhoto.controllIndex, 1) // need fix
+      //   : editData.workPhotos
       dispatch(
         editWork({
           workId: workId,
-          workName: editData.workName,
-          workDescription: editData.workDescription,
-          workActivity: editData.workActivity,
-          workPhotos: editPhoto.isDelete
-            ? editData.workPhotos.splice(editPhoto.controllIndex, 1) // need fix
-            : editData.workPhotos,
+          workName: editPhoto.workName,
+          workDescription: editPhoto.workDescription,
+          workActivity: editPhoto.workActivity,
+          workPhotos: editPhoto.workPhotos,
         })
       );
     }
     console.log("Сохраняем измененные данные:", editData);
   };
-  debugger;
+
   return (
     <>
       {popupType === "edit" && isOpen && works.length !== 0 && (
@@ -90,7 +91,8 @@ const EditPopup = () => {
                   isEdit={isEdit}
                   setEditData={setEditData}
                   workId={workId}
-                  editData={editData}
+                  editPhoto={editPhoto}
+                  setEditPhoto={setEditPhoto}
                 />
                 <WorkControll
                   controllType={2}
@@ -98,8 +100,8 @@ const EditPopup = () => {
                   isEdit={isEdit}
                   setEditData={setEditData}
                   workId={workId}
-                  editData={editData}
-                  setPhoto={setPhoto}
+                  editPhoto={editPhoto}
+                  setEditPhoto={setEditPhoto}
                 />
               </section>
               {accountType !== "client" ? (

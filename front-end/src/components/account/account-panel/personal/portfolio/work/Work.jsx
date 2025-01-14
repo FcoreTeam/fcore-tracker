@@ -33,7 +33,7 @@ const Work = ({
       />
       <div className={styles.work__activity}>{workActivity}</div>
       <Image
-        src={workImage}
+        src={URL.createObjectURL(workImage)}
         alt="work__banner"
         height={162}
         width={315}
