@@ -45,7 +45,48 @@ export const createToken = `CREATE TABLE IF NOT EXISTS token (
     CONSTRAINT fk_user_token FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );`
 
+export const createStatus = `CREATE TABLE IF NOT EXISTS status (
+    id SERIAL PRIMARY KEY,
+    code VARCHAR(255) NOT NULL,
+    translate VARCHAR(255) NOT NULL
+);`
+
+export const createOrder = `CREATE TABLE IF NOT EXISTS orders (
+    id SERIAL PRIMARY KEY,
+    studio_id BIGINT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    theme VARCHAR(255) NOT NULL,
+    price DECIMAL(100,2) NOT NULL,
+    conditions TEXT NOT NULL,
+    email_user VARCHAR(255) UNIQUE NOT NULL CHECK(email_user ilike '%@%'),
+    payment_type VARCHAR(255) NOT NULL,
+    status_id INTEGER NOT NULL,
+    date TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    CONSTRAINT fk_studio_order FOREIGN KEY (studio_id) REFERENCES studios(studio_id),
+    CONSTRAINT fk_status_order FOREIGN KEY (status_id) REFERENCES status(id),
+    CHECK (2400000 > price and price > 199),
+    CHECK (payment_type = 'post' OR payment_type = 'stage')
+);`
+
+export const createStage = `CREATE TABLE IF NOT EXISTS stage (
+    order_id BIGINT NOT NULL,
+    number INTEGER NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    price DECIMAL(100,2) NOT NULL,
+    percent DECIMAL(100,2) NOT NULL,
+    status BOOLEAN NOT NULL DEFAULT false,
+    CHECK (2400000 > price and price > 199),
+    CHECK (6 > number and number > 0),
+    CONSTRAINT fk_order_stage FOREIGN KEY (order_id) REFERENCES orders(id)
+);`
+
 
 // Insert info
 export const insertStudio = `INSERT INTO studios (inn, fname, lname, mname, about, sphere_of_activity, phone, studio_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
 export const insertBank = `INSERT INTO bank (name) VALUES ('Сбер'), ('ВТБ'), ('Альфа-Банк'), ('Т-Банк'), ('Совкомбанк'), ('Райффайзен Банк'), ('Газпромбанк');`
+export const insertStatus = `INSERT INTO status (code, translate) VALUES 
+('notactive', 'Не активирован'), ('inwork', 'В работе'), 
+('check', 'На проверке'), ('waitpaid', 'Ожидает оплаты'),
+('arbitrage', 'Арбитраж'), ('cancel', 'Отменен'), ('done', 'Выполнен');`

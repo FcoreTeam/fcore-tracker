@@ -2,7 +2,7 @@ import { client } from '../config/database.js';
 import { TokenService } from '../service/token-service.js';
 import { validationResult } from 'express-validator';
 import dotenv from 'dotenv';
-import { UserService } from '../service/user-service.js';
+import { UserService } from '../service/executor-service.js';
 
 dotenv.config();
 
@@ -80,45 +80,15 @@ export class UserController {
         }
     }
 
-    static async activate(req, res) {
-        // GET
-        try {
-            const { code, email } = req.body;
-            await UserService.activate(code, email)
-                .then(response => {
-                    if(response.success) {
-                        res.cookie('refreshToken', response.tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
-                        res.status(200).json({success: response.success, message: response.message, accessToken:response.tokens.accessToken});
-                    } else {
-                        res.status(400).json({success: response.success, message: response.message});
-                    }                                 
-                });
-        } catch (err) {
-            console.log(err);
-            res.json({success: false, error: 'Error while activating user'});        
-        }
-    }
-
-    static async send_email(req, res) {
-        try {
-            const { email } = req.body;
-            await UserService.send_email(email)
-                .then(response => res.json(response));
-        } catch (err) {
-            console.log(err);
-            res.json({success: false, error: 'Error while activating user'});        
-        }
-    }
-
     static async setStudioInfo(req, res) {
-        const info = await UserService.setinfo(req.id, req.body).then(response => {
+        await UserService.setinfo(req.id, req.body).then(response => {
             res.json(response);
         });
     }
 
     static async createOrder(req, res) {
         try {
-            await UserService.createOrder(req.body).then(
+            await UserService.createOrder(req.body, req.id).then(
                 response => res.json(response)
             );
         } catch (err) {

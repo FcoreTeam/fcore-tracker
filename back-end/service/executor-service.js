@@ -1,12 +1,14 @@
 import { client } from '../config/database.js';
 import bcrypt from 'bcrypt';
-import { TokenService } from '../service/token-service.js';
+import { TokenService } from './token-service.js';
 import MailService from './mail-service.js';
 import dotenv from 'dotenv';
 import NodeCache from 'node-cache';
+import { MailController } from '../controllers/mail.js';
 
 dotenv.config();
 const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
+export default myCache;
 
 export class UserService {
     static async register(email, password, username, type) {
@@ -29,42 +31,6 @@ export class UserService {
         }
     }
 
-    static async activate(code, email) {
-        try {
-            const fet_code = myCache.get(email);
-            const user = await client.query('select * from users where email = $1', [email]);
-            if (user.rows.length == 0) {
-                return {success: false, message: 'Пользователь не найден'};
-            }
-            if (fet_code != code) {
-                await myCache.del(email);
-                return {success: false, message: 'Неверный код активации'};
-            }
-            await client.query('update users set is_active = true where email = $1', [email]);
-            const tokens = TokenService.generateTokens({email: email, id: user.rows[0].id});
-            await TokenService.saveToken(user.rows[0].id, tokens.refreshToken);
-            return {success: true, message: 'Пользователь активирован', tokens: tokens};
-        } catch (err) {
-            console.log(err);
-            return {success: false, message: 'Error while activating user'};
-        }
-    }
-
-    static async send_email(email) {
-        try {
-            const code = Number(await UserService.generateRandomNumber());
-            if(myCache.has(email)) {
-                await myCache.del(email);
-            }
-            myCache.set(email, code);
-            await MailService.sendActivationMail(email, code);
-            return {success: true, message: 'Письмо для подтверждения отправлено на почту'};
-        } catch (err) {
-            console.log(err);
-            return {success: false, error: 'Error while activating user'};
-        }
-    }
-
     static async login(info) {
         // POST
         try {
@@ -84,7 +50,7 @@ export class UserService {
                 await TokenService.saveToken(user.rows[0].id, tokens.refreshToken);
                 return {success: true, message: 'Вход выполнен', tokens: tokens};
             }    
-            const code = Number(await UserService.generateRandomNumber());
+            const code = Number(await MailController.generateRandomNumber());
             if(myCache.has(info.email)) {
                 await myCache.del(info.email);
             }
@@ -93,12 +59,8 @@ export class UserService {
             return {success: true, message: 'Письмо для подтверждения отправлено на почту'};
         } catch (err) {
             console.log(err);
-            res.json({success: false, error: 'Error while logging in user'});
+            return {success: false, error: 'Error while logging in user'};
         }
-    }
-
-    static async generateRandomNumber() {
-        return Math.floor(10000 + Math.random() * 90000);
     }
 
     static async setinfo(id, info) {
@@ -123,12 +85,20 @@ export class UserService {
         }
     }
 
-    static async createOrder(info) {
+    static async createOrder(info, user_id) {
         try {
-            
+            if(info.payment_type == 'post') {
+                const user = await client.query('select id from users where id = $1', [user_id]);
+                await client.query('insert into orders (studio_id, name, description, theme, price, conditions, email_user, payment_type, status_id, date) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [user.rows[0].id, info.name, info.description, info.theme, info.price, info.conditions, info.email_user, info.payment_type, 1, info.date]);
+                return {success: true, message: 'Заказ создан. Тип оплаты: Пост-платеж'};
+            }
+            if(info.payment_type == 'stage') {
+                const user = await client.query('select id from users where id = $1', [user_id]);
+            }
+            return {success: false, message: 'Неизвестный тип оплаты'}
         } catch (err) {
             console.log(err);
-            res.json({success: false, error: 'Error while creating order'});
+            return {success: false, error: 'Error while creating order'};
         }
     }
 }
