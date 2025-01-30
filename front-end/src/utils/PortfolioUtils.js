@@ -1,6 +1,6 @@
 export const handleFileChange = (event, uploadedMedia, setUploadedMedia) => {
   const files = Array.from(event.target.files);
-  const fileUrls = files.map((file) => URL.createObjectURL(file));
+  const fileUrls = files.map((file) => file);
   setUploadedMedia((prevMedia) => [...prevMedia, ...fileUrls]);
   if (uploadedMedia.length >= 10) {
     uploadedMedia.pop();

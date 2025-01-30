@@ -10,7 +10,7 @@
   pointer-events: all;
   .constructor__popup {
     height: fit-content;
-    width: 530px;
+    width: 570px;
     background: #1f2332;
     border-radius: 15px;
     padding: 20px;
@@ -32,10 +32,10 @@
       margin-top: 20px;
       min-height: 260px;
     }
-    .popup__btns{
-        display: flex;
-        align-items: center;
-        height: 40px;
+    .popup__btns {
+      display: flex;
+      align-items: center;
+      height: 40px;
     }
   }
 }

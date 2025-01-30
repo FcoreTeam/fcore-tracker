@@ -138,6 +138,16 @@
       background: #008ff53b;
     }
   }
+  &.controll__button {
+    border-radius: 15px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    background: #008ff5;
+    &:last-child {
+      background: rgb(202, 94, 94);
+    }
+  }
   &.withdraw__btn {
     background: #3ee449da;
     margin-top: 10px;
@@ -175,6 +185,7 @@
   &.edit__btn,
   &.controll__btn,
   &.create__btn__c,
+  &.create__btn__p,
   &.create__btn__f,
   &.connect__btn,
   &.connect__btn__p,
@@ -218,6 +229,27 @@
     margin-top: 0;
     width: 69%;
     margin-right: 10px;
+  }
+  &.create__btn__p {
+    width: 40px;
+    height: 40px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      height: 20px;
+      width: 2px;
+      rotate: 90deg;
+    }
+    &::before {
+      rotate: 0deg;
+    }
   }
   &.create__btn {
     width: 30%;

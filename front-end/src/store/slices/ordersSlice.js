@@ -43,21 +43,28 @@ const ordersSlice = createSlice({
   reducers: {
     createOrder: (state, action) => {
       const {
+        orderID,
         orderName,
         orderDescription,
         orderPrice,
         orderDateFinish,
         orderAgreements,
         orderTrackCode,
+        orderReports,
+        isOrderActivated,
+        orderSteps,
       } = action.payload;
       state.orders.push({
-        orderID: ++state.orders.length,
+        orderID: orderID,
         orderName: orderName,
         orderDescription: orderDescription,
         orderPrice: orderPrice,
         orderDateFinish: orderDateFinish,
         orderAgreements: orderAgreements,
+        orderReports: orderReports,
         orderTrackCode: orderTrackCode,
+        isOrderActivated: isOrderActivated,
+        orderSteps: orderSteps,
       });
     },
     editOrder: (state, action) => {},

@@ -13,7 +13,8 @@ const WorkControll = ({
   workPhotos,
   isEdit,
   setEditData,
-  setPhoto,
+  editPhoto,
+  setEditPhoto,
 }) => {
   const [editState, setEditState] = useState({
     workName: workName || "",
@@ -27,7 +28,7 @@ const WorkControll = ({
       ...prevState,
       [field]: value,
     }));
-    setEditData({ ...editState, [field]: value });
+    setEditPhoto({ ...editState, [field]: value });
   };
 
   return (
@@ -47,16 +48,18 @@ const WorkControll = ({
           {() => handleChange("workPhotos", workPhotos)}
           {true ? (
             <Slider
+              editPhoto={editPhoto}
               workPhotos={workPhotos}
               isEdit={isEdit}
-              setPhoto={setPhoto}
+              setEditPhoto={setEditPhoto}
+              setEditData={setEditData}
             />
           ) : (
             <></>
           )}
           {isEdit && (
             <div className={styles.media__controll}>
-        
+
             </div>
           )}
         </div>

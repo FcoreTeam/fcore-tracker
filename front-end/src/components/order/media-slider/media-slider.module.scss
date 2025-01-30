@@ -17,13 +17,14 @@
     .report__block {
       width: 100%;
       display: flex;
+      justify-content: space-between;
       margin-top: 10px;
       height: 100%;
       .report__image {
         border-radius: 20px;
       }
       .report__text {
-        max-width: 47%;
+        
         width: 47%;
         height: 100%;
         display: flex;
@@ -36,7 +37,6 @@
         .report__description{
           color: #ffffff41;
           margin-top: 10px;
-          width: 100%;
           height: calc(100% - 140px);
           word-wrap: break-word;
           overflow-wrap: break-word; 
