@@ -23,10 +23,11 @@ export class MailController {
                 await client.query('update users set is_active = true where email = $1', [email]);
                 const tokens = TokenService.generateTokens({email: email, id: user.rows[0].id});
                 await TokenService.saveToken(user.rows[0].id, tokens.refreshToken);
-                return res.json({success: true, message: 'Пользователь активирован', tokens: tokens});
+                res.cookie('refreshToken', tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+                res.json({success: true, message: 'Пользователь активирован', tokens: tokens});
             } catch (err) {
                 console.error(err);
-                return res.json({success: false, message: 'Error while activating user'});
+                res.json({success: false, message: 'Error while activating user'});
             }
     }
     

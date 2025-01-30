@@ -56,7 +56,7 @@ export class UserService {
             }
             myCache.set(info.email, code);
             await MailService.sendConfirmMail(info.email, code);
-            return {success: true, message: 'Письмо для подтверждения отправлено на почту'};
+            return {success: false, message: 'Письмо для подтверждения отправлено на почту'};
         } catch (err) {
             console.log(err);
             return {success: false, error: 'Error while logging in user'};

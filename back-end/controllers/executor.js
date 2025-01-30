@@ -30,7 +30,15 @@ export class UserController {
             if (!errors.isEmpty()) {
                 return res.status(400).json({errors: errors.array()});
             }
-            await UserService.login(req.body).then(response => res.json(response));
+            await UserService.login(req.body).then(response => {
+                if (response.success == true) {
+                    res.cookie('refreshToken', response.tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true});
+                    res.json(response);
+                } else {
+                    res.json(response);
+                }
+            }
+            );
         } catch (err) {
             console.log(err);
             res.json({success: false, error: 'Error while logging in user'});
