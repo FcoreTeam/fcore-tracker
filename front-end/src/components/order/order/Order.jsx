@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupData } from "@/store/slices/popupsSlice";
+import { setChatType } from "@/store/slices/chatSlice";
 
 import StatusList from "../status-list/Status-list";
 import GeneralInfo from "../general-info/General-info";

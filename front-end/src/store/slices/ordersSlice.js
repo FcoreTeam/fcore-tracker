@@ -53,6 +53,7 @@ const ordersSlice = createSlice({
         orderReports,
         isOrderActivated,
         orderSteps,
+        orderMessages,
       } = action.payload;
       state.orders.push({
         orderID: orderID,
@@ -65,10 +66,11 @@ const ordersSlice = createSlice({
         orderTrackCode: orderTrackCode,
         isOrderActivated: isOrderActivated,
         orderSteps: orderSteps,
+        orderMessages: orderMessages,
       });
     },
-    editOrder: (state, action) => {},
+    editStatus: (state, action) => {},
   },
 });
-export const { createOrder, editOrder } = ordersSlice.actions;
+export const { createOrder, editStatus } = ordersSlice.actions;
 export default ordersSlice.reducer;

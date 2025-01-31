@@ -12,6 +12,7 @@ const Select = ({
   isFilter,
   secondClass,
   topOptions,
+  valueClass,
 }) => {
   const optionWrapperRef = useRef(null);
 
@@ -40,8 +41,13 @@ const Select = ({
       onClick={() => setIsOpen((prev) => !prev)}
       style={isFilter ? { width: `98%`, margin: 0 } : null}
     >
-      <div className={styles.select__value}>{value}</div>
-      <div className={styles.select__options} style={{transform: `translateY(${topOptions}px)`}}>
+      <div className={clsx(styles.select__value, styles[valueClass])}>
+        {value}
+      </div>
+      <div
+        className={styles.select__options}
+        style={{ transform: `translateY(${topOptions}px)` }}
+      >
         <div ref={optionWrapperRef} className={styles.options__wrapper}>
           <span
             style={{ backgroundColor: bg.color, top: bg.top }}

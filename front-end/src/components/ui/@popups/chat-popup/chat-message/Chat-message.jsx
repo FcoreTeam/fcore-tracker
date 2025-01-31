@@ -8,7 +8,7 @@ const ChatMessage = ({
   chatDate,
   chatMessage,
   chatAvatar,
-  isMessageUser,
+  isUserMessage,
   isSupportPage,
 }) => {
   return (
@@ -16,7 +16,7 @@ const ChatMessage = ({
       className={clsx(
         styles.chat__message,
         isSupportPage ? styles.support__message : "",
-        isMessageUser ? styles.user__message : ""
+        isUserMessage ? styles.user__message : ""
       )}
     >
       <Image

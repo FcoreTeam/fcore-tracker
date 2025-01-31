@@ -1,11 +1,14 @@
 "use client";
 
 import ControllInfo from "./controll-info/Controll-info";
+import ControllDev from "./controll-dev/Controll-dev";
+import ControllChat from "./controll-chat/Controll-chat";
+import ControllReport from "./controll-report/Controll-report";
+
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
 import styles from "./controll.module.scss";
-import ControllDev from "./controll-dev/Controll-dev";
 
 const Controll = ({ orderID }) => {
   const { orders } = useSelector((state) => state.orders);
@@ -38,8 +41,11 @@ const Controll = ({ orderID }) => {
           />
         </section>
         <section className={styles.controll__reports}>
-          {orderData.isOrderActivated ? (
-            <></>
+          {!orderData.isOrderActivated ? (
+            <div className={styles.controll__activated}>
+              <ControllChat orderID={orderID} />
+              <ControllReport />
+            </div>
           ) : (
             <div className={styles.order__noactive}>
               <p className={styles.noactive__title}>
@@ -48,7 +54,9 @@ const Controll = ({ orderID }) => {
               <p className={styles.noactive__description}>
                 Чтобы приступить к работе, сообщите заказчику код ниже
               </p>
-              <p className={styles.noactive__trackcode}></p>
+              <p className={styles.noactive__trackcode}>
+                {orderData.orderTrackCode}
+              </p>
             </div>
           )}
         </section>

@@ -13,12 +13,14 @@ import ChatPopup from "@/components/ui/@popups/chat-popup/Chat-popup";
 import EditPopup from "@/components/ui/@popups/edit-popup/Edit-popup";
 import AgreementPopup from "@/components/ui/@popups/agreement-popup/Agreement-popup";
 import ConstructorPopup from "@/components/ui/@popups/constructor-popup/Constructor-popup";
+import ReviewPopup from "@/components/ui/@popups/review-popup/Review-popup";
 
 function Popups() {
   const { works } = useSelector((state) => state.portfolio);
   const { popupType } = useSelector((state) => state.popups.generalInfo);
   return (
     <>
+      <ReviewPopup />
       <WarningPopup />
       <PaymentPopup />
       <SettingsPopup />

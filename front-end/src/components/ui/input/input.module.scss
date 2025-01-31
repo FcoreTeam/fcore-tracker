@@ -19,7 +19,11 @@
   &.create__input,
   &.create__input__h,
   &.connect__input,
-  &.part__input {
+  &.part__input,
+  &.review__input,
+  &.review__input__h,
+  &.agreement__input,
+  &.search__input {
     background: transparent;
     width: 100%;
     height: 40px;
@@ -29,11 +33,17 @@
     padding-left: 10px;
     pointer-events: all;
     color: #fff;
+    transition: 0.3s;
+  }
+  &.search__input::-webkit-inner-spin-button{
+    display: none;
   }
   &.connect__input {
     margin-top: 0px;
   }
-
+  &.agreement__input {
+    margin-top: 20px;
+  }
   &.auth__input,
   &.auth__input__h,
   &.auth__input__hc {
@@ -53,7 +63,8 @@
   &.auth__input__h,
   &.auth__input__hc,
   &.chat__input,
-  &.create__input__h {
+  &.create__input__h,
+  &.review__input__h {
     height: 100px;
     text-align: left;
     display: flex;
@@ -94,6 +105,7 @@
     opacity: 0;
     pointer-events: all;
     z-index: 5;
+    border: 1px solid red;
     position: absolute;
     cursor: pointer;
     &:checked + .checkbox__label::before {

@@ -1,0 +1,71 @@
+.popup__wrap {
+  width: 100vw;
+  height: 100vh;
+  background: #00000054;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: 0.3s;
+  .review__popup {
+    height: fit-content;
+    width: 730px;
+    background: #1f2332;
+    border-radius: 15px;
+    padding: 20px;
+    transition: 0.3s;
+    .popup__name {
+      color: #fff;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .popup__description {
+      color: #ffffff51;
+      margin-top: 10px;
+      span {
+        color: #fff;
+      }
+    }
+    .popup__body {
+      margin-top: 20px;
+      display: flex;
+      flex-flow: column;
+      .review {
+        display: flex;
+        .stars {
+          display: flex;
+        }
+        .review__rate {
+          width: 100%;
+          display: flex;
+          flex-flow: column;
+          align-items: flex-end;
+          justify-content: center;
+          height: fit-content;
+          div {
+            display: flex;
+            flex-flow: row-reverse;
+            align-items: flex-end;
+            .rate__name,
+            .rate__emoji {
+              color: #fff;
+              font-size: 20px;
+              font-weight: 700;
+              letter-spacing: 1px;
+            }
+            .rate__emoji {
+              font-size: 40px;
+            }
+          }
+        }
+      }
+      .inputs {
+        display: flex;
+        flex-flow: column;
+      }
+    }
+  }
+}

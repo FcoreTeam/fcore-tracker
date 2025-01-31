@@ -4,40 +4,27 @@ import ChatType from "./chat-type/Chat-type";
 import ChatFooter from "./chat-footer/Chat-footer";
 import ChatMessage from "./chat-message/Chat-message";
 import { addMessage } from "@/store/slices/chatSlice";
-
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 import styles from "./chat-popup.module.scss";
 
 const ChatPopup = () => {
-  const dispatch = useDispatch();
-  const [chatType, setChatType] = useState("client");
-  const localTime = new Date().getHours();
-  const isSupportActive = localTime < 1 || localTime > 8;
   const { isOpen, popupType } = useSelector(
     (state) => state.popups.generalInfo
   );
-  const { userID } = useSelector((state) => state.auth.firstStage);
+  const { chatName, chatType } = useSelector((state) => state.chat.chatInfo);
+  const { messages } = useSelector((state) => state.chat);
 
-  const { chatName, globalType } = useSelector((state) => state.chat.chatInfo);
-  const { chatMessages } = useSelector((state) => state.chat);
+  const [localType, setChatType] = useState("client");
 
-  const setChat = (type) => {
-    setChatType(type);
-  };
-
-  const sendMessage = async () => {
-    dispatch(addMessage({}));
-  };
-
-  const messages = chatMessages.map((item) => (
+  const messagesMap = messages.map((item, index) => (
     <ChatMessage
+      key={index}
       chatSender={item.chatSender}
       chatMessage={item.chatMessage}
       chatDate={item.chatDate}
       chatAvatar={item.chatAvatar}
-      isMessageUser={item.chatID.startsWith(userID)}
+      isUserMessage={item.isUserMessage}
     />
   ));
 
@@ -50,40 +37,23 @@ const ChatPopup = () => {
               <div className={styles.chat__header}>
                 <ChatNavigation chatName={chatName} />
                 <ChatType
-                  firstType={() => setChat("client")}
+                  firstType={() => setChatType("client")}
                   chatType={chatType}
-                  secondType={() => setChat("support")}
-                  thirdType={() => setChat("clientSupport")}
+                  secondType={() => setChatType("support")}
+                  thirdType={() => setChatType("clientSupport")}
                 />
               </div>
               <div className={styles.chat__body}>
-                {chatType === "client" && globalType === "client" ? (
-                  messages
+                {localType === "client" ? (
+                  messagesMap
                 ) : chatType === "support" ? (
-                  isSupportActive ? (
-                    <></>
-                  ) : (
-                    <div className={styles.support__disable}>
-                      <section className={styles.disable__block}>
-                        <p className={styles.disable__title}>
-                          Поддержка спит🌛
-                        </p>
-                        <p className={styles.disable__description}>
-                          Агентам поддержки нужен отдых, мы скоро вернемся
-                        </p>
-                      </section>
-                      <p className={styles.disable__time}>
-                        Мы работаем с 08:00 до 01:00 по будням, а в выходные с
-                        09:00 до 03:00 (Moscow Local Time)
-                      </p>
-                    </div>
-                  )
+                  <></>
                 ) : chatType === "clientSupport" ? (
                   <></>
                 ) : null}
               </div>
               <div className={styles.chat__footer}>
-                <ChatFooter />
+                <ChatFooter addMessage={addMessage} />
               </div>
             </section>
           </div>

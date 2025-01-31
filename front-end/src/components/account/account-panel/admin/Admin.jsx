@@ -3,6 +3,7 @@ import AdminNavigation from "./admin-navigation/Admin-navigation";
 import ChatPanel from "./admin-panel/chat-panel/Chat-panel";
 
 import styles from "./admin.module.scss";
+import SearchStage from "./admin-panel/search-panel/Search-stage";
 
 
 const Admin = () => {
@@ -34,7 +35,7 @@ const Admin = () => {
       </section>
       <div className={styles.admin__panel}>
         {adminNavigation === "search" ? (
-          <></>
+          <SearchStage />
         ) : adminNavigation === "chat" ? (
           <ChatPanel />
         ) : adminNavigation === "verify" ? (

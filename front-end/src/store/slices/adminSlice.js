@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const adminState = {
+  adminSearch: {
+    data: [
+      { searchName: "Разработка сайта для компании", searchId: 1, searchType: "Заказ" },
+      { searchName: "Lonfich", searchId: 1, searchType: "Аккаунт" },
+      { searchName: "Чат с заказчиком#1", searchId: 1, searchType: "Чат" },
+      { searchName: "Чат с заказчиком#2", searchId: 2, searchType: "Чат" },
+    ],
+  },
   adminChat: {
     chatRequests: [
       {

@@ -17,7 +17,9 @@
     position: relative;
     border: 2px solid #3b5978;
     border-radius: 15px;
-
+    &.search__select {
+      border: 2px solid #008ff5;
+    }
     &::after {
       content: "❮";
       position: absolute;
@@ -26,6 +28,11 @@
   }
   &.filter {
     margin-top: 0px !important;
+  }
+  &.rotate {
+    margin-left: 20px !important;
+    width: 30% !important;
+    margin-top: 10px !important;
   }
   .select__options {
     border-radius: 15px;

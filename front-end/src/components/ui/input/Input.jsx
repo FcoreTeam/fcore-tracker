@@ -7,6 +7,7 @@ const Input = ({
   inputPlaceholder,
   inputClass,
   validateClass,
+  secondClass,
   onChange,
   value,
   length,
@@ -16,6 +17,7 @@ const Input = ({
   isTextArea,
   accept,
   onLoad,
+  style
 }) => {
   return (
     <>
@@ -27,7 +29,8 @@ const Input = ({
             className={clsx(
               styles.input,
               styles[inputClass],
-              styles[validateClass]
+              styles[validateClass],
+              styles[secondClass]
             )}
             maxLength={length}
             onChange={onChange}
@@ -37,7 +40,7 @@ const Input = ({
             ref={inputRef}
             accept={accept}
             onLoad={onLoad}
-
+            style={style}
           />
           {inputType === "checkbox" ? (
             <label htmlFor={id} className={styles.checkbox__label}></label>

@@ -1,0 +1,13 @@
+.controll__report {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  align-items: flex-end;
+  .report__title {
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+}

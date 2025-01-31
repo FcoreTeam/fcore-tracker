@@ -98,7 +98,9 @@ const ConstructorPopup = () => {
         orderPrice: totalPrice,
         orderReports: [],
         orderSteps: validation.orderSteps,
+        orderTrackCode: "",
         isOrderActivated: false,
+        orderMessages: [],
       })
     );
   };
