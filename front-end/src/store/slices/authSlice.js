@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const authState = {
   isValidate: false,
   isAuth: true,
-  accountType: "admin",
+  accountType: "self-employment",
   firstStage: {
     email: "",
     username: "BestDev",

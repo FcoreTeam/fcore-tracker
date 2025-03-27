@@ -7,11 +7,12 @@ import { setPopupData } from "@/store/slices/popupsSlice";
 
 import Button from "@/components/ui/button/Button";
 import Input from "@/components/ui/input/Input";
+import Main from "@/components/main/Main";
 
 import styles from "./css/page.module.scss";
 import Header from "@/components/header/Header";
 
-const Main = () => {
+const page = () => {
   const dispatch = useDispatch();
   const [menuState, setMenuState] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -53,7 +54,9 @@ const Main = () => {
 
   return (
     <>
-      <Header mainPage={true} />
+      <Header />
+      <Main />
+      {/* <Header mainPage={true} />
       <main className={styles.main}>
         <div className={styles.main__information}>
           <div className={styles.main__text}>
@@ -95,9 +98,9 @@ const Main = () => {
             />
           )}
         </div>
-      </main>
+      </main> */}
     </>
   );
 };
 
-export default Main;
+export default page;

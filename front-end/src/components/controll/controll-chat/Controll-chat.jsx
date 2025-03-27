@@ -11,9 +11,9 @@ const ControllChat = ({ companionName, orderID }) => {
       <div className={styles.chat__body}>
         <p className={styles.chat__companion}>Чат: {companionName}</p>
         <section className={styles.chat__messages}>
-          {orderMessages.map((item) => (
+          {/* {orderMessages.map((item) => (
             <ChatMessage chatMessage={item.message} />
-          ))}
+          ))} */}
         </section>
       </div>
       <ChatFooter />

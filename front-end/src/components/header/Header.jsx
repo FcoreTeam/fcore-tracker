@@ -9,7 +9,7 @@ const Header = ({ mainPage }) => {
   const { isAuth } = useSelector((state) => state.auth);
   return (
     <header className={clsx(styles.header, !mainPage ? styles.header__bg : "")}>
-      {!mainPage ? (
+      {/* {!mainPage ? (
         <Image
           src="/icons/logo.png"
           height={100}
@@ -19,21 +19,21 @@ const Header = ({ mainPage }) => {
         />
       ) : (
         <></>
-      )}
+      )} */}
 
       <div className={styles.header__list}>
         <Link href="/" className={styles.header__link}>
-          Что это?
+          Faq
         </Link>
         <Link href="/" className={styles.header__link}>
-          Заказчикам
+          Инвесторам
         </Link>
-        <Link
+        {/* <Link
           href={isAuth ? "/account" : "/auth"}
           className={styles.header__link}
         >
           {isAuth ? "Личный кабинет" : "Исполнителям"}
-        </Link>
+        </Link> */}
       </div>
     </header>
   );
