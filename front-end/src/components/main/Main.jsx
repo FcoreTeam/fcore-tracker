@@ -7,11 +7,20 @@ import clsx from "clsx";
 import Image from "next/image";
 import Button from "../ui/button/Button";
 import Link from "next/link";
+import Faq from "./faq/Faq";
 
 const Main = () => {
   const questions = [
-    { question: "Что это за проект?", answer: "" },
-    { question: "Какие цели он решает?", answer: "" },
+    {
+      question: "Что это за проект?",
+      answer:
+        "Fcore Tracker - революция в сфере фриланса. Наш проект напаравлен на улучшение качества выполненных заказов исполнителями и повышение удовлетворённости клиента",
+    },
+    {
+      question: "Какие проблемы он решает?",
+      answer:
+        "Наш проект, направлен на исправление всех существующих проблем фриланс-бирж. Например: отсутствие возможности зарегистрироваться как компания, подписать юридический договор, нет возможности назначить видеоконференцию с заказчиком - все эти проблемы решает Tracker",
+    },
     {
       question: "Как планируете привлекать инвесторов?",
       answer: "Через новую инновационную площадку StartUp seed",
@@ -21,9 +30,20 @@ const Main = () => {
       answer:
         "Разработкой занимается команда Fcore, данный проект является дочерним.",
     },
-    { question: "", answer: "" },
-    { question: "", answer: "" },
-    { question: "", answer: "" },
+    {
+      question: "Можно будет оплатить криптовалютой",
+      answer:
+        "Да, конечно! Но немного позже, на данный момент наша команда разрабатывает эквайринг KingPay, благодаря нему мы сможем принимать оплату в криптовалюте",
+    },
+    {
+      question: "Будет ли подписка на сайте?",
+      answer:
+        "Да, будет. Мы планируем реализовать определенный функионал на сайте, который будет доступен за плату в месяц.",
+    },
+    {
+      question: "Смогу ли я зайти с телефона?",
+      answer: "Обязательно, мобильная версия нашего проекта почти готова",
+    },
   ];
 
   const [timeLeft, setTimeLeft] = useState({
@@ -143,7 +163,6 @@ const Main = () => {
         width={300}
         height={300}
         className={styles.star}
-        alt="star prev"
       />
       <section className={styles.stats}>
         <Stats />
@@ -276,7 +295,13 @@ const Main = () => {
         </div>
       </div>
       <h2 className={styles.main__subtitle}>FaQ</h2>
-      <div className={styles.questions}></div>
+      <div className={styles.questions}>
+        <Faq questions={questions} />
+      </div>
+      <h2 className={styles.main__subtitle}>Социальные сети</h2>
+      <div className={styles.contacts}>
+        {/* <Image className={styles.contact__logo} src={null} /> */}
+      </div>
     </div>
   );
 };

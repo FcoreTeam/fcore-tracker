@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useState, useEffect } from "react";
+// import { useDispatch } from "react-redux";
 
-import { setPopupData } from "@/store/slices/popupsSlice";
+// import { setPopupData } from "@/store/slices/popupsSlice";
 
-import Button from "@/components/ui/button/Button";
-import Input from "@/components/ui/input/Input";
+// import Button from "@/components/ui/button/Button";
+// import Input from "@/components/ui/input/Input";
 import Main from "@/components/main/Main";
 
-import styles from "./css/page.module.scss";
+// import styles from "./css/page.module.scss";
 import Header from "@/components/header/Header";
 
 const page = () => {
@@ -17,34 +17,34 @@ const page = () => {
   // const [menuState, setMenuState] = useState(false);
   // const [inputValue, setInputValue] = useState("");
   // const [validate, setValidate] = useState(false);
-  const setMenuUi = () => {
-    setMenuState(!menuState);
-  };
+  // const setMenuUi = () => {
+  //   setMenuState(!menuState);
+  // };
 
-  const formatInput = (value) => {
-    const cleanedValue = value.replace(/\D/g, "");
-    const match = cleanedValue.match(/^(\d{0,4})(\d{0,4})(\d{0,4})$/);
-    if (match) {
-      return [match[1], match[2], match[3]].filter(Boolean).join("-");
-    }
-    return value;
-  };
+  // const formatInput = (value) => {
+  //   const cleanedValue = value.replace(/\D/g, "");
+  //   const match = cleanedValue.match(/^(\d{0,4})(\d{0,4})(\d{0,4})$/);
+  //   if (match) {
+  //     return [match[1], match[2], match[3]].filter(Boolean).join("-");
+  //   }
+  //   return value;
+  // };
 
-  const handleInputChange = (e) => {
-    const formattedValue = formatInput(e.target.value);
-    setInputValue(formattedValue);
-  };
+  // const handleInputChange = (e) => {
+  //   const formattedValue = formatInput(e.target.value);
+  //   setInputValue(formattedValue);
+  // };
 
-  const setWarningPopup = () => {
-    dispatch(
-      setPopupData({
-        isOpen: true,
-        popupType: "warning",
-        popupName: "Произошла ошибка ❌",
-        popupDescription: "Данный трек-код не действителен",
-      })
-    );
-  };
+  // const setWarningPopup = () => {
+  //   dispatch(
+  //     setPopupData({
+  //       isOpen: true,
+  //       popupType: "warning",
+  //       popupName: "Произошла ошибка ❌",
+  //       popupDescription: "Данный трек-код не действителен",
+  //     })
+  //   );
+  // };
 
   // useEffect(() => {
   //   if (!validate && menuState) {

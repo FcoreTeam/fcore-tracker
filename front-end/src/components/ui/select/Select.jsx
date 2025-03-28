@@ -65,7 +65,7 @@ const Select = ({
               }}
               onMouseEnter={(e) => onMouseEnter(e, el)}
             >
-              <Image src={el.iconUrl} width={30} height={30} alt="iconURL"/>
+              <Image src={el.iconUrl} width={30} height={30} />
               {el.name}
             </div>
           ))}

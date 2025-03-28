@@ -1,7 +1,8 @@
 .footer {
   height: 150px;
   width: 100%;
-  background: #1f2332;
+  background: linear-gradient(270deg, #1f2332, #2a3045, #3a4160);
+  background-size: 300% 300%;
   margin-top: 20px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -9,10 +10,14 @@
   align-items: center;
   justify-content: space-between;
   padding-right: 20px;
+  animation: GradientFlow 8s ease infinite;
+
   .company__info {
     display: flex;
     width: 50%;
+
     .text__info {
+
       .company__name,
       .company__description {
         margin-top: 30px;
@@ -20,6 +25,7 @@
         font-size: 19px;
         letter-spacing: 1px;
       }
+
       .company__description {
         margin-top: 5px !important;
         font-size: 13px;
@@ -27,11 +33,13 @@
       }
     }
   }
+
   .other__data {
     width: 50%;
     height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+
     .footer__link {
       color: #ffffff50;
       display: flex;
@@ -41,12 +49,29 @@
       cursor: pointer;
       margin-top: 7px;
       transition: .3s;
-      &:first-child{
+
+      &:first-child {
         margin-top: 5px;
       }
-      &:hover{
+
+      &:hover {
         color: #fff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       }
     }
+  }
+}
+
+@keyframes GradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }

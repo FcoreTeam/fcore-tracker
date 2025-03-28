@@ -6,7 +6,7 @@ const nextConfig = {
   },
   distDir: "dist",
   trailingSlash: false,
-  output: "standalone", // было export заменил на standalone, потому что не билдилось
+  output: "export",
 };
 
 export default nextConfig;

@@ -25,7 +25,10 @@ const Header = ({ mainPage }) => {
         <Link href="/" className={styles.header__link}>
           Faq
         </Link>
-        <Link href="/" className={styles.header__link}>
+        <Link
+          href="https://forms.yandex.ru/u/67e1cb5b49af471cf6b62b56/"
+          className={styles.header__link}
+        >
           Инвесторам
         </Link>
         {/* <Link
