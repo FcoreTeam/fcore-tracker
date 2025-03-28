@@ -75,3 +75,70 @@
     background-position: 0% 50%;
   }
 }
+
+@media(max-width: 764px) {
+  .footer {
+    .company__info {
+      .text__info {
+        .company__name {
+          font-size: 17px;
+          text-wrap: nowrap;
+        }
+      }
+    }
+
+    .other__data {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-end;
+
+
+    }
+  }
+}
+
+@media(max-width: 420px) {
+  .footer {
+    flex-flow: column;
+    height: fit-content;
+    padding-right: 0;
+
+    .company__info {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      .comapny__logo {
+        scale: 1.4;
+      }
+
+      .text__info {
+        .company__name {
+          font-size: 17px;
+          text-wrap: nowrap;
+        }
+
+        .company__description {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+
+    .other__data {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center !important;
+
+      .footer__link {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+      }
+
+    }
+  }
+}

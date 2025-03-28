@@ -105,7 +105,10 @@ const Main = () => {
             {/* Дни (2 или 3 клетки) */}
             <div className={styles.time__wrap}>
               {daysStr.split("").map((digit, i) => (
-                <div key={`day-${i}`} className={styles.upload__cell}>
+                <div
+                  key={`day-${i}`}
+                  className={clsx(styles.upload__cell, i == 1 && styles.left)}
+                >
                   {digit}
                 </div>
               ))}
@@ -119,7 +122,7 @@ const Main = () => {
                   {digit}
                 </div>
               ))}
-              <p className={styles.days__title}>Часов</p>
+              <p className={clsx(styles.days__title, styles.hours)}>Часов</p>
             </div>
 
             {/* Минуты (2 клетки) */}
@@ -129,7 +132,7 @@ const Main = () => {
                   {digit}
                 </div>
               ))}
-              <p className={styles.days__title}>Минут</p>
+              <p className={clsx(styles.days__title, styles.last)}>Минут</p>
             </div>
 
             {/* Секунды (2 клетки) */}
@@ -143,7 +146,7 @@ const Main = () => {
         </div>
         <div className={styles.main__banner}>
           <Image
-            src="./icons/bg_s_part.png"
+            src="./icons/laptop.png"
             width={900}
             height={700}
             alt="banner"
@@ -172,7 +175,7 @@ const Main = () => {
         <div className={clsx(styles.team__block, styles.value__second)}>
           <div className={styles.user__info}>
             <Image
-              src="./logotype.jpg"
+              src="./team/CEO.jpg"
               width={60}
               height={60}
               alt="user"
@@ -231,7 +234,13 @@ const Main = () => {
             Арт-директор <br /> Стаж 5 лет
           </p>
         </div>
-        <div className={clsx(styles.team__block, styles.value__second)}>
+        <div
+          className={clsx(
+            styles.team__block,
+            styles.value__second,
+            styles.block__mobile
+          )}
+        >
           {" "}
           <div className={styles.user__info}>
             <Image
@@ -247,7 +256,7 @@ const Main = () => {
             Cyber-security engineer <br /> Стаж 4.5 года
           </p>
         </div>
-        <div className={styles.team__block}>
+        <div className={clsx(styles.team__block, styles.block__mobile__w)}>
           {" "}
           <div className={styles.user__info}>
             <Image
@@ -257,14 +266,21 @@ const Main = () => {
               alt="user"
               className={styles.user__logo}
             />
-            <p className={clsx(styles.user__name, styles.second__title)}>
+            <p
+              className={clsx(
+                styles.user__name,
+                styles.second__title,
+                styles.mobile__title
+              )}
+            >
               Пономарев Демьян
             </p>
           </div>
           <p
             className={clsx(
               styles.user__description,
-              styles.second__description
+              styles.second__description,
+              styles.mobile__title
             )}
           >
             Middle back-end developer <br /> Стаж 3 года
@@ -300,7 +316,36 @@ const Main = () => {
       </div>
       <h2 className={styles.main__subtitle}>Социальные сети</h2>
       <div className={styles.contacts}>
-        {/* <Image className={styles.contact__logo} src={null} /> */}
+        <Image
+          src="./icons/star_prev.svg"
+          width={300}
+          height={300}
+          className={styles.star__cont}
+        />
+        <Link href="https://vk.com/fcoreteam" className={styles.link}>
+          <Image
+            src="./icons/vk_logo.svg"
+            width={256}
+            height={256}
+            className={styles.link__img}
+          />
+          <p>@ fcoreteam</p>
+        </Link>
+        <Link href="https://t.me/fcoreteam" className={styles.link}>
+          <Image
+            src="./icons/tg_logo.webp"
+            width={256}
+            height={256}
+            className={styles.link__img}
+          />
+          <p>@ fcoreteam</p>
+        </Link>
+        <Image
+          src="./icons/star_prev.svg"
+          width={300}
+          height={300}
+          className={styles.star__cont__sec}
+        />
       </div>
     </div>
   );

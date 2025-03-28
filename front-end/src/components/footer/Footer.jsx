@@ -20,13 +20,13 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.other__data}>
-        <Link
+        {/* <Link
           href="fcoretrackeroferta.odt"
           className={styles.footer__link}
           download
         >
           Договор оферты
-        </Link>
+        </Link> */}
         <Link href="contactsfcoretracker.odt" className={styles.footer__link}>
           Контакты
         </Link>

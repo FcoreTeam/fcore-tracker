@@ -100,3 +100,62 @@
         }
     }
 }
+
+@media(max-width: 1072px) {
+    .stats {
+        display: block;
+    }
+
+    // .stat:nth-child(2) {
+    //     margin-top: 0 !important;
+    // }
+
+    // .stat:nth-child(4) {
+    //     margin-top: 0 !important;
+    // }
+
+    .stat {
+        width: 100% !important;
+        margin-top: 30px !important;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .stats {
+        background-size: 130vw 60vh;
+
+        .stat {
+            .stat__title {
+                font-size: 22px;
+                text-align: center;
+            }
+
+            .stat__value {
+                font-size: 80px;
+            }
+        }
+    }
+
+}
+
+@media(max-width: 438px) {
+    .stats {
+        background-size: 200vw 50vh;
+
+        .stat {
+            height: fit-content;
+
+            .stat__title {
+                font-size: 21px;
+                text-align: center;
+            }
+
+            .stat__value {
+                font-size: 50px;
+                margin-top: 10px;
+            }
+        }
+    }
+
+}
