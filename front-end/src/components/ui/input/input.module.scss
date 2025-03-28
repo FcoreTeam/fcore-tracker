@@ -1,4 +1,4 @@
-input {
+.input {
   &.menu__input {
     height: 40px;
     border-radius: 15px;
@@ -8,7 +8,197 @@ input {
     border: 2px solid #0088f5;
     color: #fff;
   }
-  &.incorrect{
+  &.email__input,
+  &.auth__input,
+  &.auth__input__h,
+  &.auth__input__hc,
+  &.card__input,
+  &.card__input__p,
+  &.change__input,
+  &.edit__input,
+  &.create__input,
+  &.create__input__h,
+  &.connect__input,
+  &.part__input,
+  &.review__input,
+  &.review__input__h,
+  &.agreement__input,
+  &.search__input {
+    background: transparent;
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px solid #0088f5;
+    margin-top: 10px;
+    padding-left: 10px;
+    pointer-events: all;
+    color: #fff;
+    transition: 0.3s;
+  }
+  &.search__input::-webkit-inner-spin-button{
+    display: none;
+  }
+  &.connect__input {
+    margin-top: 0px;
+  }
+  &.agreement__input {
+    margin-top: 20px;
+  }
+  &.auth__input,
+  &.auth__input__h,
+  &.auth__input__hc {
+    font-size: 15px;
+  }
+  &.part__input {
+    &:first-child {
+      width: 29%;
+    }
+    &:nth-child(2) {
+      width: 29%;
+    }
+    &:nth-child(3) {
+      width: 29%;
+    }
+  }
+  &.auth__input__h,
+  &.auth__input__hc,
+  &.chat__input,
+  &.create__input__h,
+  &.review__input__h {
+    height: 100px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10px;
+    resize: none;
+    min-width: 100%;
+    padding-right: 10px;
+    &:focus {
+      outline: none;
+    }
+  }
+  &.code__input {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: transparent;
+    border: 2px solid #0088f5;
+    color: #fff;
+    display: flex;
+    font-size: 25px;
+    margin-right: 10px;
+    text-align: center;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  &.card__input {
+    width: 100%;
+  }
+  &.checkbox {
+    margin-top: 9px;
+    height: 25px;
+    width: 25px;
+    top: 5px;
+    opacity: 0;
+    pointer-events: all;
+    z-index: 5;
+    border: 1px solid red;
+    position: absolute;
+    cursor: pointer;
+    &:checked + .checkbox__label::before {
+      background-color: #0088f5;
+      border-color: #0088f5;
+    }
+  }
+
+  &.incorrect {
     border: 2px solid red;
+  }
+  &.change__input {
+    height: 55px;
+    border: 2px solid #3b5978;
+  }
+  &.card__input__p {
+    border: 2px solid #3b5978;
+  }
+  &.auth__input__hc {
+    border: 2px solid #3b5978;
+    padding-right: 190px;
+    min-height: 100px;
+    height: auto;
+  }
+  &.chat__input {
+    border: 2px solid #3b5978;
+    border-radius: 15px;
+    background: transparent;
+    height: 55px;
+    padding-right: 50px;
+    padding-left: 10px;
+    color: #fff;
+  }
+  &.upload__hide {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+  }
+  &.video__input {
+    border: 2px solid #0088f5;
+    background: transparent;
+    width: 100%;
+    height: 40px;
+    padding-left: 20px;
+    border-radius: 15px;
+    color: #fff;
+  }
+}
+
+.checkbox__label {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #fff;
+  height: 30px;
+  line-height: 40px;
+  margin-top: 5px !important;
+  transition: background-color 0.3s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0088f5;
+    border-radius: 3px;
+    margin-top: 5px !important;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 4.5px;
+
+    transform: translateY(-50%) scale(0);
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 2px;
+    top: 20px;
+  }
+
+  /* Состояние, когда чекбокс отмечен */
+  .checkbox:checked + &::after {
+    transform: translateY(-50%) scale(1);
   }
 }

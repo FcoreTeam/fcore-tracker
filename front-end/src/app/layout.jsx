@@ -1,13 +1,10 @@
-import localFont from "next/font/local";
-import "./globals.scss";
+import "./css/globals.scss";
+import { Montserrat } from "next/font/google"
 
-import StoreProvider from "./StoreProvider";
+import StoreProvider from "../store/StoreProvider";
+import Footer from "@/components/footer/Footer";
 
-const Montserrat = localFont({
-  src: "./fonts/Montserrat-Regular.ttf",
-  variable: "--font-montserrat-regular",
-  weight: "100 900",
-});
+const font = Montserrat({ subsets: ["latin"], weight: "300" });
 
 export const metadata = {
   title: "Fcore Tracker",
@@ -15,10 +12,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body className={`${Montserrat.variable} ${Montserrat.variable}`}>
+      <body className={font.className}>
+        
         <StoreProvider>{children}</StoreProvider>
+        <Footer />
       </body>
     </html>
   );

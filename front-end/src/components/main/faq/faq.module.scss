@@ -1,0 +1,111 @@
+.faq {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-top: 40px;
+
+    .question {
+        display: flex;
+        flex-flow: column;
+        border: 2px solid #0085E3;
+        border-radius: 20px;
+        padding: 20px;
+        height: fit-content;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        overflow: hidden;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 133, 227, 0.3);
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &.open {
+            .is__open {
+                .plus {
+                    transform: rotate(45deg);
+                }
+            }
+
+            .answer__wrapper {
+                max-height: 500px;
+                opacity: 1;
+                margin-top: 20px;
+            }
+        }
+
+        .body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 100%;
+
+            .body__info {
+                display: flex;
+                align-items: center;
+
+                .question__text {
+                    color: #fff;
+                    margin-left: 20px;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                }
+
+                .number {
+                    color: #0085E3;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .is__open {
+                height: 40px;
+                width: 40px;
+                background: #0085E3;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+
+                .plus {
+                    position: relative;
+                    width: 20px;
+                    height: 2px;
+                    background: white;
+                    transition: all 0.3s ease;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 2px;
+                        height: 20px;
+                        background: white;
+                        left: 9px;
+                        top: -9px;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+
+        .answer__wrapper {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.4s ease;
+            overflow: hidden;
+
+            .answer {
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 1.6;
+                padding: 5px 0;
+            }
+        }
+    }
+}

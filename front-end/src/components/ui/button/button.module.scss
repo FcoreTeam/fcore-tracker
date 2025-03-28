@@ -1,7 +1,10 @@
 .button {
   cursor: pointer;
   transition: 0.5s;
-  &.menu__btn,&.check__btn {
+  &.menu__btn,
+  &.check__btn,
+  &.payment__btn,
+  &.auth__btn {
     height: 40px;
     border-radius: 15px;
     color: #fff;
@@ -9,7 +12,323 @@
     letter-spacing: 1px;
     background: #008ff5;
   }
-  &:hover{
+  &.payment__btn {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 15px;
+    background: #37d177;
+    pointer-events: all;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  &.auth__btn {
+    width: 40%;
+    font-size: 16px;
+    transition: 0.5s;
+    &:first-child {
+      width: 70%;
+    }
+    &:last-child {
+      width: 25%;
+      background: transparent;
+      border: 2px solid #008ff5;
+    }
+  }
+  &:hover {
     scale: 1.03;
+  }
+  &.resend__code,
+  &.connect__btn,
+  &.accept__btn {
+    height: 40px;
+    width: 250px;
+    border-radius: 15px;
+    background: #3b5978;
+    color: #fff;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  &.connect__btn {
+    min-width: 180px;
+    margin-top: 0;
+  }
+  &.setting__btn,
+  &.code__btn {
+    height: 45px;
+    width: 170px;
+    border-radius: 15px;
+    background: #3b5978;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: center;
+    flex-flow: row-reverse;
+    font-size: 17px;
+    color: #fff;
+    .image {
+      margin-right: 10px;
+    }
+  }
+  &.accept__btn {
+    position: absolute;
+    top: -2px;
+    margin-right: 5px;
+    width: 180px;
+  }
+  &.code__btn {
+    width: 49%;
+    margin-top: 20px;
+    background: #008ff5;
+    &:nth-child(1) {
+      background: #3b5978;
+    }
+  }
+  &.buy__btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    background: transparent;
+    border-radius: 20px;
+    border: 2px solid #3ee449da;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #3ee449da;
+    transition: 0.7s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: all;
+
+    &::before {
+      content: "";
+
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      background: #3ee449da;
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      z-index: -1;
+    }
+
+    &:hover {
+      scale: 1;
+      border: 2px solid #3ee44900;
+      color: #fff;
+      &::before {
+        transform: translateX(0);
+      }
+    }
+  }
+  &.download__btn,
+  &.withdraw__btn {
+    width: 49%;
+    height: 40px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #008ff5;
+    &:last-child {
+      background: #008ff53b;
+    }
+  }
+  &.controll__button {
+    border-radius: 15px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    background: #008ff5;
+    &:last-child {
+      background: rgb(202, 94, 94);
+    }
+  }
+  &.withdraw__btn {
+    background: #3ee449da;
+    margin-top: 10px;
+    &:last-child {
+      background: #3ee44953;
+    }
+  }
+  &.cancell__btn {
+    width: 25%;
+    height: 40px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #f50000;
+    margin-left: 10px;
+  }
+  &.upload__btn,
+  &.upload__btn__w {
+    width: 45%;
+    height: 40px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #008ff5;
+    margin-top: 20px;
+  }
+  &.upload__btn__w {
+    width: 100%;
+  }
+  &.close__btn,
+  &.preview__btn,
+  &.create__btn,
+  &.edit__btn,
+  &.controll__btn,
+  &.create__btn__c,
+  &.create__btn__p,
+  &.create__btn__f,
+  &.connect__btn,
+  &.connect__btn__p,
+  &.disconnect__btn,
+  &.close__connect,
+  &.report__btn,
+  &.review__btn,
+  &.agreement__btn {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #008ff5;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      scale: 1.03;
+    }
+  }
+  &.connect__btn {
+    width: 30%;
+  }
+  &.disconnect__btn {
+    background: red;
+    width: 40%;
+    margin-top: 0;
+  }
+  &.connect__btn__p {
+    margin-top: 0;
+    position: absolute;
+    width: 40%;
+    font-size: 14px;
+    &:hover {
+      width: 100%;
+    }
+  }
+  &.create__btn__c {
+    background: transparent;
+    border: 2px solid #008ff5;
+    margin-top: 0;
+    width: 69%;
+    margin-right: 10px;
+  }
+  &.create__btn__p {
+    width: 40px;
+    height: 40px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      height: 20px;
+      width: 2px;
+      rotate: 90deg;
+    }
+    &::before {
+      rotate: 0deg;
+    }
+  }
+  &.create__btn {
+    width: 30%;
+    margin-top: 0;
+  }
+  &.preview__btn {
+    position: absolute;
+    width: 200px;
+    top: 222px;
+    left: 490px;
+  }
+  &.close__btn__popup,
+  &.close__preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    background: #008ff5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      background: #fff;
+      height: 20px;
+      width: 2px;
+      rotate: 45deg;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      height: 20px;
+      width: 2px;
+      rotate: -45deg;
+    }
+  }
+  &.close__preview {
+    position: absolute !important;
+    top: 10px;
+    left: 10px;
+    width: 48px;
+    height: 48px;
+  }
+  &.send__btn,
+  &.delete__btn {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #008ff5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2px;
+  }
+  &.send__btn {
+    width: 40px;
+    height: 40px;
+  }
+  &.delete__btn {
+    left: 10px;
+    top: 10px;
+    border-radius: 10px;
+    padding-left: 1px;
+    z-index: 8;
+    pointer-events: all !important;
+  }
+  &.controll__btn {
+    position: absolute;
+    width: 40%;
+    left: 10px;
+    &:last-child {
+      margin-top: 70px;
+      background: red;
+    }
   }
 }
