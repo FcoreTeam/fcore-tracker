@@ -1,5 +1,3 @@
-// SSR method
-
 import Controll from "@/components/controll/Controll";
 
 const Page = async ({ params }) => {

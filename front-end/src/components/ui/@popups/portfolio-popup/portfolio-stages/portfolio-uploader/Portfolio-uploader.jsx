@@ -12,6 +12,7 @@ const PortfolioUploader = ({
   stageHandle,
 }) => {
   let mediaArray = uploadedMedia.map((media, index) => (
+    // eslint-disable-next-line react/jsx-key
     <div className={styles.delete__img} onClick={() => deleteMedia(index, uploadedMedia, setUploadedMedia)}>
       <Image
         src={URL.createObjectURL(media)}

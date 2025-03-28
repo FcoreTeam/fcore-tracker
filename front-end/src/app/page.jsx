@@ -13,10 +13,10 @@ import styles from "./css/page.module.scss";
 import Header from "@/components/header/Header";
 
 const page = () => {
-  const dispatch = useDispatch();
-  const [menuState, setMenuState] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [validate, setValidate] = useState(false);
+  // const dispatch = useDispatch();
+  // const [menuState, setMenuState] = useState(false);
+  // const [inputValue, setInputValue] = useState("");
+  // const [validate, setValidate] = useState(false);
   const setMenuUi = () => {
     setMenuState(!menuState);
   };
@@ -46,11 +46,11 @@ const page = () => {
     );
   };
 
-  useEffect(() => {
-    if (!validate && menuState) {
-      setWarningPopup();
-    }
-  }, [menuState, validate]);
+  // useEffect(() => {
+  //   if (!validate && menuState) {
+  //     setWarningPopup();
+  //   }
+  // }, [menuState, validate]);
 
   return (
     <>

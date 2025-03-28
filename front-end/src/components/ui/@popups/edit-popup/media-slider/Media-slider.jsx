@@ -46,6 +46,7 @@ const Slider = ({ editPhoto, workPhotos, isEdit, setEditPhoto, setEditData }) =>
   }
 
   const getPhotos = editPhoto.workPhotos.map((item, index) => (
+    // eslint-disable-next-line react/jsx-key
     <SwiperSlide className={styles.slide}>
       {isEdit ? (
         <div className={styles.image__controll}>

@@ -13,17 +13,17 @@ const DevTime = ({ isOrderActivated }) => {
     orderFinish - Math.floor(Date.now() / 1000)
   );
 
-  if (isOrderActivated) {
-    useEffect(() => {
-      const interval = setInterval(() => {
-        const currentTime = Math.floor(Date.now() / 1000);
-        const remainingTime = orderFinish - currentTime;
-        setDeadline(remainingTime > 0 ? remainingTime : 0);
-      }, 1000);
+  // if (isOrderActivated) {
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       const currentTime = Math.floor(Date.now() / 1000);
+  //       const remainingTime = orderFinish - currentTime;
+  //       setDeadline(remainingTime > 0 ? remainingTime : 0);
+  //     }, 1000);
 
-      return () => clearInterval(interval);
-    }, [orderFinish]);
-  }
+  //     return () => clearInterval(interval);
+  //   }, [orderFinish]);
+  // }
 
   const calculateRemainingPercentage = (orderStart, orderFinish) => {
     const currentTime = Math.floor(Date.now() / 1000);

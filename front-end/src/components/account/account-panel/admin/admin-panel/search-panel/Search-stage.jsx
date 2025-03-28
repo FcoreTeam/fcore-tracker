@@ -46,6 +46,7 @@ const SearchStage = () => {
           data
             .filter((item) => item.searchType === searchData)
             .map((item) => (
+              // eslint-disable-next-line react/jsx-key
               <SearchData {...item} onClick={() => setControll(true)} />
             ))
         )}

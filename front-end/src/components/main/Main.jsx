@@ -143,6 +143,7 @@ const Main = () => {
         width={300}
         height={300}
         className={styles.star}
+        alt="star prev"
       />
       <section className={styles.stats}>
         <Stats />

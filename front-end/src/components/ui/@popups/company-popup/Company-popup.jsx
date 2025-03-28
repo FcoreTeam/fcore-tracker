@@ -16,6 +16,7 @@ const CompanyPopup = () => {
   const { skills } = useSelector((state) => state.auth.otherInfo);
   const { description } = useSelector((state) => state.auth.thirdStage);
   const mappedSkills = skills.map((item) => (
+    // eslint-disable-next-line react/jsx-key
     <UserSkill skillName={item.skillName} skillImage={item.skillImage} />
   ));
   const closePopup = () => {
